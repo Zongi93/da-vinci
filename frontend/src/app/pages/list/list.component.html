@@ -1,0 +1,9 @@
+<div *authenticated="false" class="dialog">
+  <input type="text" #username />
+  <button (click)="login(username.value)">Login</button>
+</div>
+<list-listed-table
+  *ngFor="let table of service.TableList"
+  [table]="table"
+></list-listed-table>
+<list-new-table *authenticated="true"></list-new-table>

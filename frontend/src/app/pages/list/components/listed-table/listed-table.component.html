@@ -1,0 +1,9 @@
+<div class="table">
+  <h3 class="table__h3">Joined Players:</h3>
+  <ul>
+    <li *ngFor="let player of table.players" class="table__username">
+      {{ player.userName }}
+    </li>
+  </ul>
+  <button *authenticated="true" (click)="joinTable()">Join</button>
+</div>
