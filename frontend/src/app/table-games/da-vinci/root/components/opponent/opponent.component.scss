@@ -1,0 +1,13 @@
+.player {
+  display: flex;
+  flex-direction: row;
+
+  border: 1px solid black;
+
+  &-data {
+    border: 1px solid black;
+  }
+  &-hand {
+    border: 1px solid black;
+  }
+}

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { DavinciService } from './davinci.service';
 
 @Component({
-  selector: 'app-davinci-root',
+  selector: 'game-davinci-root',
   templateUrl: './davinci-root.component.html',
   styleUrls: ['./davinci-root.component.scss']
 })
 export class DavinciRootComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private service: DavinciService) {
+    console.log('you are happy!');
   }
 
+  ngOnInit() {}
 }

@@ -1,4 +1,5 @@
 import { User } from '../models';
+import { tableManagerService } from './table-manager';
 
 export class UserManagerService {
   private users: Array<User> = [];
@@ -24,6 +25,11 @@ export class UserManagerService {
 
   pairSocketWithUser(user: User, socketId: string): void {
     user.setSocketId(socketId);
+    console.log('waiting for package');
+    user.socket.on('start-game', gameTitle => {
+      console.log('package arrived: ' + gameTitle);
+      tableManagerService.startTable(user, gameTitle);
+    });
   }
 
   findUserById(id: number): User {

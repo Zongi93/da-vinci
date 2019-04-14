@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Guard, RouterGuardService } from './common/services';
+import {
+  Guard,
+  RouterGuardService
+} from './common/services/router-guard.service';
 import { ListComponent } from './pages/list';
 import { NotFoundComponent } from './pages/not-found';
 import { TableComponent } from './pages/table';
@@ -9,6 +12,10 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent
+  },
+  {
+    path: 'table/da-vinci',
+    loadChildren: './table-games/da-vinci/davinci.module#DavinciModule'
   },
   {
     path: 'table',

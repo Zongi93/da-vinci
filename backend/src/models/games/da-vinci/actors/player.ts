@@ -122,4 +122,15 @@ export class Player implements Actor {
 
     return result;
   }
+
+  gameStart(): Promise<void> {
+    const result = new SocketEventListener<void>(
+      this.socket,
+      'game-start',
+      true
+    ).toPromise();
+    this.socket.emit('game-start');
+
+    return result;
+  }
 }

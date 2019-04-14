@@ -1,20 +1,28 @@
 import { combineLatest, Observable, Subject } from 'rxjs';
+import { async } from 'rxjs/internal/scheduler/async';
 import { map } from 'rxjs/operators';
 import { User } from '../../../models';
-import { TableGame } from '../_table-game';
+import { TableGame, TableGameInfo } from '../_table-game';
 import { Actor, ComputerOpponent, Player } from './actors';
 import { GamePiece, Guess, PieceColor, PieceState } from './utils';
 
 export class GameDaVinci implements TableGame {
-  static readonly MIN_PLAYER = 2;
-  static readonly MAX_PLAYER = 5;
-  static readonly AI_SUPPORTED = false;
+  static get INFO(): TableGameInfo {
+    return new TableGameInfo(
+      'Da Vinci',
+      2,
+      5,
+      false,
+      (players: Array<User>, computerOpponentsToAdd?: Number) =>
+        new GameDaVinci(players, computerOpponentsToAdd)
+    );
+  }
 
   private readonly PIECE_OF_COLOR: Number;
   private readonly COLORS: Number;
 
-  private freePieces: Array<GamePiece>;
-  private readonly actors: Array<Actor>;
+  private freePieces: Array<GamePiece> = [];
+  private readonly actors: Array<Actor> = [];
   private _activeActor = -1;
 
   private deleteMeEmitter = new Subject<void>();
@@ -30,6 +38,10 @@ export class GameDaVinci implements TableGame {
       this._activeActor = this._activeActor % this.actors.length;
     } while (this.actors[this._activeActor].lifes === 0);
     return this.actors[this._activeActor];
+  }
+
+  get gameInfo(): TableGameInfo {
+    return GameDaVinci.INFO;
   }
 
   get publicHands$(): Observable<
@@ -50,26 +62,28 @@ export class GameDaVinci implements TableGame {
     return this.deleteMeEmitter.asObservable();
   }
 
-  static canGameStart(players: number): boolean {
-    return TableGame.MIN_PLAYER <= players && TableGame.MAX_PLAYER >= players;
-  }
-
   constructor(players: Array<User>, computerOpponentsToAdd?: Number) {
-    this.PIECE_OF_COLOR = 12;
-    this.COLORS = 2;
+    console.log(players);
+    console.log(computerOpponentsToAdd);
+    this.PIECE_OF_COLOR = Number(12);
+    this.COLORS = Number(2);
 
     this.initPieces();
     this.actors = players.map(user => new Player(this, user));
 
-    if (GameDaVinci.AI_SUPPORTED && !!computerOpponentsToAdd) {
-      computerOpponentsToAdd.forEach(i =>
+    if (GameDaVinci.INFO.aiSupported && !!computerOpponentsToAdd) {
+      for (let i = 0; i < computerOpponentsToAdd; i++) {
+        this.actors.push(new ComputerOpponent(this, `Computer ${i}`));
+      }
+      /* computerOpponentsToAdd.forEach(i =>
         this.actors.push(new ComputerOpponent(this, `Computer ${i}`))
-      );
+      ); */
     }
 
-    this.actors.shuffle();
+    //  this.actors.shuffle();
     this.actors.forEach(actor => actor.init());
-    this.startGame();
+    setTimeout(() => this.startGame(), 2000);
+    // this.startGame();
   }
 
   private async givePiece(
@@ -94,6 +108,7 @@ export class GameDaVinci implements TableGame {
   }
 
   private async startGame(): Promise<void> {
+    // await this.usersConnected();
     const startingHandSize: Number = this.actors.length < 4 ? 4 : 3;
 
     for (let i = 0; i < startingHandSize; i++) {
@@ -167,12 +182,22 @@ export class GameDaVinci implements TableGame {
   }
 
   private initPieces() {
-    this.PIECE_OF_COLOR.forEach(i =>
+    /* this.PIECE_OF_COLOR.forEach(i =>
       this.COLORS.forEach(j =>
         this.freePieces.push(new GamePiece(i, j as number))
       )
-    );
+    ); */
 
-    this.freePieces.shuffle();
+    for (let i = 0; i < this.PIECE_OF_COLOR; i++) {
+      for (let j = 0; j < this.COLORS; j++) {
+        this.freePieces.push(new GamePiece(i, j as number));
+      }
+    }
+
+    // this.freePieces.shuffle();
   }
+
+  /* private async usersConnected():Promise<boolean>{
+
+  } */
 }

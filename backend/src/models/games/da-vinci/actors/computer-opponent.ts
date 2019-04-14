@@ -43,4 +43,8 @@ export class ComputerOpponent implements Actor {
   gameOver(): Promise<void> {
     throw new Error('Method not implemented.');
   }
+
+  gameStart(): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
 }

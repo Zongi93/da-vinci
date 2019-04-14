@@ -1,5 +1,9 @@
-interface Number {
-  forEach(callback: (i: Number) => void): void;
+export {};
+
+declare global {
+  interface Number {
+    forEach(callback: (i: Number) => void): void;
+  }
 }
 
 Number.prototype.forEach = function(callback: (i: Number) => void): void {
@@ -16,6 +20,6 @@ Number.prototype.forEach = function(callback: (i: Number) => void): void {
   let i = 0;
 
   while (i < N) {
-    callback.call(i++);
+    callback.call(undefined, i++);
   }
 };

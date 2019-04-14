@@ -22,9 +22,10 @@ export class TableManagerService {
     this.tablesEmitter.next(this.tables);
   }
 
-  startTable(hash: number) {
-    const tableToStart = this.findTableByHash(hash);
-    tableToStart.deleteMe$.toPromise().then(() => this.deleteTable(hash));
+  startTable(user: User, gameTitle: string) {
+    const tableToStart = this.findTableByUser(user);
+    tableToStart.start(gameTitle);
+    this.tablesEmitter.next(this.tables);
   }
 
   leaveTable(user: User, hash: number) {
@@ -38,6 +39,12 @@ export class TableManagerService {
 
   private findTableByHash(hash: number): Table {
     return this.tables.find(table => table.id === hash);
+  }
+
+  private findTableByUser(user: User): Table {
+    return this.tables.find(
+      table => !!table.players.find(joinedUser => joinedUser.id === user.id)
+    );
   }
 }
 

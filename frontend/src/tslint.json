@@ -5,7 +5,7 @@
     "component-selector": [
       true,
       "element",
-      ["common", "list", "table", "not-found", "da-vinci"],
+      ["common", "list", "table", "not-found", "game-davinci"],
       "kebab-case"
     ]
   }

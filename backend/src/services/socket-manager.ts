@@ -13,7 +13,12 @@ export class SocketManagerService {
   constructor() {}
 
   addSocket(newSocket: Socket) {
+    const tablesDto = tableManagerService
+      .listTables()
+      .map(table => table.toDto());
+
     this._sockets.push(newSocket);
+    newSocket.emit('table-list', tablesDto);
   }
 
   findSocketById(socketId: string): Socket {

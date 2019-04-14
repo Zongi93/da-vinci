@@ -3,12 +3,15 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import socketIo from 'socket.io';
 
+import * as utils from './utils';
+
 import {
   socketManagerService,
   tableManagerService,
   userManagerService
 } from './services';
 
+import { GameDaVinci } from './models/games/da-vinci/service';
 import {
   authenticate,
   checkCsrf,

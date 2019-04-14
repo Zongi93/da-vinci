@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GamePiece } from './game-piece';
+import { GamePiece } from './root/models';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class DavinciDataService implements IDavinciDataService {
+@Injectable()
+export class DavinciSocketService implements IDavinciSocketService {
   constructor(private socket: Socket) {}
   get publicHands$(): Observable<Array<PublicHand>> {
     return this.socket
@@ -42,7 +40,8 @@ export class DavinciDataService implements IDavinciDataService {
   }
 }
 
-export abstract class IDavinciDataService {
+@Injectable()
+export abstract class IDavinciSocketService {
   abstract get publicHands$(): Observable<Array<PublicHand>>;
   abstract get privateHand$(): Observable<Array<GamePiece>>;
   abstract get infoMessage$(): Observable<string>;
@@ -53,16 +52,16 @@ export abstract class IDavinciDataService {
 }
 
 export class PublicHand {
-  readonly username: string;
+  readonly userName: string;
   readonly hand: Array<GamePiece>;
 
-  constructor(username: string, hand: Array<GamePiece>) {
-    this.username = username;
+  constructor(userName: string, hand: Array<GamePiece>) {
+    this.userName = userName;
     this.hand = hand;
   }
 
   static fromDto(dto: PublicHand): PublicHand {
     const hand = dto.hand.map(piece => GamePiece.fromDto(piece));
-    return new PublicHand(dto.username, hand);
+    return new PublicHand(dto.userName, hand);
   }
 }

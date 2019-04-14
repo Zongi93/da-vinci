@@ -1,5 +1,9 @@
-interface Array<T> {
-  shuffle(): this;
+export {};
+
+declare global {
+  interface Array<T> {
+    shuffle(): this;
+  }
 }
 
 Array.prototype.shuffle = () => {

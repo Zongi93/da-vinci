@@ -10,20 +10,16 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticatedDirective } from './common/directives/authenticated.directive';
-import {
-  DavinciDataService,
-  IDavinciDataService
-} from './common/models/table-games/da-vinci';
+
 import {
   AuthenticationService,
   IAuthentication,
   IRestController,
   IWebSocketController,
   RestControllerService,
-  RouterGuardService,
   WebSocketControllerService
 } from './common/services';
-import { DavinciRootComponent } from './common/table-games/da-vinci/components/davinci-root.component';
+import { RouterGuardService } from './common/services/router-guard.service';
 import {
   ListComponent,
   ListedTableComponent,
@@ -31,6 +27,7 @@ import {
 } from './pages/list';
 import { NotFoundComponent } from './pages/not-found';
 import { TableComponent } from './pages/table';
+import { ListedGameComponent } from './pages/table/components/listed-game/listed-game.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -42,7 +39,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     TableComponent,
     NotFoundComponent,
     AuthenticatedDirective,
-    NewTableComponent
+    NewTableComponent,
+    ListedGameComponent
   ],
   imports: [
     HttpClientModule,

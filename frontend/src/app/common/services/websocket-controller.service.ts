@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { TableGameInfo } from 'src/app/table-games';
 import { Table } from '../models';
-import { GamePiece } from '../models/table-games/da-vinci';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,11 @@ export class WebSocketControllerService implements IWebSocketController {
         map((data: Array<Table>) => data.map(table => Table.fromDto(table)))
       );
   }
+
+  startGame(gameInfo: TableGameInfo) {
+    this.socket.emit('start-game', gameInfo.title);
+    console.log('package is on the way');
+  }
 }
 
 @Injectable({
@@ -25,4 +30,5 @@ export class WebSocketControllerService implements IWebSocketController {
 })
 export abstract class IWebSocketController {
   abstract get tableList$(): Observable<Array<Table>>;
+  abstract startGame(gameInfo: TableGameInfo);
 }

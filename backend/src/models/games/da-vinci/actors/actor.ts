@@ -20,4 +20,5 @@ export abstract class Actor {
   abstract async chooseAColorToTake(state: PieceState): Promise<PieceColor>;
   abstract async takeExtraAction(): Promise<Guess | PieceColor>;
   abstract async gameOver(): Promise<void>;
+  abstract async gameStart(): Promise<void>;
 }
