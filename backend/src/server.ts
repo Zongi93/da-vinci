@@ -3,8 +3,6 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import socketIo from 'socket.io';
 
-import * as utils from './utils';
-
 import {
   socketManagerService,
   tableManagerService,
@@ -21,7 +19,8 @@ import {
   listTables,
   loginUser,
   logoutUser,
-  pairSocket
+  pairSocket,
+  startTable
 } from './routers';
 
 const app = express();
@@ -36,6 +35,7 @@ app.route('/api/user/logout').get(logoutUser);
 app.route('/api/table/list').get(listTables);
 app.route('/api/table/create').post(checkCsrf, authenticate, createTable);
 app.route('/api/table/join').post(checkCsrf, authenticate, joinTable);
+app.route('/api/table/start').post(checkCsrf, authenticate, startTable);
 
 const server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)

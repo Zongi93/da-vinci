@@ -53,7 +53,7 @@ export class RouterGuardService implements CanActivate {
         return of(!this.authenticationService.isAuthenticated());
 
       case Guard.HAS_ACCESS_TOKEN:
-        return of(this.tableService.validateUrl(route));
+        return this.tableService.validateUrl();
     }
   }
 

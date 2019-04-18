@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { TableGameInfo } from 'src/app/table-games';
 import { TableService } from './table.service';
 
@@ -8,16 +9,35 @@ import { TableService } from './table.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
+
   get gameInfos(): Array<TableGameInfo> {
     return TableGameInfo.list;
   }
 
-  constructor(private service: TableService, route: ActivatedRoute) {
-    service.init(Number(route.snapshot.queryParams['token']));
+  get playerNames(): Array<string> {
+    return this.service.table.players;
   }
 
-  ngOnInit() {
-    console.log('hi!');
+  constructor(private service: TableService) {
+    const runningGame = TableGameInfo.find(service.table.gameTitle);
+    console.log({ 'found game': runningGame });
+    if (!!runningGame) {
+      service.launchGame(runningGame);
+    }
+  }
+
+  ngOnInit(): void {
+    this.subscription = this.service.table$
+      .pipe(
+        map(table => TableGameInfo.find(table.gameTitle)),
+        filter(game => !!game)
+      )
+      .subscribe(game => this.service.launchGame(game));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

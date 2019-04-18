@@ -23,7 +23,10 @@ export class Table {
   }
 
   addPlayer(user: User) {
-    if (!this.game) {
+    const playerNotAlreadyAdded = !this.players.find(
+      player => player.id === user.id
+    );
+    if (!this.game && playerNotAlreadyAdded) {
       this.players.push(user);
     }
   }
@@ -45,6 +48,7 @@ export class Table {
     ) {
       switch (gameTitle) {
         case 'Da Vinci':
+          console.log('Starting Da Vinci');
           this.game = gameToStart.ctor.apply(undefined, [this.players, 0]);
           break;
       }
@@ -61,7 +65,7 @@ export class Table {
     // const gameTitle = !!this.game ? this.game.gameInfo.gameTitle : undefined;
     return {
       id: this.id,
-      players: this.players.map(player => player.toDto()),
+      players: this.players.map(player => player.userName),
       token: this.getHash(),
       gameTitle: this.gameTitleForUI,
       canJoin: !this.game,
@@ -71,7 +75,7 @@ export class Table {
 
 export interface TableDto {
   readonly id: number;
-  readonly players: Array<UserDto>;
+  readonly players: Array<string>;
   readonly token: number;
   readonly gameTitle: string;
   readonly canJoin: boolean;

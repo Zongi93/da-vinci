@@ -34,4 +34,8 @@ export class TableGameInfo {
     this.maxPlayers = maxPlayers;
     this.minPlayers = minPlayers;
   }
+
+  static find(gameTitle: string): TableGameInfo {
+    return TableGameInfo.list.find(game => game.title === gameTitle);
+  }
 }

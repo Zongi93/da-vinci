@@ -13,7 +13,7 @@ export class ListedGameComponent implements OnInit {
   constructor(private service: TableService) {}
 
   isPlayerCountGood(): boolean {
-    const playerCount = this.service.selectedTable.players.length;
+    const playerCount = this.service.table.players.length;
     return (
       this.gameInfo.minPlayers <= playerCount &&
       this.gameInfo.maxPlayers >= playerCount

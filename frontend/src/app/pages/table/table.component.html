@@ -1,3 +1,8 @@
+<ul>
+  <li class="player-name" *ngFor="let playerName of playerNames">
+    {{ playerName }}
+  </li>
+</ul>
 <table-listed-game
   *ngFor="let gameInfo of gameInfos"
   [gameInfo]="gameInfo"

@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { TableGameInfo } from 'src/app/table-games';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Table } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketControllerService implements IWebSocketController {
-  constructor(private socket: Socket) {}
+  private tableListEmitter = new BehaviorSubject<Array<Table>>(undefined);
 
-  get tableList$(): Observable<Array<Table>> {
-    return this.socket
-      .fromEvent('table-list')
-      .pipe(
-        map((data: Array<Table>) => data.map(table => Table.fromDto(table)))
-      );
+  constructor(private socket: Socket) {
+    socket.on('table-list', (tablesDto: Array<Table>) =>
+      this.tableListEmitter.next(
+        tablesDto.map(tableDto => Table.fromDto(tableDto))
+      )
+    );
   }
 
-  startGame(gameInfo: TableGameInfo) {
-    this.socket.emit('start-game', gameInfo.title);
-    console.log('package is on the way');
+  get tableList$(): Observable<Array<Table>> {
+    return this.tableListEmitter.asObservable();
+  }
+
+  get tableList(): Array<Table> {
+    return this.tableListEmitter.value;
   }
 }
 
@@ -30,5 +32,5 @@ export class WebSocketControllerService implements IWebSocketController {
 })
 export abstract class IWebSocketController {
   abstract get tableList$(): Observable<Array<Table>>;
-  abstract startGame(gameInfo: TableGameInfo);
+  abstract get tableList(): Array<Table>;
 }

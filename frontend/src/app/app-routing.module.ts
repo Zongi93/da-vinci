@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { combineLatest } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { IAuthentication, IWebSocketController } from './common/services';
 import {
   Guard,
   RouterGuardService
@@ -15,7 +18,9 @@ const routes: Routes = [
   },
   {
     path: 'table/da-vinci',
-    loadChildren: './table-games/da-vinci/davinci.module#DavinciModule'
+    loadChildren: './table-games/da-vinci/davinci.module#DavinciModule',
+    canActivate: [RouterGuardService],
+    data: [Guard.AUTHENTICATED, Guard.HAS_ACCESS_TOKEN]
   },
   {
     path: 'table',
@@ -32,4 +37,19 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  constructor(
+    private socketService: IWebSocketController,
+    private authService: IAuthentication,
+    private router: Router
+  ) {
+    combineLatest(socketService.tableList$, authService.loggedIn$)
+      .pipe(
+        filter(() => authService.isAuthenticated()),
+        filter(() => !!authService.user.joinedTable)
+      )
+      .subscribe(() => {
+        router.navigate(['/table']);
+      });
+  }
+}

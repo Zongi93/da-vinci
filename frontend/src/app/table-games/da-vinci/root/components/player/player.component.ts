@@ -22,7 +22,7 @@ export class PlayerComponent implements OnInit {
     private authService: IAuthentication,
     private dataService: IDavinciSocketService
   ) {
-    this.userName = authService.getUserData().userName;
+    this.userName = authService.user.userName;
   }
 
   ngOnInit() {}

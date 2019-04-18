@@ -15,15 +15,6 @@ export class AuthenticationService implements IAuthentication {
     this.isAuthenticated()
   );
 
-  private set user(newValue: User) {
-    this._user = newValue;
-    this._authenticatedEmitter.next(this.isAuthenticated());
-  }
-
-  private get user(): User {
-    return this._user;
-  }
-
   get isAuthenticated$(): Observable<boolean> {
     return this._authenticatedEmitter.asObservable();
   }
@@ -35,6 +26,10 @@ export class AuthenticationService implements IAuthentication {
     );
   }
 
+  get user(): User {
+    return this._user;
+  }
+
   constructor(
     private restService: IRestController,
     private socketService: IWebSocketController,
@@ -43,7 +38,7 @@ export class AuthenticationService implements IAuthentication {
     this.restService
       .getUser()
       .subscribe(
-        userData => (this.user = userData),
+        userData => this.setUser(userData),
         error => undefined,
         () =>
           this.toastr.success(
@@ -57,20 +52,16 @@ export class AuthenticationService implements IAuthentication {
     );
   }
 
-  getUserData(): User {
-    return this.user;
-  }
-
   isAuthenticated(): boolean {
-    return !!this._user;
+    return !!this.user;
   }
 
   login(userName: string): void {
     this.restService
       .loginUser(userName)
       .subscribe(
-        userData => (this.user = userData),
-        () => this.toastr.error('Login failed', 'Error!'),
+        userData => this.setUser(userData),
+        e => this.toastr.error('Login failed', 'Error!'),
         () =>
           this.toastr.success(
             'You have successfully logged in!',
@@ -82,10 +73,15 @@ export class AuthenticationService implements IAuthentication {
   logout(): void {
     if (this.isAuthenticated()) {
       this.restService.logoutUser().subscribe(undefined, undefined, () => {
-        this.user = undefined;
+        this.setUser(undefined);
         this.toastr.warning('You have logged out!', `:(`);
       });
     }
+  }
+
+  private setUser(newValue: User) {
+    this._user = newValue;
+    this._authenticatedEmitter.next(this.isAuthenticated());
   }
 }
 
@@ -95,8 +91,8 @@ export class AuthenticationService implements IAuthentication {
 export abstract class IAuthentication {
   abstract get isAuthenticated$(): Observable<boolean>;
   abstract get loggedIn$(): Observable<void>;
+  abstract get user(): User;
   abstract isAuthenticated(): boolean;
   abstract login(username: string): void;
   abstract logout(): void;
-  abstract getUserData(): User;
 }
