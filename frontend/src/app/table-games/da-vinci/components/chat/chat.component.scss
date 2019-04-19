@@ -1,0 +1,16 @@
+.chat {
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  background-color: beige;
+  border: 1px solid black;
+
+  width: 15rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

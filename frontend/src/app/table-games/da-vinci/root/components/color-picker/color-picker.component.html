@@ -1,0 +1,12 @@
+<div class="background" *ngIf="showColorPicker">
+  <div class="color-picker">
+    <h3>Please pick a color for a {{ requestedState }} piece.</h3>
+    <button
+      *ngFor="let colorId of colorsList"
+      class="color-{{ colorId }}"
+      (click)="onColorPicked(colorId)"
+    >
+      {{ getColorName(colorId) }}
+    </button>
+  </div>
+</div>

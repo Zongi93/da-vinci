@@ -12,7 +12,7 @@ export abstract class Actor {
     return counter++;
   }
 
-  abstract init(): void;
+  abstract async init(): Promise<void>;
   abstract checkGuess(guess: Guess): boolean;
   abstract takePiece(piece: GamePiece): void;
   abstract showPiece(position: number): void;

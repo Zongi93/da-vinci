@@ -22,7 +22,6 @@ export class TableComponent implements OnInit, OnDestroy {
 
   constructor(private service: TableService) {
     const runningGame = TableGameInfo.find(service.table.gameTitle);
-    console.log({ 'found game': runningGame });
     if (!!runningGame) {
       service.launchGame(runningGame);
     }

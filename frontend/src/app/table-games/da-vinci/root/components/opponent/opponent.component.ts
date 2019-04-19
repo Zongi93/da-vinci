@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IDavinciSocketService } from '../../../data-provider.service';
 import { DavinciService } from '../../davinci.service';
 import { GamePiece } from '../../models';
 
@@ -8,13 +10,29 @@ import { GamePiece } from '../../models';
   templateUrl: './opponent.component.html',
   styleUrls: ['./opponent.component.scss']
 })
-export class OpponentComponent implements OnInit {
-  @Input() userName: string;
-  get publicHandUpdates$(): Observable<Array<GamePiece>> {
-    return this.service.getPublicHandUpdates$(this.userName);
+export class OpponentComponent implements OnInit, OnDestroy {
+  @Input() opponentName: string;
+
+  hand: Array<GamePiece> = [];
+  subscription: Subscription;
+
+  constructor(
+    private service: DavinciService,
+    private socketService: IDavinciSocketService
+  ) {}
+
+  ngOnInit() {
+    this.subscription = this.socketService.publicHands$
+      .pipe(
+        map(
+          hands =>
+            hands.find(update => update.userName === this.opponentName).hand
+        )
+      )
+      .subscribe(handUpdate => (this.hand = handUpdate));
   }
 
-  constructor(private service: DavinciService) {}
-
-  ngOnInit() {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

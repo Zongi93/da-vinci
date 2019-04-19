@@ -1,10 +1,10 @@
 <div class="player">
-  <div class="player-data">
-    {{ userName }}
+  <div class="player-name">
+    {{ opponentName }}
   </div>
   <div class="player-hand">
     <game-davinci-piece
-      *ngFor="let gamePiece of (publicHandUpdates$ | async)"
+      *ngFor="let gamePiece of hand"
       [piece]="gamePiece"
     ></game-davinci-piece>
   </div>

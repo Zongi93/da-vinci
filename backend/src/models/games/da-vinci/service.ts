@@ -1,5 +1,4 @@
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
 import { map } from 'rxjs/operators';
 import { User } from '../../../models';
 import { TableGame, TableGameInfo } from '../_table-game';
@@ -18,8 +17,8 @@ export class GameDaVinci implements TableGame {
     );
   }
 
-  private readonly PIECE_OF_COLOR: Number;
-  private readonly COLORS: Number;
+  readonly PIECE_PER_COLOR: Number;
+  readonly COLORS: Number;
 
   private freePieces: Array<GamePiece> = [];
   private readonly actors: Array<Actor> = [];
@@ -45,11 +44,11 @@ export class GameDaVinci implements TableGame {
   }
 
   get publicHands$(): Observable<
-    Array<{ username: string; hand: Array<GamePiece> }>
+    Array<{ userName: string; hand: Array<GamePiece> }>
   > {
     const observables = this.actors.map(actor => {
-      const username = actor.name;
-      return actor.publicHand$.pipe(map(hand => ({ username, hand })));
+      const userName = actor.name;
+      return actor.publicHand$.pipe(map(hand => ({ userName, hand })));
     });
     return combineLatest(observables);
   }
@@ -63,9 +62,7 @@ export class GameDaVinci implements TableGame {
   }
 
   constructor(players: Array<User>, computerOpponentsToAdd?: Number) {
-    console.log(players);
-    console.log(computerOpponentsToAdd);
-    this.PIECE_OF_COLOR = Number(12);
+    this.PIECE_PER_COLOR = Number(12);
     this.COLORS = Number(2);
 
     this.initPieces();
@@ -81,9 +78,8 @@ export class GameDaVinci implements TableGame {
     }
 
     //  this.actors.shuffle();
-    this.actors.forEach(actor => actor.init());
-    setTimeout(() => this.startGame(), 2000);
-    // this.startGame();
+
+    this.startGame();
   }
 
   private async givePiece(
@@ -108,7 +104,9 @@ export class GameDaVinci implements TableGame {
   }
 
   private async startGame(): Promise<void> {
-    // await this.usersConnected();
+    const actorsReady = this.actors.map(actor => actor.init());
+    await Promise.all(actorsReady);
+
     const startingHandSize: Number = this.actors.length < 4 ? 4 : 3;
 
     for (let i = 0; i < startingHandSize; i++) {
@@ -188,7 +186,7 @@ export class GameDaVinci implements TableGame {
       )
     ); */
 
-    for (let i = 0; i < this.PIECE_OF_COLOR; i++) {
+    for (let i = 0; i < this.PIECE_PER_COLOR; i++) {
       for (let j = 0; j < this.COLORS; j++) {
         this.freePieces.push(new GamePiece(i, j as number));
       }

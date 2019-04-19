@@ -18,7 +18,9 @@ export class ComputerOpponent implements Actor {
     this.name = name;
   }
 
-  init(): void {}
+  async init(): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
 
   takePiece(piece: GamePiece): void {
     throw new Error('Method not implemented.');

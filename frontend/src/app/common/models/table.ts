@@ -22,8 +22,6 @@ export class Table {
   }
 
   static fromDto(dto: Table): Table {
-    console.log(dto);
-    // const players = dto.players.map(player => User.fromDto(player));
     return new Table(
       dto.id,
       dto.players,

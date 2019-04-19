@@ -1,16 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { IDavinciSocketService } from '../data-provider.service';
-import { GamePiece } from './models';
+import { IAuthentication } from 'src/app/common/services';
+import { IDavinciSocketService, SetupInfo } from '../data-provider.service';
+import { GamePiece, PieceState } from './models';
 
 @Injectable()
 export class DavinciService {
-  constructor(private dataService: IDavinciSocketService) {}
+  private _setupInfo: SetupInfo;
 
-  getPublicHandUpdates$(userName: string): Observable<Array<GamePiece>> {
-    return this.dataService.publicHands$.pipe(
-      map(hands => hands.find(update => update.userName === userName).hand)
+  get chooseAColorToTake$(): Observable<PieceState> {
+    return this.socketService.chooseAColorToTake$;
+  }
+
+  get setupInfo(): SetupInfo {
+    return this._setupInfo;
+  }
+
+  get opponents(): Array<string> {
+    return this.authService.user.joinedTable.players.filter(
+      playerName => playerName !== this.playerName
     );
+  }
+
+  get playerName(): string {
+    return this.authService.user.userName;
+  }
+
+  constructor(
+    private socketService: IDavinciSocketService,
+    private authService: IAuthentication
+  ) {
+    console.log('hello');
+    socketService.gameSetup$.subscribe(
+      setupInfo => (this._setupInfo = setupInfo)
+    );
+  }
+
+  colorPicked(colorId: number) {
+    this.socketService.sendSelectedColor(colorId);
   }
 }

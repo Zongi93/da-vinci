@@ -10,13 +10,25 @@ export class GamePiece {
   }
 
   static fromDto(dto: GamePiece): GamePiece {
-    return new GamePiece(dto.number, dto.color, dto.state);
+    return new GamePiece(dto.number, dto.color, dto['_state']);
+  }
+
+  static isMissing(piece: GamePiece): boolean {
+    return piece.state === PieceState.MISSING;
+  }
+
+  static isPrivate(piece: GamePiece): boolean {
+    return piece.state === PieceState.PRIVATE;
+  }
+
+  static isPublic(piece: GamePiece): boolean {
+    return piece.state === PieceState.PUBLIC;
   }
 }
 
 export enum PieceColor {
-  WHITE = 1,
-  BLACK = 2
+  WHITE = 0,
+  BLACK = 1
 }
 
 export enum PieceState {

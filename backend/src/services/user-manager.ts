@@ -4,6 +4,7 @@ export class UserManagerService {
   private users: Array<User> = [];
 
   login(userName: string): User {
+    // TODO: username requirements
     let user = this.findUserByUserName(userName);
 
     if (!user) {

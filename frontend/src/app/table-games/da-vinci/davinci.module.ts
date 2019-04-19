@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { ChatComponent } from './components/';
 import {
   DavinciSocketService,
   IDavinciSocketService
 } from './data-provider.service';
 import { DavinciRoutingModule } from './davinci-routing.module';
 import {
+  ColorPickerComponent,
   DavinciRootComponent,
   DavinciService,
   GamePieceComponent,
@@ -19,7 +21,9 @@ import {
     DavinciRootComponent,
     OpponentComponent,
     GamePieceComponent,
-    PlayerComponent
+    PlayerComponent,
+    ChatComponent,
+    ColorPickerComponent
   ],
   imports: [CommonModule, DavinciRoutingModule],
   providers: [

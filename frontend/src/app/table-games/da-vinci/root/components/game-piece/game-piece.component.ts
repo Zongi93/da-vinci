@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GamePiece, PieceState } from '../../models';
+import { GamePiece, PieceColor, PieceState } from '../../models';
 
 @Component({
   selector: 'game-davinci-piece',
@@ -8,12 +8,21 @@ import { GamePiece, PieceState } from '../../models';
 })
 export class GamePieceComponent implements OnInit {
   @Input() piece: GamePiece;
+  @Input() owner: boolean;
+
+  get hasValue(): boolean {
+    return this.piece.number !== null;
+  }
+
+  get seenByOpponent(): boolean {
+    return this.owner && GamePiece.isPublic(this.piece);
+  }
 
   constructor() {}
 
   ngOnInit() {}
 
-  isShown(): boolean {
-    return this.piece.state === PieceState.PUBLIC;
+  getColorName(colorId: number): string {
+    return PieceColor[colorId];
   }
 }

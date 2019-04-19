@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IAuthentication } from 'src/app/common/services';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IDavinciSocketService } from '../../../data-provider.service';
 import { DavinciService } from '../../davinci.service';
 import { GamePiece } from '../../models';
@@ -10,20 +9,25 @@ import { GamePiece } from '../../models';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent implements OnInit {
-  readonly userName: string;
+export class PlayerComponent implements OnInit, OnDestroy {
+  @Input() playerName: string;
 
-  get privateHand$(): Observable<Array<GamePiece>> {
-    return this.dataService.privateHand$;
-  }
+  hand: Array<GamePiece> = [];
+
+  private subscription: Subscription;
 
   constructor(
     private service: DavinciService,
-    private authService: IAuthentication,
     private dataService: IDavinciSocketService
-  ) {
-    this.userName = authService.user.userName;
+  ) {}
+
+  ngOnInit() {
+    this.subscription = this.dataService.privateHand$.subscribe(
+      handUpdate => (this.hand = handUpdate)
+    );
   }
 
-  ngOnInit() {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

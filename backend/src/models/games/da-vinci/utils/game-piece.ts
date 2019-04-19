@@ -60,8 +60,8 @@ export class GamePiece {
 }
 
 export enum PieceColor {
-  WHITE = 1,
-  BLACK = 2,
+  WHITE = 0,
+  BLACK = 1,
 }
 
 export enum PieceState {

@@ -38,7 +38,7 @@ export class TableService {
   }
 
   validateUrl(): Observable<boolean> {
-    if (this.authService.isAuthenticated) {
+    if (this.authService.isAuthenticated()) {
       if (!!this.socketService.tableList) {
         return of(!!this.authService.user.joinedTable);
       } else {

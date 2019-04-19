@@ -7,9 +7,7 @@ import { DavinciService } from './davinci.service';
   styleUrls: ['./davinci-root.component.scss']
 })
 export class DavinciRootComponent implements OnInit {
-  constructor(private service: DavinciService) {
-    console.log('you are happy!');
-  }
+  constructor(public service: DavinciService) {}
 
   ngOnInit() {}
 }

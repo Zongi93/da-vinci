@@ -3,11 +3,14 @@
   flex-direction: row;
 
   border: 1px solid black;
+  padding: 1rem;
+  margin: 0.5rem;
 
-  &-data {
-    border: 1px solid black;
-  }
   &-hand {
-    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+
+    padding: 1rem;
+    margin: 0.5rem;
   }
 }
