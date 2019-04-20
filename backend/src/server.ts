@@ -48,3 +48,5 @@ ioServer.on('connection', socket => {
   console.log(`Socket connection with ${socket.id} established`);
   socketManagerService.addSocket(socket);
 });
+
+setTimeout(() => socketManagerService.signalServerStart(), 1500);

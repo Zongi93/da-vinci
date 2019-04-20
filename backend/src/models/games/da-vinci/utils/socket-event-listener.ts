@@ -1,5 +1,4 @@
 import { Observable, Subject } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { Socket } from 'socket.io';
 import { User } from '../../../../models/user';
 
@@ -13,9 +12,9 @@ export class SocketEventListener<T> {
   constructor(
     private readonly user: User,
     private readonly key: string,
-    private once?: boolean,
-    private sendPayload?: boolean,
-    private payload?: any
+    private readonly once?: boolean,
+    private readonly sendPayload?: boolean,
+    private readonly payload?: any
   ) {
     this.start();
   }

@@ -20,7 +20,6 @@ export class DavinciSocketService implements IDavinciSocketService {
     return this.socket.fromEvent<SetupInfo>('game-init').pipe(
       map(dto => {
         clearInterval(this.timer);
-        console.log(dto);
         return SetupInfo.fromDto(dto);
       })
     );

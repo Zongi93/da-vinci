@@ -32,6 +32,11 @@ export class SocketManagerService {
       .pipe(map(tableList => tableList.map(table => table.toDto())))
       .subscribe(tableDtoList => this._server.emit('table-list', tableDtoList)); // maybe table-manager should initiate this?
   }
+
+  signalServerStart() {
+    console.log('Signaling server start');
+    this.sockets.forEach(socket => socket.emit('server-start'));
+  }
 }
 
 export const socketManagerService = new SocketManagerService();

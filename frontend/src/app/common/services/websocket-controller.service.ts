@@ -25,6 +25,10 @@ export class WebSocketControllerService implements IWebSocketController {
   get tableList(): Array<Table> {
     return this.tableListEmitter.value;
   }
+
+  get serverRestart$(): Observable<void> {
+    return this.socket.fromEvent('server-start');
+  }
 }
 
 @Injectable({
@@ -33,4 +37,5 @@ export class WebSocketControllerService implements IWebSocketController {
 export abstract class IWebSocketController {
   abstract get tableList$(): Observable<Array<Table>>;
   abstract get tableList(): Array<Table>;
+  abstract get serverRestart$(): Observable<void>;
 }

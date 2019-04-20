@@ -20,13 +20,14 @@ const routes: Routes = [
     path: 'table/da-vinci',
     loadChildren: './table-games/da-vinci/davinci.module#DavinciModule',
     canActivate: [RouterGuardService],
-    data: [Guard.AUTHENTICATED, Guard.HAS_ACCESS_TOKEN]
+    data: [Guard.AUTHENTICATED, Guard.AT_TABLE],
+    runGuardsAndResolvers: 'always'
   },
   {
     path: 'table',
     component: TableComponent,
     canActivate: [RouterGuardService],
-    data: [Guard.AUTHENTICATED, Guard.HAS_ACCESS_TOKEN],
+    data: [Guard.AUTHENTICATED, Guard.AT_TABLE],
     runGuardsAndResolvers: 'always'
   },
   { path: '', redirectTo: 'list', pathMatch: 'full' },
@@ -51,5 +52,7 @@ export class AppRoutingModule {
       .subscribe(() => {
         router.navigate(['/table']);
       });
+
+    socketService.serverRestart$.subscribe(() => window.location.reload());
   }
 }

@@ -52,7 +52,7 @@ export class RouterGuardService implements CanActivate {
       case Guard.NOT_AUTHENTICATED:
         return of(!this.authenticationService.isAuthenticated());
 
-      case Guard.HAS_ACCESS_TOKEN:
+      case Guard.AT_TABLE:
         return this.tableService.validateUrl();
     }
   }
@@ -67,7 +67,7 @@ export class RouterGuardService implements CanActivate {
         this.router.navigate(['list']);
         break;
 
-      case Guard.HAS_ACCESS_TOKEN:
+      case Guard.AT_TABLE:
         this.router.navigate(['list']);
     }
   }
@@ -94,7 +94,7 @@ export class RouterGuardService implements CanActivate {
 export enum Guard {
   AUTHENTICATED,
   NOT_AUTHENTICATED,
-  HAS_ACCESS_TOKEN
+  AT_TABLE
 }
 
 export class GuardResult {
