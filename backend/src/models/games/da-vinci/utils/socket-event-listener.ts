@@ -13,31 +13,11 @@ export class SocketEventListener<T> {
   constructor(
     private readonly user: User,
     private readonly key: string,
-    once?: boolean,
-    sendPayload?: boolean,
-    payload?: any
+    private once?: boolean,
+    private sendPayload?: boolean,
+    private payload?: any
   ) {
-    if (!!once && once) {
-      this.once();
-    } else {
-      this.listen();
-    }
-
-    if (!!sendPayload && sendPayload) {
-      this.socket.emit(key, payload);
-    }
-
-    user.reconnected$.pipe(delay(4000)).subscribe(() => {
-      if (!!once && once) {
-        this.once();
-      } else {
-        this.listen();
-      }
-
-      if (!!sendPayload && sendPayload) {
-        this.socket.emit(key, payload);
-      }
-    });
+    this.start();
   }
 
   asObservable(): Observable<T> {
@@ -48,7 +28,19 @@ export class SocketEventListener<T> {
     return this.emitter.toPromise();
   }
 
-  private once(): void {
+  start(): void {
+    if (!!this.once && this.once) {
+      this.listenOnce();
+    } else {
+      this.listen();
+    }
+
+    if (!!this.sendPayload && this.sendPayload) {
+      this.socket.emit(this.key, this.payload);
+    }
+  }
+
+  private listenOnce(): void {
     this.socket.once(this.key, data => {
       console.log({ key: data });
       this.emitter.next(data as T);

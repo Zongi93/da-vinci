@@ -13,8 +13,6 @@ import {
 import { Actor } from './actor';
 
 export class Player implements Actor {
-  // TODO: react to user reconnect
-
   readonly user: User;
   readonly id: number = Actor.getId();
   readonly name: string;
@@ -27,6 +25,7 @@ export class Player implements Actor {
     userName: string;
     hand: Array<GamePiece>;
   }> = [];
+  private inProgressRequest: SocketEventListener<any> = undefined;
 
   get lifes(): Number {
     return this.unsortedHand.filter(piece => GamePiece.isPrivate(piece)).length;
@@ -97,51 +96,23 @@ export class Player implements Actor {
 
     this.user.reconnected$.subscribe(() => this.handleReconnect());
 
-    return new SocketEventListener<void>(
-      this.user,
-      'user-connected',
-      true,
-      false
-    )
-      .toPromise()
-      .then(() => {
-        console.log(this.name + ' has connected');
-        this.socket.emit('game-init', this.gameSetup);
-      });
+    return this.eventToPromise<void>('user-connected', false).then(() => {
+      console.log(this.name + ' has connected');
+      this.socket.emit('game-init', this.gameSetup);
+    });
   }
 
   makeAGuess(): Promise<Guess> {
-    const result = new SocketEventListener<Guess>(
-      this.user,
-      'guess',
-      true,
-      true
-    ).toPromise();
-    this.socket.emit('guess');
-
-    return result.then(guess => Guess.fromDto(guess));
+    return this.eventToPromise<Guess>('guess', true).then(guess =>
+      Guess.fromDto(guess)
+    );
   }
 
   chooseAColorToTake(state: PieceState): Promise<PieceColor> {
-    const result = new SocketEventListener<PieceColor>(
-      this.user,
-      'pick-color',
-      true,
-      true,
-      state
-    ).toPromise();
-    this.socket.emit('pick-color', state);
-
-    return result;
+    return this.eventToPromise<PieceColor>('pick-color', true, state);
   }
   takeExtraAction(): Promise<PieceColor | Guess> {
-    const result = new SocketEventListener<PieceColor | Guess>(
-      this.user,
-      'take-extra-action',
-      true,
-      true
-    ).toPromise();
-    this.socket.emit('take-extra-action');
+    const result = this.eventToPromise<PieceColor | Guess>('game-over', true);
 
     return result.then(response =>
       Object.keys(response).length > 0
@@ -151,29 +122,12 @@ export class Player implements Actor {
   }
 
   gameOver(): Promise<void> {
-    const result = new SocketEventListener<void>(
-      this.user,
-      'game-over',
-      true,
-      true
-    ).toPromise();
-    this.socket.emit('game-over');
-
     // TODO: clean subscriptions
-
-    return result;
+    return this.eventToPromise<void>('game-over', true);
   }
 
   gameStart(): Promise<void> {
-    const result = new SocketEventListener<void>(
-      this.user,
-      'game-start',
-      true,
-      true
-    ).toPromise();
-    this.socket.emit('game-start');
-
-    return result;
+    return this.eventToPromise<void>('game-start', true);
   }
 
   private async handleReconnect(): Promise<void> {
@@ -185,6 +139,28 @@ export class Player implements Actor {
       this.sentMessages.forEach(message =>
         this.socket.emit('message-info', message)
       );
+
+      if (!!this.inProgressRequest) {
+        this.inProgressRequest.start();
+      }
     });
+  }
+
+  private eventToPromise<T>(
+    key: string,
+    sendPayload?: boolean,
+    payload?: any
+  ): Promise<T> {
+    this.inProgressRequest = new SocketEventListener<T>(
+      this.user,
+      key,
+      true,
+      sendPayload,
+      payload
+    );
+
+    return this.inProgressRequest
+      .toPromise()
+      .finally(() => (this.inProgressRequest = undefined));
   }
 }
