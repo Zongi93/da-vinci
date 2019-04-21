@@ -1,0 +1,9 @@
+<div class="background" *ngIf="showGameOverScreen">
+  <div class="game-over-screen">
+    <h3 *ngIf="IAreWinner">Congratuliations! You won!</h3>
+    <h3 *ngIf="!IAreWinner">
+      {{ winnerName }} won the game. Thanks for playing! Good luck next time!
+    </h3>
+    <button (click)="onOkay()">Ok</button>
+  </div>
+</div>

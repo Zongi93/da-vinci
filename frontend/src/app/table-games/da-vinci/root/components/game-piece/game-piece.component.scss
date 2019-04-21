@@ -14,6 +14,32 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  &-guess {
+    display: none;
+  }
+}
+
+.game-piece.guessable:hover {
+  .game-piece-value {
+    display: none;
+  }
+
+  .game-piece-guess {
+    display: flex;
+    flex-direction: column;
+    /* padding: 1rem 0; */
+
+    * {
+      margin: 0.25rem auto;
+    }
+
+    .guess-value {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: grey;
+    }
+  }
 }
 
 .piece-color-0 {

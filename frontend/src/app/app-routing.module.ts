@@ -47,10 +47,21 @@ export class AppRoutingModule {
     combineLatest(socketService.tableList$, authService.loggedIn$)
       .pipe(
         filter(() => authService.isAuthenticated()),
-        filter(() => !!authService.user.joinedTable)
+        filter(() => !!authService.user.joinedTable),
+        filter(() => !router.url.includes('/table')) // some better method to avoid 'refreshing' would be nice
       )
       .subscribe(() => {
         router.navigate(['/table']);
+      });
+
+    combineLatest(socketService.tableList$, authService.loggedIn$)
+      .pipe(
+        filter(() => authService.isAuthenticated()),
+        filter(() => !authService.user.joinedTable),
+        filter(() => !router.url.includes('/list'))
+      )
+      .subscribe(() => {
+        router.navigate(['/list']);
       });
 
     socketService.serverRestart$.subscribe(() => window.location.reload());

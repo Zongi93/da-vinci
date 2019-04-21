@@ -24,7 +24,10 @@ export class TableManagerService {
 
   startTable(user: User, gameTitle: string) {
     const tableToStart = this.findTableByUser(user);
-    tableToStart.start(gameTitle);
+    tableToStart.start(gameTitle).finally(() => {
+      console.log('table-game ended');
+      this.deleteTable(tableToStart.id);
+    });
     this.tablesEmitter.next(this.tables);
   }
 
@@ -34,7 +37,9 @@ export class TableManagerService {
   }
 
   deleteTable(hash: number) {
+    console.log('closing table');
     this.tables = this.tables.filter(table => table.id !== hash);
+    this.tablesEmitter.next(this.tables);
   }
 
   private findTableByHash(hash: number): Table {

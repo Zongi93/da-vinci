@@ -35,4 +35,9 @@ export class OpponentComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  onGuess(guessValue: number, index: number): void {
+    console.log(index);
+    this.service.guessMade(this.opponentName, guessValue, index);
+  }
 }

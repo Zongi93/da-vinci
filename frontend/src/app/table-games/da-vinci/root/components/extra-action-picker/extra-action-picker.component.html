@@ -1,0 +1,14 @@
+<div class="background" *ngIf="showExtraActionPicker">
+  <div class="extra-action-picker">
+    <h3>Please choose your extra action</h3>
+    <button *ngIf="isAvailable(0)" (click)="takeAnotherGuess()">
+      Continue guessing
+    </button>
+    <button *ngIf="isAvailable(1)" (click)="takeExtraPiece()">
+      Take a piece
+    </button>
+    <button *ngIf="isAvailable(2)" (click)="endTurn()">
+      Stop
+    </button>
+  </div>
+</div>

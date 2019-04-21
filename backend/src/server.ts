@@ -3,6 +3,8 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import socketIo from 'socket.io';
 
+require('./utils/array-shuffle');
+
 import {
   socketManagerService,
   tableManagerService,
@@ -38,7 +40,7 @@ app.route('/api/table/join').post(checkCsrf, authenticate, joinTable);
 app.route('/api/table/start').post(checkCsrf, authenticate, startTable);
 
 const server = app.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`)
+  console.log(`Table game server is listening on port ${port}!`)
 );
 
 export const ioServer = socketIo(server);
@@ -50,3 +52,9 @@ ioServer.on('connection', socket => {
 });
 
 setTimeout(() => socketManagerService.signalServerStart(), 1500);
+
+const arr = new Array();
+arr.push(1, 2, 3);
+console.log(arr);
+console.log(arr.shuffle());
+console.log(arr);

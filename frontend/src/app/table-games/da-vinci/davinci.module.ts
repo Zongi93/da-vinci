@@ -10,11 +10,12 @@ import { DavinciRoutingModule } from './davinci-routing.module';
 import {
   ColorPickerComponent,
   DavinciRootComponent,
-  DavinciService,
+  ExtraActionPickerComponent,
   GamePieceComponent,
   OpponentComponent,
   PlayerComponent
 } from './root';
+import { GameOverScreenComponent } from './root/components/game-over-screen/game-over-screen.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,12 @@ import {
     GamePieceComponent,
     PlayerComponent,
     ChatComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    ExtraActionPickerComponent,
+    GameOverScreenComponent
   ],
   imports: [CommonModule, DavinciRoutingModule],
   providers: [
-    DavinciService,
     { provide: IDavinciSocketService, useClass: DavinciSocketService }
   ]
 })

@@ -4,8 +4,9 @@
   </div>
   <div class="player-hand">
     <game-davinci-piece
-      *ngFor="let gamePiece of hand"
+      *ngFor="let gamePiece of hand; let i = index"
       [piece]="gamePiece"
+      (guess)="onGuess($event, i)"
     ></game-davinci-piece>
   </div>
 </div>

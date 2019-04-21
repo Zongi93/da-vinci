@@ -4,8 +4,8 @@ import { GameDaVinci } from './da-vinci/service';
 export abstract class TableGame {
   static readonly INFO: TableGameInfo;
 
-  abstract get deleteMe$(): Observable<void>;
   abstract get gameInfo(): TableGameInfo;
+  abstract async startGame(): Promise<void>;
 }
 
 export class TableGameInfo {

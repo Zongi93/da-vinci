@@ -10,10 +10,6 @@ export class Table {
   private game: TableGame = undefined;
   private gameTitleForUI: string = undefined;
 
-  get deleteMe$(): Observable<void> {
-    return this.game.deleteMe$;
-  }
-
   get players(): Array<User> {
     return this._players;
   }
@@ -37,7 +33,8 @@ export class Table {
     }
   }
 
-  start(gameTitle: string) {
+  async start(gameTitle: string): Promise<void> {
+    this.gameTitleForUI = gameTitle;
     const gameToStart = TableGameInfo.list.find(
       gameInfo => gameInfo.gameTitle === gameTitle
     );
@@ -50,11 +47,9 @@ export class Table {
         case 'Da Vinci':
           console.log('Starting Da Vinci');
           this.game = gameToStart.ctor.apply(undefined, [this.players, 0]);
-          break;
+          return await this.game.startGame();
       }
     }
-
-    this.gameTitleForUI = gameTitle;
   }
 
   getHash(): number {

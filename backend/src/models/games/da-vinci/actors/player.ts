@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Socket } from 'socket.io';
 import { User } from '../../..';
@@ -10,6 +10,8 @@ import {
   PieceState,
   SocketEventListener
 } from '../utils';
+import { ColorRequestEvent } from '../utils/color-request-event';
+import { GameAction } from '../utils/extra-action.enum';
 import { Actor } from './actor';
 
 export class Player implements Actor {
@@ -60,6 +62,8 @@ export class Player implements Actor {
     return this.user.socket;
   }
 
+  private readonly SUBSCRIPTIONS: Array<Subscription> = []; // event subscriptions
+
   constructor(private service: GameDaVinci, user: User) {
     this.user = user;
     this.name = user.userName;
@@ -80,23 +84,31 @@ export class Player implements Actor {
   }
 
   async init(): Promise<void> {
-    this.service.infoMessage$.subscribe(message => {
-      this.sentMessages.push(message);
-      this.socket.emit('message-info', message);
-    });
-
-    this.service.publicHands$.subscribe(update => {
-      this.lastEmittedPublicHand = update;
-      this.socket.emit('public-hand-update', update);
-    });
-
-    this.privateHand$.subscribe(update =>
-      this.socket.emit('private-hand-update', update)
+    this.SUBSCRIPTIONS.push(
+      this.service.infoMessage$.subscribe(message => {
+        this.sentMessages.push(message);
+        this.socket.emit('message-info', message);
+      })
     );
 
-    this.user.reconnected$.subscribe(() => this.handleReconnect());
+    this.SUBSCRIPTIONS.push(
+      this.service.publicHands$.subscribe(update => {
+        this.lastEmittedPublicHand = update;
+        this.socket.emit('public-hand-update', update);
+      })
+    );
 
-    return this.eventToPromise<void>('user-connected', false).then(() => {
+    this.SUBSCRIPTIONS.push(
+      this.privateHand$.subscribe(update =>
+        this.socket.emit('private-hand-update', update)
+      )
+    );
+
+    this.SUBSCRIPTIONS.push(
+      this.user.reconnected$.subscribe(() => this.handleReconnect())
+    );
+    console.log('listening for user connected');
+    return this.eventToPromise<void>('user-connected', false).finally(() => {
       console.log(this.name + ' has connected');
       this.socket.emit('game-init', this.gameSetup);
     });
@@ -108,22 +120,23 @@ export class Player implements Actor {
     );
   }
 
-  chooseAColorToTake(state: PieceState): Promise<PieceColor> {
-    return this.eventToPromise<PieceColor>('pick-color', true, state);
+  chooseAColorToTake(requestInfo: ColorRequestEvent): Promise<PieceColor> {
+    return this.eventToPromise<PieceColor>('pick-color', true, requestInfo);
   }
-  takeExtraAction(): Promise<PieceColor | Guess> {
-    const result = this.eventToPromise<PieceColor | Guess>('game-over', true);
 
-    return result.then(response =>
-      Object.keys(response).length > 0
-        ? Guess.fromDto(response as Guess)
-        : response
+  chooseExtraAction(availableActions: Array<GameAction>): Promise<GameAction> {
+    return this.eventToPromise<GameAction>(
+      'take-extra-action',
+      true,
+      availableActions
     );
   }
 
-  gameOver(): Promise<void> {
+  gameOver(winnerName: string): Promise<void> {
     // TODO: clean subscriptions
-    return this.eventToPromise<void>('game-over', true);
+    return this.eventToPromise<void>('game-over', true, winnerName).finally(
+      () => this.cleanUp()
+    );
   }
 
   gameStart(): Promise<void> {
@@ -132,7 +145,6 @@ export class Player implements Actor {
 
   private async handleReconnect(): Promise<void> {
     this.socket.once('user-connected', () => {
-      console.log('handling-reconnection');
       this.socket.emit('game-init', this.gameSetup);
       this.socket.emit('public-hand-update', this.lastEmittedPublicHand);
       this.socket.emit('private-hand-update', this.privateHand);
@@ -159,8 +171,22 @@ export class Player implements Actor {
       payload
     );
 
-    return this.inProgressRequest
-      .toPromise()
-      .finally(() => (this.inProgressRequest = undefined));
+    return this.inProgressRequest.toPromise().finally(() => {
+      this.inProgressRequest.unsubscribe();
+      this.inProgressRequest = undefined;
+    });
+  }
+
+  private cleanUp(): void {
+    this.SUBSCRIPTIONS.forEach(subscription => subscription.unsubscribe());
+    this.socket.removeAllListeners('message-info');
+    this.socket.removeAllListeners('public-hand-update');
+    this.socket.removeAllListeners('private-hand-update');
+    this.socket.removeAllListeners('user-connected');
+    this.socket.removeAllListeners('game-init');
+    this.socket.removeAllListeners('guess');
+    this.socket.removeAllListeners('pick-color');
+    this.socket.removeAllListeners('game-over');
+    this.socket.removeAllListeners('game-start');
   }
 }

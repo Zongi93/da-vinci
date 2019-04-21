@@ -35,13 +35,19 @@ export class SocketEventListener<T> {
     }
 
     if (!!this.sendPayload && this.sendPayload) {
+      console.log('sending ' + this.key);
       this.socket.emit(this.key, this.payload);
     }
   }
 
+  unsubscribe(): void {
+    this.emitter.unsubscribe();
+  }
+
   private listenOnce(): void {
     this.socket.once(this.key, data => {
-      console.log({ key: data });
+      console.log(`${this.user.userName} sent ${this.key}`);
+      console.log(data);
       this.emitter.next(data as T);
       this.emitter.complete();
     });

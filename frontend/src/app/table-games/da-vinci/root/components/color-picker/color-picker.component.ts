@@ -1,42 +1,29 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { DavinciService } from '../../davinci.service';
-import { PieceColor, PieceState } from '../../models';
+import { PieceColor } from '../../models';
+import { ColorRequestEvent } from '../../models/color-request-info';
 
 @Component({
   selector: 'game-davinci-color-picker',
   templateUrl: './color-picker.component.html',
   styleUrls: ['./color-picker.component.scss']
 })
-export class ColorPickerComponent implements OnDestroy {
-  requestedState: PieceState = undefined;
-
-  private readonly subscription: Subscription;
+export class ColorPickerComponent {
+  get requestInfo(): ColorRequestEvent {
+    return this.service.colorRequestInfo;
+  }
 
   get showColorPicker() {
-    return !!this.requestedState;
+    return !!this.service.colorRequestInfo;
   }
 
   get colorsList(): Array<number> {
-    const list = [];
-    for (let i = 0; i < this.service.setupInfo.colors; i++) {
-      list.push(i);
-    }
-    return list;
+    return this.requestInfo.availableColors;
   }
 
-  constructor(private service: DavinciService) {
-    this.subscription = this.service.chooseAColorToTake$.subscribe(
-      state => (this.requestedState = state)
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  constructor(private service: DavinciService) {}
 
   onColorPicked(colorId: number) {
-    this.requestedState = undefined;
     this.service.colorPicked(colorId);
   }
 

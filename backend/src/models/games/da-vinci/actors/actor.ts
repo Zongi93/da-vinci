@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs';
 import { GamePiece, Guess, PieceColor, PieceState } from '../utils';
+import { ColorRequestEvent } from '../utils/color-request-event';
+import { GameAction } from '../utils/extra-action.enum';
 
 let counter = 0;
 export abstract class Actor {
@@ -17,8 +19,12 @@ export abstract class Actor {
   abstract takePiece(piece: GamePiece): void;
   abstract showPiece(position: number): void;
   abstract async makeAGuess(): Promise<Guess>;
-  abstract async chooseAColorToTake(state: PieceState): Promise<PieceColor>;
-  abstract async takeExtraAction(): Promise<Guess | PieceColor>;
-  abstract async gameOver(): Promise<void>;
+  abstract async chooseAColorToTake(
+    requestInfo: ColorRequestEvent
+  ): Promise<PieceColor>;
+  abstract async chooseExtraAction(
+    availableActions: Array<GameAction>
+  ): Promise<GameAction>;
+  abstract async gameOver(winnerName: string): Promise<void>;
   abstract async gameStart(): Promise<void>;
 }

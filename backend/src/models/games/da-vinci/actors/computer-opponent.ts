@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 import { GameDaVinci } from '../service';
 import { GamePiece, Guess, PieceColor, PieceState } from '../utils';
+import { ColorRequestEvent } from '../utils/color-request-event';
+import { GameAction } from '../utils/extra-action.enum';
 import { Actor } from './actor';
 
 export class ComputerOpponent implements Actor {
@@ -36,13 +38,13 @@ export class ComputerOpponent implements Actor {
   makeAGuess(): Promise<Guess> {
     throw new Error('Method not implemented.');
   }
-  chooseAColorToTake(state: PieceState): Promise<PieceColor> {
+  chooseAColorToTake(requestInfo: ColorRequestEvent): Promise<PieceColor> {
     throw new Error('Method not implemented.');
   }
-  takeExtraAction(): Promise<PieceColor | Guess> {
+  chooseExtraAction(availableActions: Array<GameAction>): Promise<GameAction> {
     throw new Error('Method not implemented.');
   }
-  gameOver(): Promise<void> {
+  gameOver(winnerName: string): Promise<void> {
     throw new Error('Method not implemented.');
   }
 
