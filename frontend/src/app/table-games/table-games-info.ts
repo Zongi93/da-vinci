@@ -1,5 +1,3 @@
-import { DavinciModule } from './da-vinci/davinci.module';
-
 export class TableGameInfo {
   readonly title: string;
   readonly aiSupported: boolean;

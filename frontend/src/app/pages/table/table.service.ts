@@ -29,12 +29,26 @@ export class TableService {
     private router: Router
   ) {}
 
+  // signals the server to start the game
   startGame(gameInfo: TableGameInfo) {
-    this.restService.startMyTableWithGame(gameInfo);
+    this.restService.startTable(gameInfo).subscribe();
   }
 
+  // launches the game if this table has a game running
   launchGame(gameInfo: TableGameInfo) {
     this.router.navigate([`/table/${gameInfo.path}`]);
+  }
+
+  addAiOpponent(): void {
+    this.restService.addAiToTable().subscribe();
+  }
+
+  removeAiOpponent(): void {
+    this.restService.removeAiFromTable().subscribe();
+  }
+
+  leaveTable(): void {
+    this.restService.leaveTable().subscribe();
   }
 
   validateUrl(): Observable<boolean> {

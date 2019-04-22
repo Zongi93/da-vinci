@@ -1,0 +1,23 @@
+.container {
+  padding: 0 1rem;
+}
+
+.joined-players {
+  li {
+    margin: 0.3rem 0;
+  }
+}
+
+.available-games {
+  width: 100%;
+  display: grid;
+  padding: 1rem;
+  margin: 1rem;
+  grid-gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+
+  grid-template-columns: repeat(auto-fill, 30rem);
+  grid-template-rows: max-content;
+}

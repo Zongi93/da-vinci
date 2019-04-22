@@ -9,6 +9,7 @@ export class Table {
   private _players: Array<User>;
   private game: TableGame = undefined;
   private gameTitleForUI: string = undefined;
+  private addedAiPlayers = 0;
 
   get players(): Array<User> {
     return this._players;
@@ -24,6 +25,18 @@ export class Table {
     );
     if (!this.game && playerNotAlreadyAdded) {
       this.players.push(user);
+    }
+  }
+
+  addOneAiOpponent() {
+    if (this.addedAiPlayers < 5) {
+      this.addedAiPlayers++;
+    }
+  }
+
+  removeOneAiOpponent() {
+    if (this.addedAiPlayers > 0) {
+      this.addedAiPlayers--;
     }
   }
 
@@ -46,7 +59,10 @@ export class Table {
       switch (gameTitle) {
         case 'Da Vinci':
           console.log('Starting Da Vinci');
-          this.game = gameToStart.ctor.apply(undefined, [this.players, 0]);
+          this.game = gameToStart.ctor.apply(undefined, [
+            this.players,
+            this.addedAiPlayers,
+          ]);
           return await this.game.startGame();
       }
     }
@@ -64,6 +80,7 @@ export class Table {
       token: this.getHash(),
       gameTitle: this.gameTitleForUI,
       canJoin: !this.game,
+      addedAis: this.addedAiPlayers,
     };
   }
 }
@@ -74,4 +91,5 @@ export interface TableDto {
   readonly token: number;
   readonly gameTitle: string;
   readonly canJoin: boolean;
+  readonly addedAis: number;
 }

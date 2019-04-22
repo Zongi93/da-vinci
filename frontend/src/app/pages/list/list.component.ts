@@ -12,9 +12,5 @@ export class ListComponent implements OnInit {
 
   constructor(public service: ListService) {}
 
-  login(userName: string) {
-    this.service.login(userName);
-  }
-
   ngOnInit() {}
 }

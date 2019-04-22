@@ -20,10 +20,6 @@ export class ListService {
     private socketService: IWebSocketController
   ) {}
 
-  login(userName: string) {
-    this.authService.login(userName);
-  }
-
   createTable(): void {
     this.restService.createTable().subscribe();
   }

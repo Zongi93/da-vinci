@@ -22,17 +22,34 @@ export class TableManagerService {
     this.tablesEmitter.next(this.tables);
   }
 
+  leaveTable(user: User) {
+    const table = this.findTableByUser(user);
+    table.removePlayer(user);
+    if (table.players.length > 0) {
+      this.tablesEmitter.next(this.tables);
+    } else {
+      this.deleteTable(table.id);
+    }
+  }
+
+  addAiToTable(user: User) {
+    const joinedTable = this.findTableByUser(user);
+    joinedTable.addOneAiOpponent();
+    this.tablesEmitter.next(this.tables);
+  }
+
+  removeAiFromTable(user: User) {
+    const joinedTable = this.findTableByUser(user);
+    joinedTable.removeOneAiOpponent();
+    this.tablesEmitter.next(this.tables);
+  }
+
   startTable(user: User, gameTitle: string) {
     const tableToStart = this.findTableByUser(user);
     tableToStart.start(gameTitle).finally(() => {
       console.log('table-game ended');
       this.deleteTable(tableToStart.id);
     });
-    this.tablesEmitter.next(this.tables);
-  }
-
-  leaveTable(user: User, hash: number) {
-    this.findTableByHash(hash).removePlayer(user);
     this.tablesEmitter.next(this.tables);
   }
 

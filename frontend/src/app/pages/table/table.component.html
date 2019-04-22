@@ -1,9 +1,48 @@
-<ul>
-  <li class="player-name" *ngFor="let playerName of playerNames">
-    {{ playerName }}
-  </li>
-</ul>
-<table-listed-game
-  *ngFor="let gameInfo of gameInfos"
-  [gameInfo]="gameInfo"
-></table-listed-game>
+<div class="container">
+  <div class="joined-players">
+    <h4>Joined players:</h4>
+    <button (click)="leaveTable()" class="btn-leave">
+      Leave table
+    </button>
+    <ul>
+      <li class="player-name" *ngFor="let playerName of playerNames">
+        {{ playerName }}
+      </li>
+      <li>
+        <button (click)="addAiOpponent()">
+          Add computer opponent
+        </button>
+        <button *ngIf="isAiAdded" (click)="removeAiOpponent()">
+          Remove computer opponent
+        </button>
+      </li>
+    </ul>
+  </div>
+  <h3>Available games:</h3>
+  <div class="available-games">
+    <div class="listed-game" *ngFor="let gameInfo of gameInfos">
+      <table-listed-game
+        [gameInfo]="gameInfo"
+        [aiAdded]="isAiAdded"
+      ></table-listed-game>
+    </div>
+    <div class="listed-game" *ngFor="let gameInfo of gameInfos">
+      <table-listed-game
+        [gameInfo]="gameInfo"
+        [aiAdded]="isAiAdded"
+      ></table-listed-game>
+    </div>
+    <div class="listed-game" *ngFor="let gameInfo of gameInfos">
+      <table-listed-game
+        [gameInfo]="gameInfo"
+        [aiAdded]="isAiAdded"
+      ></table-listed-game>
+    </div>
+    <div class="listed-game" *ngFor="let gameInfo of gameInfos">
+      <table-listed-game
+        [gameInfo]="gameInfo"
+        [aiAdded]="isAiAdded"
+      ></table-listed-game>
+    </div>
+  </div>
+</div>

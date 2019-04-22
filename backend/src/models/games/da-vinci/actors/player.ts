@@ -133,7 +133,6 @@ export class Player implements Actor {
   }
 
   gameOver(winnerName: string): Promise<void> {
-    // TODO: clean subscriptions
     return this.eventToPromise<void>('game-over', true, winnerName).finally(
       () => this.cleanUp()
     );

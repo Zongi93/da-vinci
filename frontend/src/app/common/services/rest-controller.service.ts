@@ -58,9 +58,21 @@ export class RestControllerService implements IRestController {
     return this.http.post<void>('/api/table/join', { token });
   }
 
-  startMyTableWithGame(gameInfo: TableGameInfo): void {
+  leaveTable(): Observable<void> {
+    return this.http.post<void>('/api/table/leave', {});
+  }
+
+  startTable(gameInfo: TableGameInfo): Observable<void> {
     const gameTitle = gameInfo.title;
-    this.http.post<string>('api/table/start', { gameTitle }).subscribe();
+    return this.http.post<void>('api/table/start', { gameTitle });
+  }
+
+  addAiToTable(): Observable<void> {
+    return this.http.post<void>('api/table/add-ai', {});
+  }
+
+  removeAiFromTable(): Observable<void> {
+    return this.http.post<void>('api/table/remove-ai', {});
   }
 }
 
@@ -75,5 +87,8 @@ export abstract class IRestController {
   abstract listTables(): Observable<Array<Table>>;
   abstract createTable(): Observable<void>;
   abstract joinTable(token: string): Observable<void>;
-  abstract startMyTableWithGame(gameInfo: TableGameInfo): void;
+  abstract leaveTable(): Observable<void>;
+  abstract startTable(gameInfo: TableGameInfo): Observable<void>;
+  abstract addAiToTable(): Observable<void>;
+  abstract removeAiFromTable(): Observable<void>;
 }

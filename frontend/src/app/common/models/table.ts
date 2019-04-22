@@ -1,24 +1,15 @@
-import { User } from 'src/app/common/models/user';
-
 export class Table {
-  readonly id: number;
   readonly players: Array<string>;
-  readonly token: string;
-  readonly gameTitle: string;
-  readonly canJoin: boolean;
 
   constructor(
-    id: number,
+    public readonly id: number,
     users: Array<string>,
-    token: string,
-    gameTitle: string,
-    canJoin: boolean
+    public readonly token: string,
+    public readonly gameTitle: string,
+    public readonly canJoin: boolean,
+    public readonly addedAis: number
   ) {
-    this.id = id;
     this.players = Array.of(...users);
-    this.token = token;
-    this.gameTitle = gameTitle;
-    this.canJoin = canJoin;
   }
 
   static fromDto(dto: Table): Table {
@@ -27,7 +18,8 @@ export class Table {
       dto.players,
       dto.token,
       dto.gameTitle,
-      dto.canJoin
+      dto.canJoin,
+      Number(dto.addedAis)
     );
   }
 }

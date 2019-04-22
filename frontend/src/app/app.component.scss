@@ -1,0 +1,14 @@
+.nav-bar > * {
+  display: flex;
+  flex-direction: row;
+  background-color: cornsilk;
+  padding: 0.5rem;
+
+  * {
+    margin: auto 1rem;
+  }
+  /* TODO: ANIMATION SWITCH LOGIN -> LOGGED IN */
+  .hello-user {
+    margin-right: auto;
+  }
+}

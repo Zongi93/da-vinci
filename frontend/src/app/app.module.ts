@@ -26,8 +26,7 @@ import {
   NewTableComponent
 } from './pages/list';
 import { NotFoundComponent } from './pages/not-found';
-import { TableComponent } from './pages/table';
-import { ListedGameComponent } from './pages/table/components/listed-game/listed-game.component';
+import { ListedGameComponent, TableComponent } from './pages/table';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 

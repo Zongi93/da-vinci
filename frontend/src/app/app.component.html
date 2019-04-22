@@ -1,3 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<button *authenticated="true" (click)="logoutUser()">Logout</button>
+<div class="nav-bar" [class.authenticated]="isAuthenticated">
+  <div class="nav-bar-authenticated">
+    <h3 *authenticated="true" class="hello-user">Hello {{ username }}!</h3>
+    <button *authenticated="true" (click)="logout()">Logout</button>
+  </div>
+  <div *authenticated="false" class="nav-bar-login">
+    <h4>Please enter your username:</h4>
+    <input type="text" #username />
+    <button (click)="login(username.value)">Login</button>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

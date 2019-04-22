@@ -17,7 +17,15 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   get playerNames(): Array<string> {
-    return this.service.table.players;
+    const names = [...this.service.table.players];
+    for (let i = 1; i <= this.service.table.addedAis; i++) {
+      names.push(`Computer ${i}`);
+    }
+    return names;
+  }
+
+  get isAiAdded(): boolean {
+    return this.service.table.addedAis > 0;
   }
 
   constructor(private service: TableService) {
@@ -30,6 +38,7 @@ export class TableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.service.table$
       .pipe(
+        filter(table => !!table),
         map(table => TableGameInfo.find(table.gameTitle)),
         filter(game => !!game)
       )
@@ -38,5 +47,17 @@ export class TableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  addAiOpponent() {
+    this.service.addAiOpponent();
+  }
+
+  removeAiOpponent() {
+    this.service.removeAiOpponent();
+  }
+
+  leaveTable() {
+    this.service.leaveTable();
   }
 }

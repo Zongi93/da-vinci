@@ -1,4 +1,17 @@
-<div class="game-info">
-  <h3 class="game-title">{{ gameInfo.title }}</h3>
-  <button *ngIf="isPlayerCountGood()" (click)="startGame()">Start game</button>
+<div class="game">
+  <h3 class="game-info">Game name:</h3>
+  <h3 class="game-info">{{ gameInfo.title }}</h3>
+  <h3 class="game-info">Minimum players:</h3>
+  <h3 class="game-info">{{ gameInfo.minPlayers }}</h3>
+  <h3 class="game-info">Maximum players:</h3>
+  <h3 class="game-info">{{ gameInfo.maxPlayers }}</h3>
+  <button
+    [disabled]="!isPlayerCountGood || !isSetupSupported"
+    (click)="startGame()"
+  >
+    Start game
+  </button>
+  <h3 *ngIf="!isSetupSupported" class="setup-not-supported">
+    This game doesn't support AI opponents.
+  </h3>
 </div>

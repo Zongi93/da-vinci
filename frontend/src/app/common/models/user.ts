@@ -4,8 +4,6 @@ import { IWebSocketController } from '../services';
 import { Table } from './table';
 
 export class User {
-  readonly userName: string;
-
   get joinedTable(): Table {
     if (!!this.socketService.tableList) {
       return this.socketService.tableList.find(
@@ -29,9 +27,10 @@ export class User {
     );
   }
 
-  constructor(private socketService: IWebSocketController, userName: string) {
-    this.userName = userName;
-  }
+  constructor(
+    private socketService: IWebSocketController,
+    public readonly userName: string
+  ) {}
 
   static fromDto(socketService: IWebSocketController, dto: User): User {
     return new User(socketService, dto.userName.toString());

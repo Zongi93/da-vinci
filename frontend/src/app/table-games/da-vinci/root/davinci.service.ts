@@ -49,8 +49,6 @@ export class DavinciService implements OnDestroy {
     private socketService: IDavinciSocketService,
     private authService: IAuthentication
   ) {
-    console.log('service constructing');
-    // TODO: handle subscriptions
     this.SUBSCRIPTIONS.push(
       socketService.gameSetup$.subscribe(
         setupInfo => (this._setupInfo = setupInfo)

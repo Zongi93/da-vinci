@@ -9,20 +9,26 @@ import { TableService } from '../../table.service';
 })
 export class ListedGameComponent implements OnInit {
   @Input() gameInfo: TableGameInfo;
+  @Input() aiAdded: boolean;
 
-  constructor(private service: TableService) {}
+  get isSetupSupported(): boolean {
+    return !this.aiAdded || this.gameInfo.aiSupported === this.aiAdded;
+  }
 
-  isPlayerCountGood(): boolean {
-    const playerCount = this.service.table.players.length;
+  get isPlayerCountGood(): boolean {
+    const table = this.service.table;
+    const playerCount = table.players.length + table.addedAis;
     return (
       this.gameInfo.minPlayers <= playerCount &&
       this.gameInfo.maxPlayers >= playerCount
     );
   }
 
+  constructor(private service: TableService) {}
+
+  ngOnInit() {}
+
   startGame(): void {
     this.service.startGame(this.gameInfo);
   }
-
-  ngOnInit() {}
 }
