@@ -1,0 +1,16 @@
+.table {
+  border: 1px solid black;
+  background-color: beige;
+  padding: 1rem;
+  margin: 0.5rem 1rem;
+
+  width: 25rem;
+
+  .table-title {
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+  }
+}

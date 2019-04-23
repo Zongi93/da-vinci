@@ -1,0 +1,13 @@
+.available-tables {
+  width: 100%;
+  display: grid;
+  padding: 1rem;
+  margin: 1rem;
+  grid-gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+
+  grid-template-columns: repeat(auto-fill, 30rem);
+  grid-template-rows: max-content;
+}

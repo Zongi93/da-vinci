@@ -1,14 +1,65 @@
-.nav-bar > * {
-  display: flex;
-  flex-direction: row;
+.nav-bar {
   background-color: cornsilk;
-  padding: 0.5rem;
+  transition: 0.3s all;
 
-  * {
-    margin: auto 1rem;
+  &-authenticated {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    align-content: center;
+
+    animation: fade-in 0.3s;
+
+    .hello-user {
+      margin-right: auto;
+    }
+
+    h3 {
+      margin: auto 0;
+    }
+  }
+
+  &-login {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+    grid-gap: 0.2rem;
+
+    animation: fade-in 0.3s;
+
+    button {
+      margin-top: 0.4rem;
+    }
+
+    h4 {
+      margin: 0;
+    }
   }
   /* TODO: ANIMATION SWITCH LOGIN -> LOGGED IN */
-  .hello-user {
-    margin-right: auto;
+}
+
+.nav-bar.authenticated {
+  height: 3rem;
+}
+
+.nav-bar:not(.authenticated) {
+  height: 12rem;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

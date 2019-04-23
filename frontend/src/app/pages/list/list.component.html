@@ -1,5 +1,11 @@
-<list-listed-table
-  *ngFor="let table of service.TableList"
-  [table]="table"
-></list-listed-table>
-<list-new-table *authenticated="true"></list-new-table>
+<h3 class="not-logged-in" *authenticated="false">
+  Please log in to join tables
+</h3>
+<div class="available-tables">
+  <div class="listed-table" *ngFor="let table of service.TableList">
+    <list-listed-table [table]="table"></list-listed-table>
+  </div>
+  <div class="listed-table">
+    <list-new-table *authenticated="true"></list-new-table>
+  </div>
+</div>

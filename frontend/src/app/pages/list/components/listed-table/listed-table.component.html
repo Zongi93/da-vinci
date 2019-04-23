@@ -1,5 +1,6 @@
 <div class="table">
-  <h3 class="table__h3">Joined Players:</h3>
+  <h3 class="table-title">Table {{ table.id + 1 }}</h3>
+  <h4 class="table__h3">Joined Players:</h4>
   <ul>
     <li *ngFor="let playerName of table.players" class="table__username">
       {{ playerName }}

@@ -1,7 +1,7 @@
 <div class="nav-bar" [class.authenticated]="isAuthenticated">
-  <div class="nav-bar-authenticated">
-    <h3 *authenticated="true" class="hello-user">Hello {{ username }}!</h3>
-    <button *authenticated="true" (click)="logout()">Logout</button>
+  <div *authenticated="true" class="nav-bar-authenticated">
+    <h3 class="hello-user">Hello {{ username }}!</h3>
+    <button (click)="logout()">Logout</button>
   </div>
   <div *authenticated="false" class="nav-bar-login">
     <h4>Please enter your username:</h4>

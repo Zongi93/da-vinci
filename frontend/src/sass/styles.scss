@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ngx-toastr/toastr.css';
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Courier New', Courier, monospace;
   font-size: 87.5%;

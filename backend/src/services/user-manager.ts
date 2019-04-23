@@ -5,7 +5,12 @@ export class UserManagerService {
 
   login(userName: string): User {
     // TODO: username requirements
+
     let user = this.findUserByUserName(userName);
+
+    if (!!user && !!user.socket && user.socket.connected) {
+      throw new Error('User already has an active session');
+    }
 
     if (!user) {
       user = new User(userName);
