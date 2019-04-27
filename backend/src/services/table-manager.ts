@@ -23,13 +23,20 @@ export class TableManagerService {
   }
 
   leaveTable(user: User) {
+    console.log(user);
+    console.log(this.tables);
     const table = this.findTableByUser(user);
-    table.removePlayer(user);
-    if (table.players.length > 0) {
-      this.tablesEmitter.next(this.tables);
+    if (!!table) {
+      table.removePlayer(user);
+      if (table.players.length > 0) {
+        this.tablesEmitter.next(this.tables);
+      } else {
+        this.deleteTable(table.id);
+      }
     } else {
-      this.deleteTable(table.id);
+      console.log('invalid leave request: ' + user.userName);
     }
+    console.log(this.tables);
   }
 
   addAiToTable(user: User) {
@@ -65,7 +72,10 @@ export class TableManagerService {
 
   private findTableByUser(user: User): Table {
     return this.tables.find(
-      table => !!table.players.find(joinedUser => joinedUser.id === user.id)
+      table =>
+        !!table.players.find(
+          joinedUser => joinedUser.userName === user.userName
+        )
     );
   }
 }

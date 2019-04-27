@@ -1,16 +1,58 @@
 .chat {
-  position: fixed;
+  /*   position: fixed;
   right: 0;
-  top: 0;
+  top: 0; */
 
   background-color: beige;
   border: 1px solid black;
 
-  width: 15rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  font-size: 0.9rem;
+  width: 20rem;
+
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
+  .chat-message {
+    padding: 0.2rem 0.5rem;
+
+    &:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:last-child {
+      position: relative;
+      border-top: 1px dashed black;
+      font-weight: 700;
+      font-size: 1.2rem;
+
+      &::after {
+        word-break: keep-all;
+        margin-left: -0.7rem;
+        content: '';
+        animation: dotdotdot 3s;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+}
+
+@keyframes dotdotdot {
+  0% {
+    content: '';
+  }
+
+  33% {
+    content: '.';
+  }
+
+  66% {
+    content: '..';
+  }
+
+  /* 75% {
+    content: '...';
+  } */
 }

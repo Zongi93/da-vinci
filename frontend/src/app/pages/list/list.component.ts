@@ -10,6 +10,11 @@ import { ListService } from './list.service';
 export class ListComponent implements OnInit {
   userNameForm: FormControl = new FormControl();
 
+  get TableCount(): number {
+    const tableList = this.service.tableList;
+    return !!tableList ? tableList.length : 0;
+  }
+
   constructor(public service: ListService) {}
 
   ngOnInit() {}

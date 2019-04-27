@@ -4,27 +4,40 @@
   height: 100%;
 
   display: grid;
-  grid-template-columns: 1fr max-content 1fr;
-  grid-template-rows: 1fr max-content 1fr;
+  justify-content: center;
+  align-content: center;
   background-color: rgba(0, 0, 0, 0.7);
 
   .extra-action-picker {
-    grid-column: 2;
-    grid-row: 2;
+    display: grid;
+    grid-template-rows: max-content 1fr;
 
     width: 50rem;
-    height: 20rem;
+    height: max-content;
     padding: 1rem;
 
     background-color: ghostwhite;
     border: 3px solid grey;
 
-    box-shadow: 0.4rem 2rem 2rem black;
+    box-shadow: 0.4rem 1.2rem 3rem black;
 
-    button {
-      margin: 0.5rem;
-      padding: 0 0.5rem;
-      width: 5rem;
+    h3 {
+      text-align: center;
+    }
+
+    .buttons {
+      justify-self: center;
+      align-self: center;
+
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      flex-flow: wrap;
+
+      button {
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+      }
     }
   }
 }

@@ -43,6 +43,8 @@ export class Table {
   removePlayer(user: User) {
     if (!this.game) {
       this._players = this.players.filter(player => player.id !== user.id);
+    } else {
+      console.log('player cant leave a started game: ' + user.userName);
     }
   }
 

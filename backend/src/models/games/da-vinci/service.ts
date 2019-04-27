@@ -87,7 +87,7 @@ export class GameDaVinci implements TableGame {
 
     for (let i = 0; i < startingHandSize; i++) {
       for (let j = 0; j < this.actors.length; j++) {
-        this.infoEmitter.next(`${this.actors[j].name} is picking a color`);
+        this.infoEmitter.next(`${this.actors[j].name} is picking a color.`);
         await this.givePiece(PieceState.PRIVATE, this.actors[j]);
       }
     }
@@ -105,14 +105,14 @@ export class GameDaVinci implements TableGame {
         );
         color = await giveTo.chooseAColorToTake(colorRequest);
         this.infoEmitter.next(
-          `${giveTo.name} has picked a ${PieceColor[color]} piece`
+          `${giveTo.name} has picked a ${PieceColor[color]} piece.`
         );
       } else {
         color = this.getAvailableColors()[0];
         this.infoEmitter.next(
           `${giveTo.name} was given a ${
             PieceColor[color]
-          } piece as there is no other color left`
+          } piece as there is no other color left.`
         );
       }
 
@@ -138,7 +138,7 @@ export class GameDaVinci implements TableGame {
 
   private async gameOver(): Promise<void> {
     const winner = this.actors.filter(actor => actor.lifes > 0)[0];
-    this.infoEmitter.next(`${winner.name} won the game! Congratulations!`);
+    this.infoEmitter.next(`${winner.name} won the game! Congratulations.`);
 
     const promises = this.actors.map(actor => actor.gameOver(winner.name));
 
@@ -199,7 +199,7 @@ export class GameDaVinci implements TableGame {
               return;
             }
             this.infoEmitter.next(
-              `${currentActor.name} guessed correctly and gets an extra action!`
+              `${currentActor.name} guessed correctly and gets an extra action.`
             );
             nextAction = await currentActor.chooseExtraAction(
               this.getAvailableActions()
@@ -216,7 +216,7 @@ export class GameDaVinci implements TableGame {
             this.infoEmitter.next(
               `${
                 currentActor.name
-              } guessed incorrectly and now is picking a color`
+              } guessed incorrectly and now is picking a color.`
             );
           }
           await this.givePiece(state, currentActor);
@@ -231,21 +231,21 @@ export class GameDaVinci implements TableGame {
     switch (extraAction) {
       case GameAction.GUESS:
         this.infoEmitter.next(
-          `${currentActor.name} choose to continue guessing`
+          `${currentActor.name} choose to continue guessing.`
         );
         break;
       case GameAction.PICK:
         this.infoEmitter.next(
           `${
             currentActor.name
-          } choose to stop guessing and now is picking a color`
+          } choose to stop guessing and now is picking a color.`
         );
         break;
       case GameAction.STOP:
         this.infoEmitter.next(
           `${
             currentActor.name
-          } choose to stop guessing but won't get a piece as there is none left`
+          } choose to stop guessing but won't get a piece as there is none left.`
         );
         break;
     }

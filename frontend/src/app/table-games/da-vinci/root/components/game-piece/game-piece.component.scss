@@ -1,34 +1,39 @@
 .game-piece {
-  display: flex;
+  display: grid;
+  width: 6rem;
+  height: 12rem;
   flex-direction: column;
   border: 1px black solid;
-  margin: 0 0.5rem;
   padding: 1rem;
 
+  grid-template-columns: minmax(max-content, 1fr) minmax(max-content, 1fr);
+  grid-template-rows: max-content 1fr max-content;
+
+  justify-content: center;
+  align-content: center;
+
+  justify-items: center;
+  align-items: center;
+
   &-seen {
-    margin-left: auto;
-    margin-right: auto;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
   }
 
   &-value {
-    margin-left: auto;
-    margin-right: auto;
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+
+    font-size: 3rem;
   }
 
   &-guess {
-    display: none;
-  }
-}
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
 
-.game-piece.guessable:hover {
-  .game-piece-value {
     display: none;
-  }
-
-  .game-piece-guess {
-    display: flex;
     flex-direction: column;
-    /* padding: 1rem 0; */
+    justify-content: center;
 
     * {
       margin: 0.25rem auto;
@@ -39,6 +44,21 @@
       font-weight: 400;
       color: grey;
     }
+  }
+
+  &-color {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+  }
+}
+
+.game-piece.guessable:hover {
+  .game-piece-value {
+    display: none;
+  }
+
+  .game-piece-guess {
+    display: flex;
   }
 }
 

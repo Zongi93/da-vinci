@@ -1,9 +1,32 @@
 <game-davinci-color-picker></game-davinci-color-picker>
 <game-davinci-extra-action-picker></game-davinci-extra-action-picker>
 <game-davinci-game-over-screen></game-davinci-game-over-screen>
-<game-davinci-chat></game-davinci-chat>
-<game-davinci-opponent
-  *ngFor="let opponentName of service.opponents"
-  [opponentName]="opponentName"
-></game-davinci-opponent>
-<game-davinci-player [playerName]="service.playerName"></game-davinci-player>
+
+<div class="container">
+  <div class="chat"><game-davinci-chat></game-davinci-chat></div>
+  <div class="container-playmat">
+    <div class="container-playmat-opponents" [class.single]="onlyOneOpponent">
+      <div class="opponent" *ngFor="let opponentName of service.opponents">
+        <game-davinci-opponent
+          [opponentName]="opponentName"
+        ></game-davinci-opponent>
+      </div>
+      <!-- TODO: flex overflow bug -->
+      <!-- <div class="opponent" *ngFor="let opponentName of service.opponents">
+        <game-davinci-opponent
+          [opponentName]="opponentName"
+        ></game-davinci-opponent>
+      </div>
+      <div class="opponent" *ngFor="let opponentName of service.opponents">
+        <game-davinci-opponent
+          [opponentName]="opponentName"
+        ></game-davinci-opponent>
+      </div> -->
+    </div>
+    <div class="container-playmat-player">
+      <game-davinci-player
+        [playerName]="service.playerName"
+      ></game-davinci-player>
+    </div>
+  </div>
+</div>

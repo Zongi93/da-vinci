@@ -43,6 +43,9 @@ export class DavinciService implements OnDestroy {
     return this._winnerName;
   }
 
+  // TODO: play sound when action required
+  // TODO: show toasts when action required
+
   private readonly SUBSCRIPTIONS: Array<Subscription> = [];
 
   constructor(

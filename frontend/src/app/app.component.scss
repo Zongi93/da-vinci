@@ -1,6 +1,9 @@
 .nav-bar {
+  position: fixed;
+  width: 100%;
   background-color: cornsilk;
   transition: 0.3s all;
+  z-index: 1000;
 
   &-authenticated {
     height: 100%;
@@ -30,16 +33,7 @@
     grid-gap: 0.2rem;
 
     animation: fade-in 0.3s;
-
-    button {
-      margin-top: 0.4rem;
-    }
-
-    h4 {
-      margin: 0;
-    }
   }
-  /* TODO: ANIMATION SWITCH LOGIN -> LOGGED IN */
 }
 
 .nav-bar.authenticated {
@@ -48,6 +42,12 @@
 
 .nav-bar:not(.authenticated) {
   height: 12rem;
+
+  & ~ * {
+    /deep/ router-outlet ~ * {
+      padding-top: 12rem;
+    }
+  }
 }
 
 @keyframes fade-in {
@@ -62,4 +62,13 @@
   100% {
     opacity: 1;
   }
+}
+
+/deep/ router-outlet ~ * {
+  padding-top: 3rem;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  transition: padding 0.3s;
 }

@@ -8,6 +8,11 @@ import { DavinciService } from './davinci.service';
   providers: [DavinciService]
 })
 export class DavinciRootComponent implements OnInit {
+
+  get onlyOneOpponent():boolean {
+    return this.service.opponents.length < 2;
+  }
+
   constructor(public service: DavinciService) {}
 
   ngOnInit() {}

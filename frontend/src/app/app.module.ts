@@ -45,10 +45,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     HttpClientModule,
     HttpClientXsrfModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SocketIoModule.forRoot(config)
   ],

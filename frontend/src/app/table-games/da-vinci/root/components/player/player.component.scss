@@ -1,16 +1,28 @@
 .player {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: max-content;
+
+  background-color: lightsalmon;
 
   border: 1px solid black;
   padding: 1rem;
   margin: 0.5rem;
 
-  .player-hand {
+  h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  &-hand {
     display: flex;
     flex-direction: row;
 
     padding: 1rem;
     margin: 0.5rem;
+
+    & > * {
+      margin: 0 0.4rem;
+    }
   }
 }

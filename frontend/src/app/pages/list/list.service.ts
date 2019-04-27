@@ -10,7 +10,7 @@ import {
   providedIn: 'root'
 })
 export class ListService {
-  get TableList(): Array<Table> {
+  get tableList(): Array<Table> {
     return this.socketService.tableList;
   }
 

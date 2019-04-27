@@ -1,8 +1,14 @@
-<h3 class="not-logged-in" *authenticated="false">
-  Please log in to join tables
+<h3 class="list-info" *authenticated="false">
+  Please log in to join tables or to create a new one.
+</h3>
+<h3 *ngIf="TableCount > 0" class="list-info">
+  Available tables:
+</h3>
+<h3 *ngIf="TableCount === 0" class="list-info">
+  There are no open tables at the moment.
 </h3>
 <div class="available-tables">
-  <div class="listed-table" *ngFor="let table of service.TableList">
+  <div class="listed-table" *ngFor="let table of service.tableList">
     <list-listed-table [table]="table"></list-listed-table>
   </div>
   <div class="listed-table">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DavinciService } from '../../davinci.service';
-import { PieceColor } from '../../models';
+import { GamePiece, PieceColor, PieceState } from '../../models';
 import { ColorRequestEvent } from '../../models/color-request-info';
 
 @Component({
@@ -20,7 +20,7 @@ export class ColorPickerComponent {
   get colorsList(): Array<number> {
     return this.requestInfo.availableColors;
   }
-
+  // TODO: Hearthstone 'discovery' like dialog hider
   constructor(private service: DavinciService) {}
 
   onColorPicked(colorId: number) {
@@ -29,5 +29,13 @@ export class ColorPickerComponent {
 
   getColorName(colorId: number): string {
     return PieceColor[colorId];
+  }
+
+  getDummyPiece(colorId: number): GamePiece {
+    return new GamePiece(
+      ('?' as unknown) as Number,
+      colorId,
+      this.requestInfo.state
+    );
   }
 }

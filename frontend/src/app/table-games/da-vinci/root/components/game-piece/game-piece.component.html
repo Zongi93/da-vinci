@@ -9,8 +9,8 @@
   <h1 *ngIf="hasValue" class="game-piece-value">{{ piece.number }}</h1>
   <div *ngIf="!hasValue" class="game-piece-guess">
     <button
-      *ngIf="guessRequested"
       class="confirm-guess"
+      [class.hidden]="!guessRequested"
       (click)="confirmGuess()"
     >
       Guess
@@ -20,5 +20,5 @@
     <div class="down-arrow" (click)="decrementGuess()">&#9660;</div>
   </div>
   <h1 *ngIf="!hasValue" class="game-piece-value">?</h1>
-  {{ getColorName(piece.color) }}
+  <div class="game-piece-color">{{ getColorName(piece.color) }}</div>
 </div>

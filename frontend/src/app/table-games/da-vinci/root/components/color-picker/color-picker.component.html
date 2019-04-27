@@ -1,12 +1,24 @@
 <div class="background" *ngIf="showColorPicker">
   <div class="color-picker">
     <h3>Please pick a color for a {{ requestInfo.state }} piece.</h3>
-    <button
+    <!--     <button
       *ngFor="let colorId of colorsList"
       class="color-{{ colorId }}"
       (click)="onColorPicked(colorId)"
     >
       {{ getColorName(colorId) }}
-    </button>
+    </button> -->
+    <div class="colors">
+      <div
+        class="clickable-piece"
+        *ngFor="let colorId of colorsList"
+        (click)="onColorPicked(colorId)"
+      >
+        <game-davinci-piece
+          [piece]="getDummyPiece(colorId)"
+          playerOwned
+        ></game-davinci-piece>
+      </div>
+    </div>
   </div>
 </div>

@@ -10,6 +10,10 @@ import { ListService } from '../../list.service';
 export class ListedTableComponent {
   @Input() table: Table;
 
+  get isGameRunning(): boolean {
+    return !this.table.canJoin;
+  }
+
   constructor(private service: ListService) {}
 
   joinTable() {

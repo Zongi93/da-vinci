@@ -60,6 +60,8 @@ export class GamePieceComponent implements OnInit {
   }
 
   confirmGuess(): void {
-    this.guess.emit(this.guessValue);
+    if (this.guessRequested) {
+      this.guess.emit(this.guessValue);
+    }
   }
 }

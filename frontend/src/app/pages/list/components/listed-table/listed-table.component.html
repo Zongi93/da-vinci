@@ -6,7 +6,11 @@
       {{ playerName }}
     </li>
   </ul>
-  <button *authenticated="true" (click)="joinTable()">
+  <button
+    *authenticated="true"
+    (click)="joinTable()"
+    [disabled]="isGameRunning"
+  >
     Join
   </button>
 </div>
