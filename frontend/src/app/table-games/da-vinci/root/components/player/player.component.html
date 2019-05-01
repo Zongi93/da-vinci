@@ -1,9 +1,16 @@
-<div class="player">
+<div
+  class="player"
+  [class.active-player]="isActivePlayer"
+  [class.dead-player]="!isAlive"
+>
   <h3>Your hand</h3>
+  <h3 *ngIf="!isAlive">Game Over</h3>
   <div class="player-hand">
     <game-davinci-piece
-      *ngFor="let gamePiece of hand"
+      *ngFor="let gamePiece of hand; trackBy: trackBy"
       [piece]="gamePiece"
+      [isNew]="isPieceNew(gamePiece)"
+      [wasJustFlipped]="wasJustFlipped(gamePiece)"
       playerOwned
     ></game-davinci-piece>
   </div>

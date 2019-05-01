@@ -13,8 +13,20 @@ export class PlayerComponent implements OnInit, OnDestroy {
   @Input() playerName: string;
 
   hand: Array<GamePiece> = [];
+  private prevHand: Array<GamePiece> = [];
 
   private subscription: Subscription;
+
+  get isActivePlayer(): boolean {
+    return this.service.currentPlayer === this.playerName;
+  }
+
+  get isAlive(): boolean {
+    return (
+      this.hand.length === 0 ||
+      !!this.hand.find(piece => GamePiece.isPrivate(piece))
+    );
+  }
 
   constructor(
     private service: DavinciService,
@@ -22,8 +34,29 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscription = this.dataService.privateHand$.subscribe(
-      handUpdate => (this.hand = handUpdate)
+    this.subscription = this.dataService.privateHand$.subscribe(handUpdate => {
+      this.prevHand = this.hand;
+      this.hand = handUpdate;
+    });
+  }
+
+  trackBy(index: number, piece: GamePiece) {
+    return !!piece ? piece.id : undefined;
+  }
+
+  isPieceNew(piece: GamePiece): boolean {
+    return !this.prevHand.find(prev => prev.id === piece.id);
+  }
+
+  wasJustFlipped(piece: GamePiece): boolean {
+    const old = this.prevHand.find(prev => piece.id === prev.id);
+    const current = this.hand.find(curr => piece.id === curr.id);
+
+    return (
+      !!old &&
+      !!current &&
+      GamePiece.isPrivate(old) &&
+      GamePiece.isPublic(current)
     );
   }
 

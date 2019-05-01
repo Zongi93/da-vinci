@@ -11,7 +11,7 @@ export class TableGameInfo {
 
   private static daVinciGameInfo(): TableGameInfo {
     const title = 'Da Vinci';
-    const aiSupported = false;
+    const aiSupported = true;
     const path = 'da-vinci';
     const maxPlayers = 5;
     const minPlayers = 2;

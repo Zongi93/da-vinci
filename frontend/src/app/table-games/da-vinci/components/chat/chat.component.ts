@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IDavinciSocketService } from '../../data-provider.service';
 
 @Component({
@@ -6,14 +6,16 @@ import { IDavinciSocketService } from '../../data-provider.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
+  @ViewChild('.chat') private chatWindow: ElementRef;
   readonly messages: Array<string> = [];
 
   constructor(socketService: IDavinciSocketService) {
-    socketService.infoMessage$.subscribe(message =>
-      this.messages.push(message)
-    );
+    socketService.infoMessage$.subscribe(message => {
+      this.messages.push(message);
+      try {
+        this.chatWindow.nativeElement.scrollTop = this.chatWindow.nativeElement.scrollHeight;
+      } catch {}
+    });
   }
-
-  ngOnInit() {}
 }

@@ -1,24 +1,28 @@
-<div
-  class="game-piece piece-color-{{ piece.color }}"
-  [class.guessable]="!hasValue"
-  (mousewheel)="onMouseWheel($event)"
->
-  <div [class.hidden]="!seenByOpponent" class="game-piece-seen">
-    &#9888;
+<div class="container" [class.new]="isNew">
+  <div
+    class="game-piece piece-color-{{ piece.color }}"
+    [class.guessable]="!hasValue"
+    [class.new-piece]="isNew"
+    [class.just-flipped]="wasJustFlipped"
+    (mousewheel)="onMouseWheel($event)"
+  >
+    <div [class.hidden]="!seenByOpponent" class="game-piece-seen">
+      &#9888;
+    </div>
+    <h1 *ngIf="hasValue" class="game-piece-value">{{ piece.number }}</h1>
+    <div *ngIf="!hasValue" class="game-piece-guess">
+      <button
+        class="confirm-guess"
+        [class.hidden]="!guessRequested"
+        (click)="confirmGuess()"
+      >
+        Guess
+      </button>
+      <div class="up-arrow" (click)="incrementGuess()">&#9650;</div>
+      <div class="guess-value">{{ guessValue }}</div>
+      <div class="down-arrow" (click)="decrementGuess()">&#9660;</div>
+    </div>
+    <h1 *ngIf="!hasValue" class="game-piece-value">?</h1>
+    <div class="game-piece-color">{{ getColorName(piece.color) }}</div>
   </div>
-  <h1 *ngIf="hasValue" class="game-piece-value">{{ piece.number }}</h1>
-  <div *ngIf="!hasValue" class="game-piece-guess">
-    <button
-      class="confirm-guess"
-      [class.hidden]="!guessRequested"
-      (click)="confirmGuess()"
-    >
-      Guess
-    </button>
-    <div class="up-arrow" (click)="incrementGuess()">&#9650;</div>
-    <div class="guess-value">{{ guessValue }}</div>
-    <div class="down-arrow" (click)="decrementGuess()">&#9660;</div>
-  </div>
-  <h1 *ngIf="!hasValue" class="game-piece-value">?</h1>
-  <div class="game-piece-color">{{ getColorName(piece.color) }}</div>
 </div>

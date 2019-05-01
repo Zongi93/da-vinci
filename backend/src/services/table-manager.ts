@@ -53,10 +53,13 @@ export class TableManagerService {
 
   startTable(user: User, gameTitle: string) {
     const tableToStart = this.findTableByUser(user);
-    tableToStart.start(gameTitle).finally(() => {
-      console.log('table-game ended');
-      this.deleteTable(tableToStart.id);
-    });
+    tableToStart
+      .start(gameTitle)
+      .catch(error => console.log(error))
+      .finally(() => {
+        console.log('table-game ended');
+        this.deleteTable(tableToStart.id);
+      });
     this.tablesEmitter.next(this.tables);
   }
 

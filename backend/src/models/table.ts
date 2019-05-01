@@ -56,7 +56,7 @@ export class Table {
     if (
       !!gameToStart &&
       !this.game &&
-      gameToStart.canGameStart(this.players.length)
+      gameToStart.canGameStart(this.players.length + this.addedAiPlayers)
     ) {
       switch (gameTitle) {
         case 'Da Vinci':

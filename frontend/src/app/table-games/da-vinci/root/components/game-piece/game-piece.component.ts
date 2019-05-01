@@ -9,6 +9,8 @@ import { GamePiece, PieceColor, PieceState } from '../../models';
 })
 export class GamePieceComponent implements OnInit {
   @Input() piece: GamePiece;
+  @Input() isNew = true;
+  @Input() wasJustFlipped = false;
   @Input() index: number;
   @Input() playerOwned: boolean;
   @Output() guess = new EventEmitter<number>();
@@ -19,8 +21,12 @@ export class GamePieceComponent implements OnInit {
     return this.piece.number !== null;
   }
 
+  get isPublic(): boolean {
+    return GamePiece.isPublic(this.piece);
+  }
+
   get seenByOpponent(): boolean {
-    return this.playerOwned && GamePiece.isPublic(this.piece);
+    return this.playerOwned && this.isPublic;
   }
 
   get guessRequested(): boolean {

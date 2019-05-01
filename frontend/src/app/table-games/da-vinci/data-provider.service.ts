@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { delay, map, tap } from 'rxjs/operators';
 import { GameAction, GamePiece, Guess, PieceState } from './root/models';
 import { ColorRequestEvent } from './root/models/color-request-info';
 
@@ -56,6 +56,7 @@ export class DavinciSocketService implements IDavinciSocketService {
   get chooseAColorToTake$(): Observable<ColorRequestEvent> {
     return this.socket.fromEvent<ColorRequestEvent>('pick-color').pipe(
       map(request => ColorRequestEvent.fromDto(request)),
+      delay(1000),
       tap(data => console.log(data))
     );
   }
@@ -107,30 +108,39 @@ export abstract class IDavinciSocketService {
 }
 
 export class PublicHand {
-  readonly userName: string;
-  readonly hand: Array<GamePiece>;
+  private readonly _hand: Array<GamePiece>;
 
-  constructor(userName: string, hand: Array<GamePiece>) {
-    this.userName = userName;
-    this.hand = hand;
+  get hand(): Array<GamePiece> {
+    return this._hand;
+  }
+
+  constructor(public readonly userName: string, hand: Array<GamePiece>) {
+    this._hand = hand;
   }
 
   static fromDto(dto: PublicHand): PublicHand {
+    console.log(dto);
     const hand = dto.hand.map(piece => GamePiece.fromDto(piece));
     return new PublicHand(dto.userName, hand);
   }
 }
 
 export class SetupInfo {
-  readonly colors: number;
-  readonly piecePerColor: number;
+  private readonly _players: Array<string>;
 
-  constructor(colors: number, piecePerColor: number) {
-    this.colors = Number(colors);
-    this.piecePerColor = Number(piecePerColor);
+  get players(): Array<string> {
+    return this._players;
+  }
+
+  constructor(
+    public readonly colors: number,
+    public readonly piecePerColor: number,
+    players: Array<string>
+  ) {
+    this._players = players;
   }
 
   static fromDto(dto: SetupInfo) {
-    return new SetupInfo(dto.colors, dto.piecePerColor);
+    return new SetupInfo(dto.colors, dto.piecePerColor, dto.players);
   }
 }

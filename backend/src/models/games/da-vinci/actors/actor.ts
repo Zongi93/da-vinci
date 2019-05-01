@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { GamePiece, Guess, PieceColor, PieceState } from '../utils';
+import { GamePiece, Guess, PieceColor } from '../utils';
 import { ColorRequestEvent } from '../utils/color-request-event';
 import { GameAction } from '../utils/extra-action.enum';
 

@@ -2,18 +2,15 @@ import { PieceColor } from './game-piece-color.enum';
 import { PieceState } from './game-piece-state.enum';
 
 export class GamePiece {
-  readonly number: Number;
-  readonly color: PieceColor;
-  readonly state: PieceState;
-
-  constructor(number: Number, color: PieceColor, state: PieceState) {
-    this.number = number;
-    this.color = color;
-    this.state = state;
-  }
+  constructor(
+    public readonly number: Number,
+    public readonly color: PieceColor,
+    public readonly state: PieceState,
+    public readonly id: number
+  ) {}
 
   static fromDto(dto: GamePiece): GamePiece {
-    return new GamePiece(dto.number, dto.color, dto['_state']);
+    return new GamePiece(dto.number, dto.color, dto.state, dto.id);
   }
 
   static isMissing(piece: GamePiece): boolean {

@@ -35,7 +35,8 @@ export class ColorPickerComponent {
     return new GamePiece(
       ('?' as unknown) as Number,
       colorId,
-      this.requestInfo.state
+      this.requestInfo.state,
+      undefined
     );
   }
 }

@@ -1,4 +1,17 @@
+.container {
+  position: relative;
+  width: 6rem;
+  height: 12rem;
+
+  overflow: hidden;
+
+  &.new {
+    animation: grow 1s;
+  }
+}
+
 .game-piece {
+  position: relative;
   display: grid;
   width: 6rem;
   height: 12rem;
@@ -14,6 +27,19 @@
 
   justify-items: center;
   align-items: center;
+
+  &.new-piece {
+    animation: slideIn 1s;
+  }
+  &.just-flipped::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    animation: flashRed 2s;
+  }
 
   &-seen {
     grid-column: 1 / span 2;
@@ -70,4 +96,53 @@
 .piece-color-1 {
   background-color: rgb(56, 56, 56);
   color: white;
+}
+
+@keyframes slideIn {
+  0% {
+    position: absolute;
+    right: 55%;
+  }
+
+  90% {
+    position: absolute;
+    right: -5%;
+  }
+
+  100% {
+    position: absolute;
+    right: 0%;
+  }
+}
+
+@keyframes grow {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 6rem;
+  }
+}
+
+@keyframes flashRed {
+  0% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+
+  25% {
+    background-color: rgba(255, 0, 0, 1);
+  }
+
+  50% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+
+  75% {
+    background-color: rgba(255, 0, 0, 1);
+  }
+
+  100% {
+    background-color: rgba(255, 0, 0, 0);
+  }
 }

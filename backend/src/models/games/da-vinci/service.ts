@@ -3,11 +3,9 @@ import { map } from 'rxjs/operators';
 import { User } from '../../../models';
 import { TableGame, TableGameInfo } from '../_table-game';
 import { Actor, ComputerOpponent, Player } from './actors';
-import { GamePiece, Guess, PieceColor, PieceState } from './utils';
+import { GamePiece, Guess, Hand, PieceColor, PieceState } from './utils';
 import { ColorRequestEvent } from './utils/color-request-event';
 import { GameAction } from './utils/extra-action.enum';
-
-let valami = 12;
 
 export class GameDaVinci implements TableGame {
   static get INFO(): TableGameInfo {
@@ -15,12 +13,12 @@ export class GameDaVinci implements TableGame {
       'Da Vinci',
       2,
       5,
-      false,
+      true,
       (players: Array<User>, computerOpponentsToAdd?: Number) =>
         new GameDaVinci(players, computerOpponentsToAdd)
     );
   }
-
+  // TODO: INFO FOR PLAYERS ABOUT GUESSSES
   readonly PIECE_PER_COLOR: Number;
   readonly COLORS: Number;
 
@@ -46,13 +44,18 @@ export class GameDaVinci implements TableGame {
     return GameDaVinci.INFO;
   }
 
-  get publicHands$(): Observable<
-    Array<{ userName: string; hand: Array<GamePiece> }>
-  > {
-    const observables = this.actors.map(actor => {
-      const userName = actor.name;
-      return actor.publicHand$.pipe(map(hand => ({ userName, hand })));
-    });
+  get gameSetup() {
+    return {
+      colors: this.COLORS,
+      piecePerColor: this.PIECE_PER_COLOR,
+      players: this.actors.map(actor => actor.name),
+    };
+  }
+
+  get publicHands$(): Observable<Array<Hand>> {
+    const observables = this.actors.map(actor =>
+      actor.publicHand$.pipe(map(hand => new Hand(actor.name, hand)))
+    );
     return combineLatest(observables);
   }
 
@@ -61,7 +64,8 @@ export class GameDaVinci implements TableGame {
   }
 
   constructor(players: Array<User>, computerOpponentsToAdd?: Number) {
-    this.PIECE_PER_COLOR = Number(valami++);
+    console.log('ai to add: ' + computerOpponentsToAdd);
+    this.PIECE_PER_COLOR = Number(12);
     this.COLORS = Number(2);
 
     this.initPieces();

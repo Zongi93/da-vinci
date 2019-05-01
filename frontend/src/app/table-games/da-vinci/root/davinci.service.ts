@@ -12,6 +12,7 @@ export class DavinciService implements OnDestroy {
   private _guessRequested = false;
   private _extraActionRequested = undefined;
   private _winnerName: string = undefined;
+  private _messages: Array<string> = [];
 
   get setupInfo(): SetupInfo {
     return this._setupInfo;
@@ -30,9 +31,20 @@ export class DavinciService implements OnDestroy {
   }
 
   get opponents(): Array<string> {
-    return this.authService.user.joinedTable.players.filter(
-      playerName => playerName !== this.playerName
-    );
+    const myName = this.authService.user.userName;
+    return !this.setupInfo
+      ? []
+      : this.setupInfo.players.filter(name => name !== myName);
+  }
+
+  get currentPlayer(): string {
+    if (this._messages.length > 0) {
+      const playerNames = [this.playerName, ...this.opponents];
+      const lastMessage = this._messages[this._messages.length - 1];
+      return playerNames.find(name => lastMessage.includes(name));
+    } else {
+      return undefined;
+    }
   }
 
   get playerName(): string {
@@ -43,6 +55,7 @@ export class DavinciService implements OnDestroy {
     return this._winnerName;
   }
 
+  // TODO: display activa player
   // TODO: play sound when action required
   // TODO: show toasts when action required
 
@@ -76,6 +89,12 @@ export class DavinciService implements OnDestroy {
     this.SUBSCRIPTIONS.push(
       socketService.gameOver$.subscribe(
         winnerName => (this._winnerName = winnerName)
+      )
+    );
+
+    this.SUBSCRIPTIONS.push(
+      socketService.infoMessage$.subscribe(message =>
+        this._messages.push(message)
       )
     );
   }

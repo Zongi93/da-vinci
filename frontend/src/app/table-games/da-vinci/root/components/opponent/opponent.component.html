@@ -1,9 +1,15 @@
-<div class="player">
+<div
+  class="player"
+  [class.active-player]="isActivePlayer"
+  [class.dead-player]="!isAlive"
+>
   <h3 class="player-name">{{ opponentName }}'s hand</h3>
+  <h3 *ngIf="!isAlive">Game Over</h3>
   <div class="player-hand">
     <game-davinci-piece
-      *ngFor="let gamePiece of hand; let i = index"
+      *ngFor="let gamePiece of hand; let i = index; trackBy: trackBy"
       [piece]="gamePiece"
+      [wasJustFlipped]="wasJustFlipped(gamePiece)"
       (guess)="onGuess($event, i)"
     ></game-davinci-piece>
   </div>

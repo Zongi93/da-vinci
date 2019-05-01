@@ -6,6 +6,7 @@ import { GameDaVinci } from '../service';
 import {
   GamePiece,
   Guess,
+  Hand,
   PieceColor,
   PieceState,
   SocketEventListener
@@ -23,10 +24,7 @@ export class Player implements Actor {
   private handEmitter = new BehaviorSubject(this.privateHand);
 
   private sentMessages: Array<string> = [];
-  private lastEmittedPublicHand: Array<{
-    userName: string;
-    hand: Array<GamePiece>;
-  }> = [];
+  private lastEmittedPublicHands: Array<Hand> = [];
   private inProgressRequest: SocketEventListener<any> = undefined;
 
   get lifes(): Number {
@@ -39,13 +37,6 @@ export class Player implements Actor {
 
   private get privateHand$(): Observable<Array<GamePiece>> {
     return this.handEmitter.asObservable();
-  }
-
-  private get gameSetup() {
-    return {
-      colors: this.service.COLORS,
-      piecePerColor: this.service.PIECE_PER_COLOR,
-    };
   }
 
   get publicHand$(): Observable<Array<GamePiece>> {
@@ -93,14 +84,20 @@ export class Player implements Actor {
 
     this.SUBSCRIPTIONS.push(
       this.service.publicHands$.subscribe(update => {
-        this.lastEmittedPublicHand = update;
-        this.socket.emit('public-hand-update', update);
+        this.lastEmittedPublicHands = update;
+        this.socket.emit(
+          'public-hand-update',
+          update.map(hand => hand.toDto())
+        );
       })
     );
 
     this.SUBSCRIPTIONS.push(
       this.privateHand$.subscribe(update =>
-        this.socket.emit('private-hand-update', update)
+        this.socket.emit(
+          'private-hand-update',
+          update.map(piece => piece.toDto())
+        )
       )
     );
 
@@ -110,7 +107,7 @@ export class Player implements Actor {
     console.log('listening for user connected');
     return this.eventToPromise<void>('user-connected', false).finally(() => {
       console.log(this.name + ' has connected');
-      this.socket.emit('game-init', this.gameSetup);
+      this.socket.emit('game-init', this.service.gameSetup);
     });
   }
 
@@ -144,9 +141,15 @@ export class Player implements Actor {
 
   private async handleReconnect(): Promise<void> {
     this.socket.once('user-connected', () => {
-      this.socket.emit('game-init', this.gameSetup);
-      this.socket.emit('public-hand-update', this.lastEmittedPublicHand);
-      this.socket.emit('private-hand-update', this.privateHand);
+      this.socket.emit('game-init', this.service.gameSetup);
+      this.socket.emit(
+        'public-hand-update',
+        this.lastEmittedPublicHands.map(hand => hand.toDto())
+      );
+      this.socket.emit(
+        'private-hand-update',
+        this.privateHand.map(piece => piece.toDto())
+      );
       this.sentMessages.forEach(message =>
         this.socket.emit('message-info', message)
       );
