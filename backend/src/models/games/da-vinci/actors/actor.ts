@@ -14,17 +14,13 @@ export abstract class Actor {
     return counter++;
   }
 
-  abstract async init(): Promise<void>;
+  abstract init(): Promise<void>;
   abstract checkGuess(guess: Guess): boolean;
   abstract takePiece(piece: GamePiece): void;
   abstract showPiece(position: number): void;
-  abstract async makeAGuess(): Promise<Guess>;
-  abstract async chooseAColorToTake(
-    requestInfo: ColorRequestEvent
-  ): Promise<PieceColor>;
-  abstract async chooseExtraAction(
-    availableActions: Array<GameAction>
-  ): Promise<GameAction>;
-  abstract async gameOver(winnerName: string): Promise<void>;
-  abstract async gameStart(): Promise<void>;
+  abstract makeAGuess(): Promise<Guess>;
+  abstract chooseAColorToTake(requestInfo: ColorRequestEvent): Promise<PieceColor>;
+  abstract chooseExtraAction(availableActions: Array<GameAction>): Promise<GameAction>;
+  abstract gameOver(winnerName: string): Promise<void>;
+  abstract gameStart(): Promise<void>;
 }
