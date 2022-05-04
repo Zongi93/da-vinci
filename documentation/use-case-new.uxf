@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>12</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>740</x>
-      <y>210</y>
-      <w>100</w>
-      <h>110</h>
+      <x>408</x>
+      <y>1344</y>
+      <w>120</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>New Player</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>730</x>
-      <y>0</y>
-      <w>1110</w>
-      <h>450</h>
+      <x>396</x>
+      <y>1092</y>
+      <w>1332</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>Game Setup
 --
@@ -28,10 +28,10 @@ bg=#dddddd</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>920</x>
-      <y>230</y>
-      <w>150</w>
-      <h>50</h>
+      <x>624</x>
+      <y>1368</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Select Username
 layer=1
@@ -41,10 +41,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1140</x>
-      <y>130</y>
-      <w>150</w>
-      <h>50</h>
+      <x>888</x>
+      <y>1248</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Host Table
 layer=1
@@ -54,10 +54,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1140</x>
-      <y>340</y>
-      <w>150</w>
-      <h>50</h>
+      <x>888</x>
+      <y>1500</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Join Table
 layer=1
@@ -67,10 +67,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1390</x>
-      <y>140</y>
-      <w>160</w>
-      <h>50</h>
+      <x>1188</x>
+      <y>1260</y>
+      <w>192</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Add AI opponents
 layer=1
@@ -80,10 +80,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1390</x>
-      <y>220</y>
-      <w>160</w>
-      <h>50</h>
+      <x>1188</x>
+      <y>1356</y>
+      <w>192</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Wait for other players
 layer=1
@@ -93,10 +93,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1660</x>
-      <y>140</y>
-      <w>160</w>
-      <h>50</h>
+      <x>1512</x>
+      <y>1260</y>
+      <w>192</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Start the game
 layer=1
@@ -106,10 +106,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>230</y>
-      <w>120</w>
-      <h>40</h>
+      <x>492</x>
+      <y>1368</y>
+      <w>144</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
@@ -117,10 +117,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1070</x>
-      <y>130</y>
-      <w>80</w>
-      <h>140</h>
+      <x>804</x>
+      <y>1248</y>
+      <w>96</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>60.0;20.0;10.0;20.0;10.0;120.0</additional_attributes>
@@ -128,10 +128,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1070</x>
-      <y>240</y>
-      <w>80</w>
-      <h>140</h>
+      <x>804</x>
+      <y>1380</y>
+      <w>96</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;120.0;60.0;120.0</additional_attributes>
@@ -139,10 +139,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1290</x>
-      <y>140</y>
-      <w>110</w>
-      <h>130</h>
+      <x>1068</x>
+      <y>1260</y>
+      <w>132</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;10.0;20.0;110.0;90.0;110.0</additional_attributes>
@@ -150,10 +150,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1300</x>
-      <y>140</y>
-      <w>100</w>
-      <h>50</h>
+      <x>1080</x>
+      <y>1260</y>
+      <w>120</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;30.0;80.0;30.0</additional_attributes>
@@ -161,10 +161,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1300</x>
-      <y>60</y>
-      <w>370</w>
-      <h>130</h>
+      <x>1080</x>
+      <y>1164</y>
+      <w>444</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>/{if number of players at table/
 /satisfies game preconditions}/
@@ -174,10 +174,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1650</x>
-      <y>330</y>
-      <w>160</w>
-      <h>50</h>
+      <x>1500</x>
+      <y>1488</y>
+      <w>192</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Wait for the Host 
 to start the game
@@ -188,10 +188,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1290</x>
-      <y>350</y>
-      <w>360</w>
-      <h>30</h>
+      <x>1068</x>
+      <y>1512</y>
+      <w>432</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>340.0;10.0;10.0;10.0</additional_attributes>
@@ -199,10 +199,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>730</x>
-      <y>510</y>
-      <w>2110</w>
-      <h>1290</h>
+      <x>396</x>
+      <y>1704</y>
+      <w>2532</w>
+      <h>1548</h>
     </coordinates>
     <panel_attributes>Da Vinci game 
 --
@@ -212,10 +212,10 @@ bg=#dddddd</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>770</x>
-      <y>1100</y>
-      <w>60</w>
-      <h>110</h>
+      <x>444</x>
+      <y>2412</y>
+      <w>72</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>Player
 layer=1</panel_attributes>
@@ -224,10 +224,10 @@ layer=1</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1140</x>
-      <y>230</y>
-      <w>150</w>
-      <h>50</h>
+      <x>888</x>
+      <y>1368</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Logout
 layer=1
@@ -237,10 +237,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1070</x>
-      <y>230</y>
-      <w>80</w>
-      <h>40</h>
+      <x>804</x>
+      <y>1368</y>
+      <w>96</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;20.0;60.0;20.0</additional_attributes>
@@ -248,10 +248,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1480</x>
-      <y>650</y>
-      <w>180</w>
-      <h>90</h>
+      <x>1296</x>
+      <y>1872</y>
+      <w>216</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Select starting
 piece colors
@@ -263,10 +263,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1570</x>
-      <y>990</y>
-      <w>150</w>
-      <h>50</h>
+      <x>1404</x>
+      <y>2280</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Guess is correct
 layer=1
@@ -276,10 +276,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1260</x>
-      <y>990</y>
-      <w>100</w>
-      <h>140</h>
+      <x>1032</x>
+      <y>2280</y>
+      <w>120</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -294,10 +294,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>1040</y>
-      <w>200</w>
-      <h>130</h>
+      <x>1272</x>
+      <y>2340</y>
+      <w>240</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -311,10 +311,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1460</x>
-      <y>1160</y>
-      <w>200</w>
-      <h>120</h>
+      <x>1272</x>
+      <y>2484</y>
+      <w>240</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -328,10 +328,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2180</x>
-      <y>920</y>
-      <w>180</w>
-      <h>80</h>
+      <x>2136</x>
+      <y>2196</y>
+      <w>216</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Choose (if possible) 
 a color for 
@@ -343,10 +343,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2180</x>
-      <y>1200</y>
-      <w>200</w>
-      <h>80</h>
+      <x>2136</x>
+      <y>2532</y>
+      <w>240</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Choose (if possible) a color
 for new PUBLIC piece
@@ -357,10 +357,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1740</x>
-      <y>650</y>
-      <w>170</w>
-      <h>90</h>
+      <x>1608</x>
+      <y>1872</y>
+      <w>204</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Random player
 starts
@@ -371,10 +371,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1200</x>
-      <y>1120</y>
-      <w>150</w>
-      <h>50</h>
+      <x>960</x>
+      <y>2436</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Think about
 your guess
@@ -385,10 +385,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1340</x>
-      <y>1120</y>
-      <w>80</w>
-      <h>130</h>
+      <x>1128</x>
+      <y>2436</y>
+      <w>96</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -403,10 +403,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>2430</x>
-      <y>950</y>
-      <w>160</w>
-      <h>130</h>
+      <x>2436</x>
+      <y>2232</y>
+      <w>192</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Are all opponent
 pieces public?
@@ -418,10 +418,10 @@ type=decision</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2640</x>
-      <y>1200</y>
-      <w>170</w>
-      <h>80</h>
+      <x>2688</x>
+      <y>2532</y>
+      <w>204</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Continue with next
 player's turn
@@ -432,10 +432,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1570</x>
-      <y>1220</y>
-      <w>150</w>
-      <h>50</h>
+      <x>1404</x>
+      <y>2556</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Guess is NOT correct
 layer=1
@@ -445,10 +445,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2640</x>
-      <y>980</y>
-      <w>170</w>
-      <h>80</h>
+      <x>2688</x>
+      <y>2268</y>
+      <w>204</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>"You won!"
 layer=1
@@ -458,10 +458,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2500</x>
-      <y>900</y>
-      <w>240</w>
-      <h>130</h>
+      <x>2520</x>
+      <y>2172</y>
+      <w>288</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 /yes/
@@ -476,10 +476,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2500</x>
-      <y>1060</y>
-      <w>150</w>
-      <h>210</h>
+      <x>2520</x>
+      <y>2364</y>
+      <w>180</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -499,10 +499,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2370</x>
-      <y>1220</y>
-      <w>280</w>
-      <h>110</h>
+      <x>2364</x>
+      <y>2556</y>
+      <w>336</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>
 
@@ -515,10 +515,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>950</x>
-      <y>1120</y>
-      <w>150</w>
-      <h>50</h>
+      <x>660</x>
+      <y>2436</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Player turn
 layer=1
@@ -528,10 +528,10 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1090</x>
-      <y>1120</y>
-      <w>120</w>
-      <h>130</h>
+      <x>828</x>
+      <y>2436</y>
+      <w>144</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -546,10 +546,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1400</x>
-      <y>1110</y>
-      <w>150</w>
-      <h>50</h>
+      <x>1200</x>
+      <y>2424</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Make a guess
 layer=1
@@ -559,10 +559,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2180</x>
-      <y>1340</y>
-      <w>200</w>
-      <h>80</h>
+      <x>2136</x>
+      <y>2700</y>
+      <w>240</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Flip owned private
 piece to public
@@ -573,10 +573,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2370</x>
-      <y>1240</y>
-      <w>280</w>
-      <h>160</h>
+      <x>2364</x>
+      <y>2580</y>
+      <w>336</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>
 
@@ -589,10 +589,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1760</x>
-      <y>990</y>
-      <w>150</w>
-      <h>50</h>
+      <x>1632</x>
+      <y>2280</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>End guessing
 layer=1
@@ -602,10 +602,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1710</x>
-      <y>990</y>
-      <w>70</w>
-      <h>90</h>
+      <x>1572</x>
+      <y>2280</y>
+      <w>84</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -618,10 +618,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2350</x>
-      <y>940</y>
-      <w>90</w>
-      <h>110</h>
+      <x>2340</x>
+      <y>2220</y>
+      <w>108</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>
 
@@ -634,10 +634,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2180</x>
-      <y>1070</y>
-      <w>180</w>
-      <h>50</h>
+      <x>2136</x>
+      <y>2376</y>
+      <w>216</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Skip drawing
 layer=1
@@ -647,10 +647,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1960</x>
-      <y>950</y>
-      <w>160</w>
-      <h>130</h>
+      <x>1872</x>
+      <y>2232</y>
+      <w>192</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Is both piece
 tray empty?
@@ -662,10 +662,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1900</x>
-      <y>990</y>
-      <w>80</w>
-      <h>110</h>
+      <x>1800</x>
+      <y>2280</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>
 
@@ -678,10 +678,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2110</x>
-      <y>930</y>
-      <w>90</w>
-      <h>110</h>
+      <x>2052</x>
+      <y>2208</y>
+      <w>108</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>/  no/
 
@@ -695,10 +695,10 @@ lt=-&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2110</x>
-      <y>950</y>
-      <w>90</w>
-      <h>220</h>
+      <x>2052</x>
+      <y>2232</y>
+      <w>108</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>
 
@@ -719,10 +719,10 @@ lt=-&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2350</x>
-      <y>1010</y>
-      <w>90</w>
-      <h>110</h>
+      <x>2340</x>
+      <y>2304</y>
+      <w>108</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>
 
@@ -735,10 +735,10 @@ lt=-&gt;
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1790</x>
-      <y>1180</y>
-      <w>160</w>
-      <h>130</h>
+      <x>1668</x>
+      <y>2508</y>
+      <w>192</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Is both piece
 trays empty?
@@ -750,10 +750,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1710</x>
-      <y>1220</y>
-      <w>100</w>
-      <h>110</h>
+      <x>1572</x>
+      <y>2556</y>
+      <w>120</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>
 
@@ -766,10 +766,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1860</x>
-      <y>1260</y>
-      <w>330</w>
-      <h>190</h>
+      <x>1752</x>
+      <y>2604</y>
+      <w>396</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>
 
@@ -788,10 +788,10 @@ lt=-&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1860</x>
-      <y>1170</y>
-      <w>330</w>
-      <h>90</h>
+      <x>1752</x>
+      <y>2496</y>
+      <w>396</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>/no/
 lt=-&gt;
@@ -804,10 +804,10 @@ lt=-&gt;
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>950</x>
-      <y>670</y>
-      <w>150</w>
-      <h>50</h>
+      <x>660</x>
+      <y>1896</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Game Start
 layer=1
@@ -817,10 +817,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1190</x>
-      <y>650</y>
-      <w>180</w>
-      <h>80</h>
+      <x>948</x>
+      <y>1872</y>
+      <w>216</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Fill up and
 shuffle both piece
@@ -832,10 +832,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1090</x>
-      <y>670</y>
-      <w>120</w>
-      <h>130</h>
+      <x>828</x>
+      <y>1896</y>
+      <w>144</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>
 
@@ -849,10 +849,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1360</x>
-      <y>670</y>
-      <w>140</w>
-      <h>130</h>
+      <x>1152</x>
+      <y>1896</y>
+      <w>168</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>
 
@@ -866,10 +866,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1650</x>
-      <y>670</y>
-      <w>110</w>
-      <h>130</h>
+      <x>1500</x>
+      <y>1896</y>
+      <w>132</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>
 
@@ -883,10 +883,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>690</y>
-      <w>140</w>
-      <h>470</h>
+      <x>504</x>
+      <y>1920</y>
+      <w>168</w>
+      <h>564</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -901,10 +901,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>1130</y>
-      <w>140</w>
-      <h>130</h>
+      <x>504</x>
+      <y>2448</y>
+      <w>168</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -919,10 +919,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>940</x>
-      <y>1570</y>
-      <w>150</w>
-      <h>50</h>
+      <x>648</x>
+      <y>2976</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Opponent turn
 layer=1
@@ -932,10 +932,10 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1340</x>
-      <y>990</y>
-      <w>150</w>
-      <h>50</h>
+      <x>1128</x>
+      <y>2280</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Continue guessing
 layer=1
@@ -945,10 +945,10 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1480</x>
-      <y>990</y>
-      <w>110</w>
-      <h>90</h>
+      <x>1296</x>
+      <y>2280</y>
+      <w>132</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
@@ -961,25 +961,25 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1420</x>
-      <y>2940</y>
-      <w>270</w>
-      <h>270</h>
+      <x>1224</x>
+      <y>4620</y>
+      <w>324</w>
+      <h>348</h>
     </coordinates>
-    <panel_attributes>DaVinci::Actor
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/DaVinci::Actor/
 --
--id: Number
--name: String
--ownedPieces: Array&lt;GamePiece&gt;
++id: Number {readonly}
++name: String {readonly}
+*ownedPieces: Array&lt;GamePiece&gt;
 --
-get lifes(): Number
-get privateHand(): Array&lt;GamePiece&gt;
-get publicHand(): Array&lt;GamePiece&gt;
---
--checkGuess(Guess): boolean
--takePiece(GamePiece): void
--showPiece(position:Number): number
---
++get lifes(): Number
++get privateHand(): Array&lt;GamePiece&gt;
++get publicHand(): Array&lt;GamePiece&gt;
++checkGuess(Guess): boolean
++takePiece(GamePiece): void
++showPiece(position:Number): number
+&lt;&lt;abstract&gt;&gt;
 /+makeAGuess(): Guess/
 /+chooseAColorToTake(): PieceColor/
 /+chooseExtraAction(): GameAction/
@@ -990,10 +990,10 @@ get publicHand(): Array&lt;GamePiece&gt;
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1160</x>
-      <y>1530</y>
-      <w>160</w>
-      <h>130</h>
+      <x>912</x>
+      <y>2928</y>
+      <w>192</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Is our hand the
 target of a guess?
@@ -1005,10 +1005,10 @@ type=decision</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1590</x>
-      <y>1570</y>
-      <w>210</w>
-      <h>60</h>
+      <x>1428</x>
+      <y>2976</y>
+      <w>252</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Flip the targeted piece to 
 PUBLIC 
@@ -1019,10 +1019,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1880</x>
-      <y>1560</y>
-      <w>170</w>
-      <h>80</h>
+      <x>1776</x>
+      <y>2964</y>
+      <w>204</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Continue with next
 player's turn
@@ -1033,10 +1033,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1230</x>
-      <y>1430</y>
-      <w>170</w>
-      <h>180</h>
+      <x>996</x>
+      <y>2808</y>
+      <w>204</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 yes</panel_attributes>
@@ -1045,10 +1045,10 @@ yes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1230</x>
-      <y>1590</y>
-      <w>670</w>
-      <h>160</h>
+      <x>996</x>
+      <y>3000</y>
+      <w>804</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -1065,10 +1065,10 @@ yes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>1580</y>
-      <w>100</w>
-      <h>130</h>
+      <x>816</x>
+      <y>2988</y>
+      <w>120</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -1083,10 +1083,10 @@ yes</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1380</x>
-      <y>1530</y>
-      <w>160</w>
-      <h>130</h>
+      <x>1176</x>
+      <y>2928</y>
+      <w>192</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Is the guess correct?
 layer=1
@@ -1097,10 +1097,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1790</x>
-      <y>1580</y>
-      <w>110</w>
-      <h>130</h>
+      <x>1668</x>
+      <y>2988</y>
+      <w>132</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -1115,10 +1115,10 @@ type=decision</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1450</x>
-      <y>1430</y>
-      <w>160</w>
-      <h>180</h>
+      <x>1260</x>
+      <y>2808</y>
+      <w>192</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 yes</panel_attributes>
@@ -1127,10 +1127,10 @@ yes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1450</x>
-      <y>1650</y>
-      <w>40</w>
-      <h>80</h>
+      <x>1260</x>
+      <y>3072</y>
+      <w>48</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>no
 </panel_attributes>
@@ -1139,10 +1139,10 @@ yes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1230</x>
-      <y>1650</y>
-      <w>250</w>
-      <h>80</h>
+      <x>996</x>
+      <y>3072</y>
+      <w>300</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>no
 lt=-&gt;</panel_attributes>
@@ -1151,10 +1151,10 @@ lt=-&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>1150</y>
-      <w>130</w>
-      <h>460</h>
+      <x>504</x>
+      <y>2472</y>
+      <w>156</w>
+      <h>552</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -1169,10 +1169,10 @@ lt=-&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1220</x>
-      <y>2070</y>
-      <w>270</w>
-      <h>160</h>
+      <x>984</x>
+      <y>3576</y>
+      <w>324</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>Game::Table
 --
@@ -1191,10 +1191,10 @@ lt=-&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>820</x>
-      <y>3150</y>
-      <w>270</w>
-      <h>100</h>
+      <x>504</x>
+      <y>4872</y>
+      <w>324</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 DaVinci:PieceState
@@ -1208,10 +1208,10 @@ PUBLIC
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>910</x>
-      <y>2340</y>
-      <w>270</w>
-      <h>70</h>
+      <x>612</x>
+      <y>3900</y>
+      <w>324</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Game::User
 --
@@ -1224,10 +1224,10 @@ PUBLIC
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>3150</y>
-      <w>270</w>
-      <h>80</h>
+      <x>0</x>
+      <y>4872</y>
+      <w>324</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 DaVinci:PieceColor
@@ -1240,10 +1240,10 @@ BLACK
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1190</x>
-      <y>3370</y>
-      <w>270</w>
-      <h>30</h>
+      <x>948</x>
+      <y>5136</y>
+      <w>324</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Da-Vinci::Player</panel_attributes>
     <additional_attributes/>
@@ -1251,10 +1251,10 @@ BLACK
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1640</x>
-      <y>3370</y>
-      <w>270</w>
-      <h>30</h>
+      <x>1488</x>
+      <y>5136</y>
+      <w>324</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Da-Vinci::Computer</panel_attributes>
     <additional_attributes/>
@@ -1262,10 +1262,10 @@ BLACK
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1610</x>
-      <y>2340</y>
-      <w>270</w>
-      <h>80</h>
+      <x>1452</x>
+      <y>3900</y>
+      <w>324</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Game::TableGame
 --
@@ -1277,10 +1277,10 @@ BLACK
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1810</x>
-      <y>2510</y>
-      <w>290</w>
-      <h>120</h>
+      <x>1692</x>
+      <y>4104</y>
+      <w>348</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Game::TableGameInfo
 --
@@ -1295,10 +1295,10 @@ canGameStart(numberOfPlayers): boolean</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1420</x>
-      <y>2510</y>
-      <w>290</w>
-      <h>240</h>
+      <x>1224</x>
+      <y>4104</y>
+      <w>348</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>DaVinci::TableGameService
 --
@@ -1322,10 +1322,10 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
-      <y>2910</y>
-      <w>270</w>
-      <h>100</h>
+      <x>288</x>
+      <y>4584</y>
+      <w>324</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>DaVinci::GamePiece
 --
@@ -1340,32 +1340,32 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1310</x>
-      <y>3200</y>
-      <w>260</w>
-      <h>190</h>
+      <x>1092</x>
+      <y>4956</y>
+      <w>312</w>
+      <h>204</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>240.0;10.0;240.0;90.0;10.0;90.0;10.0;170.0</additional_attributes>
+    <additional_attributes>240.0;10.0;240.0;70.0;10.0;70.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1540</x>
-      <y>3200</y>
-      <w>250</w>
-      <h>190</h>
+      <x>1368</x>
+      <y>4956</y>
+      <w>300</w>
+      <h>204</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0;230.0;90.0;230.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;230.0;70.0;230.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1870</x>
-      <y>2370</y>
-      <w>100</w>
-      <h>160</h>
+      <x>1764</x>
+      <y>3936</y>
+      <w>120</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;80.0;10.0;80.0;140.0</additional_attributes>
@@ -1373,10 +1373,10 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1550</x>
-      <y>2410</y>
-      <w>210</w>
-      <h>120</h>
+      <x>1380</x>
+      <y>3984</y>
+      <w>252</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>190.0;10.0;190.0;50.0;10.0;50.0;10.0;100.0</additional_attributes>
@@ -1384,10 +1384,10 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1330</x>
-      <y>2220</y>
-      <w>430</w>
-      <h>140</h>
+      <x>1116</x>
+      <y>3756</y>
+      <w>516</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0;410.0;60.0;410.0;120.0</additional_attributes>
@@ -1395,10 +1395,10 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>2220</y>
-      <w>340</w>
-      <h>140</h>
+      <x>744</x>
+      <y>3756</y>
+      <w>408</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>320.0;10.0;320.0;60.0;10.0;60.0;10.0;120.0</additional_attributes>
@@ -1406,10 +1406,10 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>2740</y>
-      <w>820</w>
-      <h>190</h>
+      <x>432</x>
+      <y>4380</y>
+      <w>984</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>800.0;10.0;800.0;80.0;10.0;80.0;10.0;170.0</additional_attributes>
@@ -1417,32 +1417,32 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>3000</y>
-      <w>250</w>
-      <h>170</h>
+      <x>156</x>
+      <y>4692</y>
+      <w>300</w>
+      <h>204</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>230.0;10.0;230.0;60.0;10.0;60.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>3000</y>
-      <w>230</w>
-      <h>170</h>
+      <x>420</x>
+      <y>4692</y>
+      <w>276</w>
+      <h>204</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0;210.0;60.0;210.0;150.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1550</x>
-      <y>2740</y>
-      <w>30</w>
-      <h>220</h>
+      <x>1380</x>
+      <y>4380</y>
+      <w>36</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
@@ -1450,10 +1450,10 @@ get availableActions(): Array&lt;GameAction&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2070</x>
-      <y>2940</y>
-      <w>270</w>
-      <h>100</h>
+      <x>2004</x>
+      <y>4620</y>
+      <w>324</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 DaVinci:GameAction
@@ -1467,10 +1467,10 @@ STOP
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1550</x>
-      <y>2740</y>
-      <w>680</w>
-      <h>220</h>
+      <x>1380</x>
+      <y>4380</y>
+      <w>816</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0;660.0;80.0;660.0;200.0</additional_attributes>
@@ -1478,32 +1478,33 @@ STOP
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>2950</y>
-      <w>540</w>
-      <h>160</h>
+      <x>600</x>
+      <y>4632</y>
+      <w>648</w>
+      <h>192</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
     <additional_attributes>520.0;140.0;300.0;140.0;300.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1680</x>
-      <y>2980</y>
-      <w>410</w>
-      <h>130</h>
+      <x>1536</x>
+      <y>4668</y>
+      <w>492</w>
+      <h>156</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;110.0;220.0;110.0;220.0;10.0;390.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3280</x>
-      <y>2560</y>
-      <w>760</w>
-      <h>560</h>
+      <x>3456</x>
+      <y>4164</y>
+      <w>912</w>
+      <h>672</h>
     </coordinates>
     <panel_attributes>
 halign=left
@@ -1516,10 +1517,10 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3320</x>
-      <y>2660</y>
-      <w>200</w>
-      <h>190</h>
+      <x>3504</x>
+      <y>4284</y>
+      <w>240</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>Table 1
 --
@@ -1537,10 +1538,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3570</x>
-      <y>2660</y>
-      <w>200</w>
-      <h>190</h>
+      <x>3804</x>
+      <y>4284</y>
+      <w>240</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>
 /New Table/
@@ -1552,10 +1553,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3280</x>
-      <y>2560</y>
-      <w>760</w>
-      <h>40</h>
+      <x>3456</x>
+      <y>4164</y>
+      <w>912</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>* Hello User345!*
 layer=1
@@ -1567,10 +1568,10 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3930</x>
-      <y>2560</y>
-      <w>110</w>
-      <h>40</h>
+      <x>4236</x>
+      <y>4164</y>
+      <w>132</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>*Logout*
 bg=#efefef
@@ -1583,10 +1584,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3610</x>
-      <y>2800</y>
-      <w>130</w>
-      <h>30</h>
+      <x>3852</x>
+      <y>4452</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>*Create new table*
 bg=#efefef
@@ -1599,10 +1600,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3360</x>
-      <y>2800</y>
-      <w>130</w>
-      <h>30</h>
+      <x>3552</x>
+      <y>4452</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>*Join table*
 bg=#efefef
@@ -1615,10 +1616,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3280</x>
-      <y>3360</y>
-      <w>760</w>
-      <h>560</h>
+      <x>3456</x>
+      <y>5124</y>
+      <w>912</w>
+      <h>672</h>
     </coordinates>
     <panel_attributes>
 halign=left
@@ -1633,10 +1634,10 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3570</x>
-      <y>3550</y>
-      <w>200</w>
-      <h>190</h>
+      <x>3804</x>
+      <y>5352</y>
+      <w>240</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>
 
@@ -1654,10 +1655,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3310</x>
-      <y>3810</y>
-      <w>130</w>
-      <h>30</h>
+      <x>3492</x>
+      <y>5664</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>*Add AI opponent*
 bg=#efefef
@@ -1670,10 +1671,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3660</x>
-      <y>3810</y>
-      <w>130</w>
-      <h>30</h>
+      <x>3912</x>
+      <y>5664</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>*Leave table*
 bg=#efefef
@@ -1686,10 +1687,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3820</x>
-      <y>3810</y>
-      <w>130</w>
-      <h>30</h>
+      <x>4104</x>
+      <y>5664</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>*Start game*
 bg=#efefef
@@ -1702,10 +1703,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3470</x>
-      <y>3810</y>
-      <w>160</w>
-      <h>30</h>
+      <x>3684</x>
+      <y>5664</y>
+      <w>192</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>*Remove AI opponent*
 bg=#efefef
@@ -1718,10 +1719,10 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3660</x>
-      <y>3130</y>
-      <w>130</w>
-      <h>230</h>
+      <x>3912</x>
+      <y>4848</y>
+      <w>156</w>
+      <h>276</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 /Create new table/</panel_attributes>
@@ -1730,10 +1731,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3280</x>
-      <y>4140</y>
-      <w>760</w>
-      <h>560</h>
+      <x>3456</x>
+      <y>6060</y>
+      <w>912</w>
+      <h>672</h>
     </coordinates>
     <panel_attributes>
 halign=left
@@ -1743,10 +1744,10 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3650</x>
-      <y>3930</y>
-      <w>100</w>
-      <h>200</h>
+      <x>3900</x>
+      <y>5808</y>
+      <w>120</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 /Start game/</panel_attributes>
@@ -1755,10 +1756,10 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3310</x>
-      <y>4170</y>
-      <w>470</w>
-      <h>190</h>
+      <x>3492</x>
+      <y>6096</y>
+      <w>564</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>
 Opponent's hand
@@ -1771,10 +1772,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3310</x>
-      <y>4490</y>
-      <w>470</w>
-      <h>190</h>
+      <x>3492</x>
+      <y>6480</y>
+      <w>564</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>
 Player's hand
@@ -1786,10 +1787,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3810</x>
-      <y>4170</y>
-      <w>210</w>
-      <h>510</h>
+      <x>4092</x>
+      <y>6096</y>
+      <w>252</w>
+      <h>612</h>
     </coordinates>
     <panel_attributes>Chat log
 valign=center
@@ -1801,10 +1802,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3350</x>
-      <y>4550</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3540</x>
+      <y>6552</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>1
 valign=center
@@ -1817,10 +1818,10 @@ fontsize=18</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3450</x>
-      <y>4550</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3660</x>
+      <y>6552</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>⚠
 
@@ -1837,10 +1838,10 @@ fontsize=18
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3550</x>
-      <y>4550</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3780</x>
+      <y>6552</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>7
 valign=center
@@ -1853,10 +1854,10 @@ fontsize=18</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3650</x>
-      <y>4550</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3900</x>
+      <y>6552</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>7
 valign=center
@@ -1869,10 +1870,10 @@ fontsize=18</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3350</x>
-      <y>4230</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3540</x>
+      <y>6168</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>?
 valign=center
@@ -1885,10 +1886,10 @@ fontsize=18</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3450</x>
-      <y>4230</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3660</x>
+      <y>6168</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>?
 valign=center
@@ -1901,10 +1902,10 @@ fontsize=18</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3550</x>
-      <y>4230</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3780</x>
+      <y>6168</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>3
 valign=center
@@ -1917,10 +1918,10 @@ fontsize=18</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>3650</x>
-      <y>4230</y>
-      <w>80</w>
-      <h>110</h>
+      <x>3900</x>
+      <y>6168</y>
+      <w>96</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>?
 valign=center
@@ -1928,6 +1929,993 @@ bg=gray
 transparency=0
 layer=2
 fontsize=18</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>396</x>
+      <y>408</y>
+      <w>120</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>New Player</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>600</x>
+      <y>72</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Select Username
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>708</x>
+      <y>204</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Host Table
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>708</x>
+      <y>324</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Join Table
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>960</x>
+      <y>204</y>
+      <w>192</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Add AI opponents
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>960</x>
+      <y>324</y>
+      <w>192</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Start the game
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>708</x>
+      <y>432</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Logout
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1080</x>
+      <y>564</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Take Turn
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1356</x>
+      <y>564</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Make a guess
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1632</x>
+      <y>504</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Add new code piece
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>120</y>
+      <w>120</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>
+lt=.
+</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;70.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>180</y>
+      <w>228</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;precedes&gt;</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>300</y>
+      <w>228</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;precedes&gt;</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>408</y>
+      <w>228</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;precedes&gt;</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>444</y>
+      <w>252</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>336</y>
+      <w>240</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>216</y>
+      <w>240</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>84</y>
+      <w>132</w>
+      <h>396</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>252</y>
+      <w>108</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;invokes&gt;
+</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>204</y>
+      <w>108</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;extend&gt;
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>324</y>
+      <w>108</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;extend&gt;
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>540</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;precedes&gt;
+</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>444</y>
+      <w>612</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>490.0;120.0;190.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1248</x>
+      <y>564</y>
+      <w>132</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;includes&gt;
+</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>396</x>
+      <y>0</y>
+      <w>1716</w>
+      <h>708</h>
+    </coordinates>
+    <panel_attributes>Use Case Diagram
+--
+bg=#eeeeee</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1632</x>
+      <y>624</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Choose extra action
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>336</y>
+      <w>528</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;invokes&gt;
+</panel_attributes>
+    <additional_attributes>420.0;150.0;300.0;150.0;190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1884</x>
+      <y>504</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Choose color
+layer=1
+bg=#fff8dc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1800</x>
+      <y>504</y>
+      <w>108</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;includes&gt;
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1524</x>
+      <y>516</y>
+      <w>132</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;includes&gt;
+</panel_attributes>
+    <additional_attributes>90.0;20.0;20.0;20.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1524</x>
+      <y>588</y>
+      <w>132</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;extend&gt;
+</panel_attributes>
+    <additional_attributes>90.0;60.0;20.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>372</y>
+      <w>108</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=.
+
+</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;70.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3456</x>
+      <y>3216</y>
+      <w>912</w>
+      <h>672</h>
+    </coordinates>
+    <panel_attributes>
+halign=center
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3456</x>
+      <y>3216</y>
+      <w>912</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+/Please enter your username:/
+layer=1
+bg=#fff8dc
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3804</x>
+      <y>3324</y>
+      <w>216</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>*Login*
+bg=#efefef
+valign=center
+halign=center
+layer=2
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3804</x>
+      <y>3288</y>
+      <w>216</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>
+bg=#ffffff
+valign=center
+halign=center
+layer=2
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3216</x>
+      <y>2064</y>
+      <w>240</w>
+      <h>396</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Frontend</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>3888</x>
+      <y>1980</y>
+      <w>780</w>
+      <h>732</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+*Backend*
+fontsize=18
+bg=yellow
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2052</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=()-
+m1=  GET    /api/user/login
+</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3516</x>
+      <y>1920</y>
+      <w>192</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+m2=provide
+</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2148</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/user/pair-socket
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2196</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=()-
+m1=  GET    /api/user/logout
+</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2268</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=()-
+m1=  GET    /api/table/list
+</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2316</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/table/create
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2364</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/table/join
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2412</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/table/leave
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2460</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/table/start
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2508</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/table/add-ai
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2556</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/table/remove-ai
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2100</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=POST /api/user/login
+</panel_attributes>
+    <additional_attributes>20.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3852</x>
+      <y>2640</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=()-
+m1=   WS    /socket.io
+</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4440</x>
+      <y>2052</y>
+      <w>216</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>UserManagerService
+valign=center
+halign=center
+bg=#33ff33
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4440</x>
+      <y>2268</y>
+      <w>216</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes>TableManagerService
+valign=center
+halign=center
+bg=#9999ff
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4440</x>
+      <y>2628</y>
+      <w>216</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>SocketManagerService
+valign=center
+halign=center
+bg=#ff5555
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2568</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3888</x>
+      <y>2268</y>
+      <w>240</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes>
+valign=center
+halign=center
+bg=#9999ff
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3888</x>
+      <y>2052</y>
+      <w>240</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>
+valign=center
+halign=center
+bg=#33ff33
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3888</x>
+      <y>2628</y>
+      <w>240</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>
+valign=center
+halign=center
+bg=#ff5555
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4176</x>
+      <y>2292</y>
+      <w>216</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes>*Middleware*
+valign=top
+halign=center
+bg=#99ffff
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4188</x>
+      <y>2316</y>
+      <w>192</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>Check CSRF
+&amp;
+Authenticate
+valign=center
+halign=center
+bg=#ff33ff
+transparency=0
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2520</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=1</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2472</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=1</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2424</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=1</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2376</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=1</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2328</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=1</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2256</y>
+      <w>348</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;30.0;40.0;10.0;240.0;10.0;270.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2064</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2088</y>
+      <w>348</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;30.0;40.0;10.0;240.0;10.0;270.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2208</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4176</x>
+      <y>2124</y>
+      <w>216</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>*Middleware*
+valign=top
+halign=center
+bg=#99ffff
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4188</x>
+      <y>2148</y>
+      <w>192</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Check CSRF &amp; Authenticate
+valign=center
+halign=center
+bg=#ff33ff
+transparency=0
+fontsize=12
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2160</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4116</x>
+      <y>2652</y>
+      <w>348</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4176</x>
+      <y>2628</y>
+      <w>216</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*Middleware*
+valign=top
+halign=center
+bg=#99ffff
+transparency=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4188</x>
+      <y>2652</y>
+      <w>192</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Socket.IO
+valign=center
+halign=center
+bg=#ff5555
+transparency=0
+fontsize=12
+layer=3</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
