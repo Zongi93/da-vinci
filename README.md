@@ -10,24 +10,30 @@ For `.uxf` files I used [UMLet](https://www.umlet.com/).
 
 ## UML Use Case diagrams
 
-![image](https://user-images.githubusercontent.com/36570468/163158397-db881b45-551e-463d-a1f7-3648a11bb6e5.png)
-
-UML Aktivizációs diagram
-![image](https://user-images.githubusercontent.com/36570468/163158444-5fe62dc4-c709-4edf-b57a-0b44b07fb882.png)
-
 ## UML Class Diagram (server side)
 
 számosságokat, enumerációnál nyilak fordítottva szaggatva
 
 ![image](https://user-images.githubusercontent.com/36570468/163157707-c1e8f3a3-1acd-45cb-97a7-26176a875450.png)
 
+lásd https://www.inf.elte.hu/content/programtervezo-informatikus-bsc-szakdolgozat-tudnivalok.t.1138?m=192
+(Bírálat szempontrendszere)
+
 ## UI Mock ups
 
-# 1. Bevezetés
+# Bevezetés
 
 Társasjátékokkal mindig jó a kikapcsolódás. Még egyetemi éveim elején ismerkedtem meg egy számomra nagyon élvezetes játékkal, melyben bár szerepet kap a szerencse, nagyban tudja az eredményt befojásolni ha figyelmesek vagyunk a legapróbb elszórt információ morzsákra is. Ez a társasjáték a Da Vinci címet viseli és rengeteg órát játszottam vele az egyetemen szervezett Társas-Szerepjáték Hétvégéken. A játék során információkat kell szereznünk, akár a játék térről, akár korábbi lépésekből, vagy ellenfeleink testbeszédéből.
 
-## 1.1 Játékszabályok
+## 1. A szakdolgozat célja
+
+Szakdolgozatom célja a fent ismertetett társasjáték számítógépre való átültetése. A játékos legyen képes többedmagával különböző eszközökről egymással játszani az interneten keresztül és ezenkívül gépi ellenfelet is lehessen hozzá adni a játékhoz. A gépi ellenfél jelentsen minél nagyobb kihívást és annak működése legyen független a játékos számtól.
+
+A feladatot egy egymástól független szerver-kliens megoldással szeretném megoldani, ahol a szerver futtatja és ellenőrzi a társasjáték lépéseit, a kliensek pedig a felhasználók lépéseit jelenítik meg és közvetítik.
+
+# 2. Felhasználói leírás
+
+## 2.1 Játékszabályok
 
 A játékban egy kódsort állítunk össze számmal és színnel bíró játék elemekből, az alapjáték 0-tól 11-ig tartalmazó játékelemeket tartalmaz két színből, opcionálisan egy kötőjel karakterrel rendelkező elemet is használhatunk színenként. A játék folyamán minden egyéni kódsorban a számoknak növekvő sorrendben kell lenniük, amennyiben két azonos számmal bíró elemünk is van, akkor valamelyik szín mindig precedenciát élvez a másikhoz képest.
 
@@ -44,26 +50,7 @@ Amennyiben az eredeti tippje a játékosnak nem volt jó, vagy úgy döntött, h
 </p>
 Ha egy játékosnak minden kód eleme ki lett találva, akkor kiesik a játékból. A játéknak akkor van vége ha már csak egy játékosnak van olyan kódsora mely nem teljesen ismert.
 
-## 1.2 A szakdolgozat célja
-
-Szakdolgozatom célja a fent ismertetett társasjáték számítógépre való átültetése. A játékos legyen képes többedmagával különböző eszközökről egymással játszani az interneten keresztül és ezenkívül gépi ellenfelet is lehessen hozzá adni a játékhoz. A gépi ellenfél jelentsen minél nagyobb kihívást és annak működése legyen független a játékos számtól.
-
-A feladatot egy egymástól független szerver-kliens megoldással szeretném megoldani, ahol a szerver futtatja és ellenőrzi a társasjáték lépéseit, a kliensek pedig a felhasználók lépéseit jelenítik meg és közvetítik.
-
-# 2. Felhasználói leírás
-
-## 2.1 Felhasználói esetek
-
-<p align="center">
-   <img src=https://user-images.githubusercontent.com/36570468/166482988-f1ce1b99-ae0f-43fc-a7c9-b836d114cfac.png />
-   <figcaption align="center"><b>Felhasználói eset diagram</b></figcaption>
-</p>
-<p align="center">
-   <img src=https://user-images.githubusercontent.com/36570468/163157597-e4e85a31-63cc-4a2d-a7c5-62e68b316398.png />
-   <figcaption align="center"><b>Felhasználói történet</b></figcaption>
-</p>
-
-## 2.2 Rendszer követelmények
+## 2.1 Rendszer követelmények
 
 A játékhoz két komponensre, egy szerver és egy kliensre van szükség. Egy szerverre fizikai kapacitástól függően bárhány klienst és játékot ki tud szolgálni ezért a legtöbb esetben elegendő futtatni egy szervert. A kliens alkalmazás egy weboldal amelyet a szerverrel azonos gépen kell hosztolni.
 
@@ -135,9 +122,6 @@ A Da Vinci játék nézetében a képernyő alján látjuk a saját kódsorunkat
 
 Ha bármikor megszakadna az internet kapcsolat játék közben, egy oldal frissítéssel/újra töltéssel azonnal visszatérhetünk a játék folytatásához. Játék végén a játék kiírja a nyertest és vissza kerülünk a tábla választó nézetre.
 
-lásd https://www.inf.elte.hu/content/programtervezo-informatikus-bsc-szakdolgozat-tudnivalok.t.1138?m=192
-(Bírálat szempontrendszere)
-
 # 3. Fejlesztői leírás
 
 ## 3.1. Elemzés
@@ -146,7 +130,7 @@ lásd https://www.inf.elte.hu/content/programtervezo-informatikus-bsc-szakdolgoz
 
 Jelen szakdolgozatom céljai:
 
-- Az 1.1-es fejezetben részletezett játékszabályokkal rendelkező társasjáték megvalósítása
+- A 2.1-es fejezetben részletezett játékszabályokkal rendelkező társasjáték megvalósítása
 - A játékot egyszerűen böngészőből, bármilyen speciális program telepítését nélkül tudjuk játszani.
 - A játékot barátainkal tudjuk játszani a helyi hálózaton különböző kliensekről.
 - Legyünk képesek gépi ellenfeleket hozzáadni a játékhoz.
@@ -154,18 +138,47 @@ Jelen szakdolgozatom céljai:
 
 ### 3.1.2. Funkcionális leírás
 
-user story
-usecase diagram
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/166482988-f1ce1b99-ae0f-43fc-a7c9-b836d114cfac.png />
+   <figcaption align="center"><b>Felhasználói eset diagram</b></figcaption>
+</p>
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/167259212-083f6b01-1b59-4ac6-b1bb-be4a7d0cc8db.png />
+   <figcaption align="center"><b>Felhasználói történet</b></figcaption>
+</p>
+
+A kész programnak a fenti képeken mutatott funkciókkal kell rendelkeznie a felhasználók számára. Kiemelendő különbség a való élettel szemben, hogy a játék megvalósítása miatt nincs szükség arra, hogy a tippeket az adott játékos ellenőrizze, hanem ezt a szerver végzi mindenki helyett.
 
 ### 3.1.3. Nem-funkcionális leírás
 
+A tervezés során a következő szempontokat támasztjuk elvárásul a megvalósított program iránt. Ezen szempontokra fordítsunk kiemelt figyelmet.
+
+Főbb szempontok:
+
+- A kliens ne legyen platformfüggő.
+- A kliens támogasson több képernyő méretet és beviteli módszert.
+- Legyen a kliens stabil az internet kimaradással szemben.
+- Alapvető kiberbiztonsági megoldásokat valósítsunk meg elvi szinten.
+- Célpont, hogy a megoldás könnyen bővíthető legyen más társasjátékokkal.
+- A szerver legyen agnosztikus a játékos kiben létére (Emberi ellenfél/Gépi ellenfél).
+- A kliens és szerver közti kommunikációra használjunk REST végpontokat és websocket kapcsolatot.
+
 ## 3.2. Tervezés
 
-### 3.2.1 A Backend architektúrája
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/167267666-f41ec2dd-d0da-4030-b345-ce39f0600e49.png />
+   <figcaption align="center"><b>Magas szintű ábrázolása a teljes architektúrának</b></figcaption>
+</p>
+
+A fenti ábrán látható az arhitektúra felületes ábrázolása. Mind a két komponensben hasonló struktúrával szeretnénk, külön kommunikációs réteget és külön adattárolás és logikáért felelős réteget. Ezen kívül a frontend biztosítja még a felhasználó felé a felület megjelenítését, és a felhasználói interrakciók fogadását.
+
+### 3.2.1 A Backend komponens tervezése
+
+### 3.2.1.1 Architektúra
 
 <p align="center">
    <img src=https://user-images.githubusercontent.com/36570468/166569875-4032895d-5f09-4c6e-8abc-ba83edde70af.png />
-   <figcaption align="center"><b>A Backend komponens REST API-ja</b></figcaption>
+   <figcaption align="center"><b>A Backend komponens REST API használata</b></figcaption>
 </p>
 
 A Backend komponens tervezésekor a filozófia a következő volt:
@@ -177,16 +190,21 @@ A Backend komponens tervezésekor a filozófia a következő volt:
 - A megfelelő autentikáció és autorizáció ellenőrzését végezzük middleware komponensekben.
 - Értelem szerűen bontsuk szét a feladat körök és felelősségek mentén a végpontokat külön csoportokra, és tegyük azoknak kezelését külön singleton osztályokba.
 - Azonos csoportokban lévő végpontoknak legyen egy közös prefix-e az elérési útvonalban.
+- Szoruljunk minél kevésbé a frontend által szolgáltatott (ezáltal hamisítható) információkra. Például azt hogy melyik felhasználó intézi az adott kérést ne egy paraméterként kérjük, hanem használjunk csak a szerver által módosítható sütiket, és használjuk azt a felhasználó azonosítására.
 
 <p align="center">
    <img src=https://user-images.githubusercontent.com/36570468/166662648-ac9e4ad9-7738-42d5-8f4e-e1e177cf44e1.png />
    <figcaption align="center"><b>A különböző végpontok részletezése felhasználás szerint</b></figcaption>
 </p>
 
+**\*Megjegyzés:** Ahol nincsen várt adat, ott a szerver elegendő információt tud szerezni a regisztrált sütikből, és abból melyik végpont-ra érkezett a kérés.\*
+
 ### 3.2.2. Modell
 
 osztály diagram
 osztályok
+
+Legyen minden osztályról egy bekezdés, főbb metódusokról, főbbadattagokról
 
 ### 3.2.3. Nézet tervek
 
@@ -212,9 +230,23 @@ Alább a Da Vinci játék tervezett nézete látható, a saját kódsorunk a né
    <figcaption align="center"><b>Da Vinci játék közben nézet</b></figcaption>
 </p>
 
-### 3.2.4. Gépi ellenfél
+### 3.2.4. A játék megvalósításának terve
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/167702507-2e8bf9f0-b911-4108-b578-6ab61d8720fc.png />
+   <figcaption align="center"><b>Felhasználót igénylő lépések lebonyolitása</b></figcaption>
+</p>
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/167690281-ad47907b-6f74-46b4-b0b0-ec30d9541651.png />
+   <figcaption align="center"><b>Az Actor "API"</b></figcaption>
+</p>
+
+### 3.2.5. Gépi ellenfél
 
 ## 3.3. Megvalósítás
+
+eltérések a tervtől, hol kellett gányolni a tervhez képest
 
 ### 3.3.1. Felhasznált technológiák
 
@@ -222,14 +254,28 @@ Alább a Da Vinci játék tervezett nézete látható, a saját kódsorunk a né
 
 ## 3.4. Tesztelés
 
+A gépi ellenfél véleményezése
+(ki ismerhető a gép logikája, hány játék következik ez be)
+
 ### 3.4.1. Egység tesztek
 
 ### 3.4.2. Végfelhasználói tesztesetek
+
+felhasználó eset táblázatból minden sor lesz egy teszt csoport
 
 user story táblázat alapján generált táblázat
 
 ## 3.5 Lehetséges jővőbeni fejlesztések
 
 - pair-socket végpont létszükségének megkérdőjelezése
+- megtaníthatjuk a gépet blöffölni, meg hogy figyeljen blöffölni
+- Az architektúrát úgy megváltoztatni, hogy a projekt teljes újra fordítása nélkül is lehessen új társasjátékot hozzáadni teljesen dinamikusan.
 
 # 4. Irodalom jegyzék
+
+hivatalos linkje játéknak ()
+nem csak plágium problémákra
+hogyan kapcsolódunk a világhoz
+ha valakit érdekelne bővebben a téma linkek
+
+kell e kötni?
