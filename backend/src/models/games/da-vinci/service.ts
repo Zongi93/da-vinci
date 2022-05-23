@@ -82,6 +82,9 @@ export class GameDaVinci implements TableGame {
   }
 
   public async startGame(): Promise<void> {
+    if (this.gameInfo.canGameStart(this.actors.length) === false) {
+      throw new Error('Game starting conditions are not met.');
+    }
     console.log(this);
     console.log('game started');
     const actorsReady = this.actors.map(actor => actor.init());

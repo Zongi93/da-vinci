@@ -6,26 +6,12 @@ This will be the thesis work for my degree. As of august 2019, it is playable, b
 
 For `.uxf` files I used [UMLet](https://www.umlet.com/).
 
-## Use Cases (GIVEN/WHEN/THEN)
-
-## UML Use Case diagrams
-
-## UML Class Diagram (server side)
-
-számosságokat, enumerációnál nyilak fordítottva szaggatva
-
-![image](https://user-images.githubusercontent.com/36570468/163157707-c1e8f3a3-1acd-45cb-97a7-26176a875450.png)
-
 lásd https://www.inf.elte.hu/content/programtervezo-informatikus-bsc-szakdolgozat-tudnivalok.t.1138?m=192
 (Bírálat szempontrendszere)
-
-## UI Mock ups
 
 # Bevezetés
 
 Társasjátékokkal mindig jó a kikapcsolódás. Még egyetemi éveim elején ismerkedtem meg egy számomra nagyon élvezetes játékkal, melyben bár szerepet kap a szerencse, nagyban tudja az eredményt befojásolni ha figyelmesek vagyunk a legapróbb elszórt információ morzsákra is. Ez a társasjáték a Da Vinci címet viseli és rengeteg órát játszottam vele az egyetemen szervezett Társas-Szerepjáték Hétvégéken. A játék során információkat kell szereznünk, akár a játék térről, akár korábbi lépésekből, vagy ellenfeleink testbeszédéből.
-
-## 1. A szakdolgozat célja
 
 Szakdolgozatom célja a fent ismertetett társasjáték számítógépre való átültetése. A játékos legyen képes többedmagával különböző eszközökről egymással játszani az interneten keresztül és ezenkívül gépi ellenfelet is lehessen hozzá adni a játékhoz. A gépi ellenfél jelentsen minél nagyobb kihívást és annak működése legyen független a játékos számtól.
 
@@ -155,12 +141,12 @@ A tervezés során a következő szempontokat támasztjuk elvárásul a megvaló
 
 Főbb szempontok:
 
-- A kliens ne legyen platformfüggő.
-- A kliens támogasson több képernyő méretet és beviteli módszert.
-- Legyen a kliens stabil az internet kimaradással szemben.
+- Az alkalmazás ne legyen platformfüggő.
+- Az alkalmazás támogasson több képernyő méretet és beviteli módszert.
+- Legyen az alkalmazás stabil az internet kimaradással szemben.
 - Alapvető kiberbiztonsági megoldásokat valósítsunk meg elvi szinten.
 - Célpont, hogy a megoldás könnyen bővíthető legyen más társasjátékokkal.
-- A szerver legyen agnosztikus a játékos kiben létére (Emberi ellenfél/Gépi ellenfél).
+- Legyen elfedve, hogy a játékos gépi vagy emberi.
 - A kliens és szerver közti kommunikációra használjunk REST végpontokat és websocket kapcsolatot.
 
 ## 3.2. Tervezés
@@ -201,10 +187,114 @@ A Backend komponens tervezésekor a filozófia a következő volt:
 
 ### 3.2.2. Modell
 
-osztály diagram
-osztályok
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169716990-11a107c0-9cb0-4763-bff4-530dd79559c4.png />
+   <figcaption align="center"><b>A különböző végpontok részletezése felhasználás szerint</b></figcaption>
+</p>
 
-Legyen minden osztályról egy bekezdés, főbb metódusokról, főbbadattagokról
+**\*Megjegyzés:** Minden osztály minden publikus adattagja nyelv által támogatott readonly módban legyen, azaz az objektum konstruálásánál beállíthatóak egy értékre, de utána már mindenki csak olvasni tudja a beállított értéket.\*
+
+**Game::Table osztály**
+
+Célja egy asztal minden funcióját mely felelősségi körök mentén jól elkülöníthető megvalósítani. Lehetőséget kell biztosítania játékosok csatlakozására, gépi ellenfelek számának módosítására és a játék elindítására.
+
+- id : number - Egyedi azonosítót biztosít az asztalok megkülönböztetésére
+- nOfAiOpponents : number - Az asztalhoz hozzáadott gépi ellenfelek száma
+- players : User[] - Az asztalhoz csatlakozott felhasználók listája
+- game : TableGame - Az asztalnál játszani kívánt játék
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169702255-ad53e9da-a51e-4311-a4b7-c7693ea7c36c.png />
+   <figcaption align="center"><b>Table osztály függvényei</b></figcaption>
+</p>
+
+**Game::User osztály**
+
+Célja információt szolgáltatni a különböző csatlakozott játékosokról.
+
+- id : number - Egyedi azonosítóval látja el a felhasználókat
+- userName : string - Adott felhasználó neve
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169717021-d7a7649c-823f-4964-aa66-5451030288a1.png />
+   <figcaption align="center"><b>Game::User osztály függvényei</b></figcaption>
+</p>
+
+**Game::TableGame absztrakt osztály**
+
+Célja alapvető információt szolgáltatni a különböző játékokról. Biztosítja annak lehetőségét, hogy a kiválasztott játék pontos ismerete nélkül meg tudjuk kérdezni, hogy elindítható e a játék, és lehetőséget ad a válaszott játéknak az elindítására is.
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169702270-fc0b5d96-ae0c-40c1-acbb-8081ab0b3df3.png />
+   <figcaption align="center"><b>Game::TableGame osztály függvényei</b></figcaption>
+</p>
+
+**Game::TableGameInfo osztály**
+
+- gameTitle : string - A játék elnevezése
+- minPlayer : number - A játék szabályai szerinti minimum játékos szám
+- maxPlayer : number - A játék szabályai szerinti maximum játékos szám
+- aiSupport : boolen - Támogatja e a játék megvalósítása gépi ellenfelek hozzáadását
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169702285-44d1be2f-f506-4046-abbf-2ecbdd61644b.png />
+   <figcaption align="center"><b>Game::TableGameInfo osztály függvényei</b></figcaption>
+</p>
+
+**DaVinci::TableGameService osztály**
+
+Feladata a teljes Da Vinci játék ellenőrzött szabály szerinti lebonyolitása, az ő felelőssége minden ami ehhez szükséges, tehát a kód elemek inicializálása, a játékosok sorrendjének megállapítása, a körök lebonyolítása, a játékos lépésének ellenőrzése, nyilvántartani a még életben lévő játékosokat, kódelemek húzása kérésre megfelelő színben és a játék vége állapot észlelése és lekezelése.
+
+- activeActor : number - Az aktuális játékos indexe az actors listában
+- freePieces : GamePiece[] - Azon kód elemek halmaza amelyeket még nem húzott fel egyik játékos sem.
+- actors : Actor[] - A játékban résztvevő játékosok listája
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169702316-b9da5eb6-378f-4313-8dde-044e3b923ea6.png />
+   <figcaption align="center"><b>DaVinci::TableGameService osztály függvényei</b></figcaption>
+</p>
+
+**DaVinci::GamePiece osztály**
+
+Feladata tárolni az egy kódelemre vonatkozó minden információt és végrehajtani annak ellenőrzött állapot átmeneteit a kód elem életciklusa alatt.
+
+- id : number - Egyedi azonosítója a kódelemnek
+- number : number - A kódelem szám értéke (Alap szabályok szerint 0 és 11 közötti)
+- color : PieceColor - A kódelem szine (Alap szabályok szerint fehér és fekete)
+- state : PieceState - A kódelem állapota (nem ismert, privát, publikus)
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169702296-c00a7318-6678-4119-b9f8-5ad397b985c0.png />
+   <figcaption align="center"><b>DaVinci::GamePiece osztály függvényei</b></figcaption>
+</p>
+
+**DaVinci::Actor absztrakt osztály**
+
+Sorrendiségért is felel.
+
+- id : number - Egyedi azonosító az actoroknak
+- ownedPieces : GamePiece[] - Az actor által birtokolt kódelemek rendezett tömbje.
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169702305-495dbcaa-580c-467f-99ba-6117cb56f0dc.png />
+   <figcaption align="center"><b>DaVinci::Actor osztály függvényei</b></figcaption>
+</p>
+
+**DaVinci::Player osztály**
+
+Az Actor absztrakt osztály megvalósítása emberi játékos számára. Feladata a kért lépések kommunikálása websocketen keresztül a kliens felé és a válasz lépések továbbítása a TableGameService felé. További feladata esetleges kapcsolat bontás esetén szinkronizálni az állapotokat. A tényleges állapotot is ő tartja számon, a kliens egyoldalúan/szabályokat meg kerülve azt nem tudja megváltoztatni. Részletesebb ismertetésre a 3.2.4-es fejezetben kerül sor.
+
+**DaVinci::Computer osztály**
+
+Az Actor absztrakt osztály megvalósítása gépi ellenfél számára. A működés részletes ismertetésére egy külön (3.2.5) fejezetben kerül sor.
+
+**DaVinci::Guess osztály**
+
+Feladata az egy tipp-hez tartozó minden adatot tartalmazni. Külön logikát nem végez.
+
+- actorId : number - A cél actor egyedi azonosítója, akinek az elemére tippelünk
+- position : number - Az kódelem indexe a sorban
+- value : number - A tippelt érték
 
 ### 3.2.3. Nézet tervek
 
@@ -230,7 +320,12 @@ Alább a Da Vinci játék tervezett nézete látható, a saját kódsorunk a né
    <figcaption align="center"><b>Da Vinci játék közben nézet</b></figcaption>
 </p>
 
-### 3.2.4. A játék megvalósításának terve
+### **3.2.4. A játék megvalósításának terve**
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169838339-f11053bf-647a-4acb-8fa5-6188bea4ff2a.png />
+   <figcaption align="center"><b>Az Actor "API"</b></figcaption>
+</p>
 
 <p align="center">
    <img src=https://user-images.githubusercontent.com/36570468/167702507-2e8bf9f0-b911-4108-b578-6ab61d8720fc.png />
@@ -238,11 +333,107 @@ Alább a Da Vinci játék tervezett nézete látható, a saját kódsorunk a né
 </p>
 
 <p align="center">
-   <img src=https://user-images.githubusercontent.com/36570468/167690281-ad47907b-6f74-46b4-b0b0-ec30d9541651.png />
-   <figcaption align="center"><b>Az Actor "API"</b></figcaption>
+   <img src=https://user-images.githubusercontent.com/36570468/168590342-eeb422de-a145-4210-bcc0-fe81a603c087.png />
+   <figcaption align="center"><b>A játék lefolyásának részleges folyamatábrája</b></figcaption>
 </p>
 
-### 3.2.5. Gépi ellenfél
+### **3.2.5. Gépi ellenfél**
+
+A gépi ellenfél tervezésekor a filozófia a következő volt:
+
+- Minden döntésnél állítsunk elő egy valószínűségi változót, ezzel el kerülve a determinisztikus működést.
+- A valószínűségi változók előállításához használjunk erős heurisztikát amivel a játék állapotát jellemezni tudjuk.
+- A heurisztikák oly módon jelemezzék a helyes lépést, hogy ha minél helyesebbnek gondolunk egy lépést, annál jobban tendáljon a valószínűségi változónk annak a lépésnek irányába.
+
+ <p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169714927-d3e3e211-9c19-4f12-99f7-b4ec975e0433.png />
+   <figcaption align="center"><b>Az osztály diagram kiegészítése a gépi ellenfél megvalósításához</b></figcaption>
+</p>
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169714513-5d3af9d6-f192-4a14-b74f-c0b2a904b312.png />
+   <figcaption align="center"><b>DaVinci::ComputerLogic osztály függvényei</b></figcaption>
+</p>
+
+A játék szempontjából három esetben van szükségünk a kiértékelő logikára:
+
+- Ha tippet kell tennie
+- Ha színt kell választania
+- Ha extra akciót kell választania
+
+### **A gépi ellenfél tipp számolásának ötlete:**
+
+Vegyük az összes kód elemet melyek az ellenfelek kódsoraiban vannak még privát állapotban, a már felfedett kódelemek felhasználásával és a saját kódsorunk felhasználásával számoljuk ki ezen összes elemekre a szabályoknak megfelelő lehetséges értékeket. Vegyük azt az elemet, amelynél a legkevesebb opció van és tegyünk egy tippet az egyik opciót felhasználva.
+
+**Példa:**
+
+- Ellenfelünk 2. kódelemének értékei minden információnk és a szabályok szerint lehet: 4,5,6
+- Minden más eleménél három darabnál több lehetséges értéket állapítottunk meg.
+- Tegyünk egy tippet a 4,5,6 opciók egyikét felhasználva az ellenfelünk 2. kódelemére.
+
+**E megoldás hiányosságai:**
+
+- Nem használ fel információt a játék korábbi lépéseiből ("nincs memória")
+
+### **A gépi ellenfél szín választásának ötlete:**
+
+Vegyük a játékosok kódsorait és számoljuk meg melyikük melyik színből mennyi információval rendelkezik. Ezután a `mapColorToDesire` függvény segítségével állapítsuk meg, melyik szín adhat nekünk több információt vagy jelent nagyobb veszélyt. Figyeljünk arra, hogy ha minden elem egy színből fel van húzva csupán két játékos által, akkor ők ketten könnyedén kitalálhatják egymás kódsoruk adott színben lévő elemeiknek értékét.
+
+A `mapColorToDesire` függvényben alkalmazzunk heurisztikát:
+
+ <p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169799785-ba8cceec-42d4-4bf2-9e6b-71bee1032013.png />
+   <figcaption align="center"><b>Heurisztikát segítő függvények</b></figcaption>
+</p>
+
+- Abban az esetben ha egy színből még sok elem van a "húzódobozban", akkor azt a színt tartsuk érdekesnek amiből a legtöbbel rendelkezünk ügyelve arra, hogy viszont ne húzzuk fel az összes elemet a színből. (Ábrán kék függvény)
+- Abban az esetben ha egy színből már kevés elem van a húzódobozban, akkor ha nekünk nagy a kitettségünk ebből a színből akkor ne akarjuk belőle húzni, viszont ha másik játékos kitettsége nagy és nekünk elenyésző, akkor törekedjünk felhúzni a maradék elemeket a színből, hiszen ha minden elem játékban van egy színből akkor könnyedén megfejthetjük a teljes kódsorát az ellenfelünknek. (Ábrán narancssárga függvény)
+
+Miután minden színre és játékosra kiszámoltuk a húzási vágy értékét, akkor átlagoljunk, normalizáljunk és a színekből készítsünk egy valószínűségi változót majd annak használatával válasszunk színt.
+
+**Példa:**
+
+- Vegyünk egy két játékos játszmát ahol színt kell választanunk egy helyes tippünk után.
+- Fehér színből nálunk 5 darab van, ellenfelünknél 2, a dobozban még 5.
+- Fekete színből nálunk 3 darab van, ellenfelünknél 6, a dobozban még 3.
+- Fehér színből mi az elemek 5/12 százalékát birtokoljuk (~0.4116), a dobozban még elegendő elem van tehát a kék függvényt használva a húzási vágyunk kb 77%.
+- Fekete színből mi az elemek 3/12 százalékát birtokoljuk (0.25), a dobozban már kevés elem van tehát a narancssárga függvényt használjuk: 70%
+- Mivel csak egy ellenfelünk van ezért az átlagoló lépésre ellenfelenként számolt értékekre most nincs szükség.
+- Normalizáljuk a kapott értékeket és készítsünk egy valószínűségi változót: 52.3%-ban húzzunk fehéret, 47.7%-ban feketét.
+- Dobjunk egy kockával véletlenszerűen generálva egy értéket 0 és 100 között, legyen eredménye `x`, ha `x` értéke 52.3% alatt van, akkor fehéret kérjünk, ha nagyobb akkor feketét.
+
+**E megodás hiányosságai:**
+
+- Nem veszi figyelembe, hogy a húzott kódelem privát vagy publikus lesz-e.
+- Talán pontosabb képet kaphatnánk, ha minden húzható elemre kiszámolnánk, hogy tippelésnél melyik húzott kártya birtokában könnyebbülne meg legjobban a dolgunk, ezt színekre összegeznénk és ennek fényében döntenénk a színről.
+
+### **A gépi ellenfél extra akció választásának ötlete:**
+
+Számoljuk ki, hogy a jelen helyezetben milyen tippet tennénk, nézzük meg milyen magabiztosak vagyunk ebben a tippben, ha biztosabbak vagyunk a tippben mint amekkora maximális kockázatot aktuálisan vállalnánk, akkor válasszuk az extra akciók közül a tipp megtételét, ha túl nagy kockázatnak véljük akkor kérjünk kód elemet helyette inkább.
+
+Magabiztosságot számolni a legjobb tippünkhoz egyszerű, csak meg kell nézni hány lehetséges értéket vehet fel a tippelni kívánt elem és vesszük a darabszám reciprokát.
+
+A `certantyThreshold` függvény avagy kockázatvállaló késség számolásához használt heurisztika:
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169833104-2855fa99-edc5-4fc1-b248-e8aaf5e12a27.png />
+   <figcaption align="center"><b>A játék lefolyásának részleges folyamatábrája</b></figcaption>
+</p>
+
+Ha még a játék elején vagyunk, akkor kevés kockázatot kell vállalnunk, a játék vége felé viszont már nagyobb kockázatot is vállalunk.
+A kapott értéket még minimálisan el toljuk annak függvényében, hogy jelenleg hány életünk van, azaz hány olyan elem van a kódsorunkban amelyek még privát állapotban találhatóak.
+
+**Példa:**
+
+- Sikeresen tettünk egy tippet, választhatunk, hogy extra akcióként tovább tippelünk vagy húzunk egy kód elemet.
+- Mivel a játék csak most kezdődött, ezért csak az elemek 30% van játékban. (8 elem a 24-ből)
+- A certantyThreshold függvényünk 100%ban biztos tippnél vállalná a kockázatot.
+- Mivel ilyet a játék elején valószínűleg nem ismerünk, inkább válasszuk a kód elem húzását extra akcióból.
+
+**E megodás hiányosságai:**
+
+- A gépi ellenfél túl konzervatív, nem elég merész.
+- A gépi ellenfél csak becsüli azt, hogy veszíthet e a következő körben, ténylegesen nem "szimulálja le". Valószínűleg ezáltal pontosabb eredményt kaphatnánk pedig.
 
 ## 3.3. Megvalósítás
 
@@ -261,21 +452,31 @@ A gépi ellenfél véleményezése
 
 ### 3.4.2. Végfelhasználói tesztesetek
 
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169161813-2c887991-c7ed-4cad-a0e4-a2e51362f4c4.png />
+   <figcaption align="center"><b>A játék lefolyásának részleges folyamatábrája</b></figcaption>
+</p>
+
 felhasználó eset táblázatból minden sor lesz egy teszt csoport
 
 user story táblázat alapján generált táblázat
 
 ## 3.5 Lehetséges jővőbeni fejlesztések
 
-- pair-socket végpont létszükségének megkérdőjelezése
-- megtaníthatjuk a gépet blöffölni, meg hogy figyeljen blöffölni
-- Az architektúrát úgy megváltoztatni, hogy a projekt teljes újra fordítása nélkül is lehessen új társasjátékot hozzáadni teljesen dinamikusan.
+- Ellenőrizzük le, hogy a pair-socket végpont mindenképpen a legjobb megoldás amit választhattunk.
+- Adjuk hozzá a játékhoz a tippek azon információját, hogy melyik kód elemre és milyen értékkel történt a tipp ki által.
+- Tanítsuk meg a gépi ellenfelet arra, hogy vegye figyelembe ellenfelei és saját korábbi tippjeit, de figyeljen az ez általi becsapásra is (blöffölésre).
+- Dinamikus micro-frontend architektúrára váltás azzal a céllal, hogy új társasjátékokat akár részleges release-el is már tudjunk hozzáadni a játékhoz.
+- További társas játékok implementálása.
 
 # 4. Irodalom jegyzék
+
+- A társas játékot ma már sajnos nagyon kevés helyen lehet meg kapni, de itt még talán igen: https://www.aliexpress.com/item/32715285100.html
+- Angular dokumentációja: https://angular.io/
+- Express.js dokumentációja: https://expressjs.com/
+- Socket.io dokumentációja: https://socket.io/
 
 hivatalos linkje játéknak ()
 nem csak plágium problémákra
 hogyan kapcsolódunk a világhoz
 ha valakit érdekelne bővebben a téma linkek
-
-kell e kötni?
