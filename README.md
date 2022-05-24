@@ -270,7 +270,7 @@ Feladata tárolni az egy kódelemre vonatkozó minden információt és végreha
 
 **DaVinci::Actor absztrakt osztály**
 
-Sorrendiségért is felel.
+Felelőssége a kódsor rendben tartása, új elem megfelelő helyre való beszúrása, azon tippek ellenőrzése ahol ezen Actor kódelemére vonatkozott a tipp. Továbbá felelősség a játék által kért lépéseknek végrehajtatása. Ezen funkcióra absztrakt függvényeket használunk, melyek különböző játékos típusoknál különféle implementációt kapnak, ezáltal kiszolgálva a játékos típus egyedi igényeit.
 
 - id : number - Egyedi azonosító az actoroknak
 - ownedPieces : GamePiece[] - Az actor által birtokolt kódelemek rendezett tömbje.
@@ -320,22 +320,23 @@ Alább a Da Vinci játék tervezett nézete látható, a saját kódsorunk a né
    <figcaption align="center"><b>Da Vinci játék közben nézet</b></figcaption>
 </p>
 
-### **3.2.4. A játék megvalósításának terve**
+### **3.2.4. A játék lebonyolításának terve**
+
+Mivel a játék megköveteli a folyamatos kétirányú kommunikációt, ezért elengedhetetlen a websocket technológia használata. Legyen minden kliens felé egy egyedi websocket kapcsolatunk és legyünk képesek klienseknek különböző üzeneteket küldeni. A rendszerezett működéshez használjunk úgynevezett topik alapú kommunikációt a websocket csatornán, ezzel az érdeklődési körök mentén elvágva jól elkülöníthető eseményekre lehet lebontani a kommunikációt. Topik alapú kommunikációnál általában a websocket kiépítéséért felelős service fogad minden üzenetet és a regisztrált topikok alapján delegálja az üzenetek feldolgozását az arra feliratkozott komponenseknek.
 
 <p align="center">
    <img src=https://user-images.githubusercontent.com/36570468/169838339-f11053bf-647a-4acb-8fa5-6188bea4ff2a.png />
-   <figcaption align="center"><b>Az Actor "API"</b></figcaption>
+   <figcaption align="center"><b>Websocketen folyó topik alapú kommunikáció részletezése</b></figcaption>
 </p>
+
+A fenti táblázatban a teljes websocketen folyó kommunikáció látható. Használjuk a teljes tábla lista szinkronizálására minden kliensnél, és továbbá használjuk a teljes játék lebonyolitására. Olyan topikok mint `guess`, `pick-color`, `take-extra-action` és `game-over` jól megfeleltethetőek a `DaVinci::Actor` osztály aszinkron függvényeinek, melyek valamilyen interakciót várnak a játékostól. A játék logika által kért lépések ily módon vannak kommunikálva a megfelelő kliens felé és ugyanezen topikok használatával is válaszol ezen kérésekre a kliens.
 
 <p align="center">
    <img src=https://user-images.githubusercontent.com/36570468/167702507-2e8bf9f0-b911-4108-b578-6ab61d8720fc.png />
    <figcaption align="center"><b>Felhasználót igénylő lépések lebonyolitása</b></figcaption>
 </p>
 
-<p align="center">
-   <img src=https://user-images.githubusercontent.com/36570468/168590342-eeb422de-a145-4210-bcc0-fe81a603c087.png />
-   <figcaption align="center"><b>A játék lefolyásának részleges folyamatábrája</b></figcaption>
-</p>
+Felhasználót igénylő interrakciók lebonyolitása szemléletesen a fenti ábrán látható. A `GameDaVinciService` meghívja az `Actor` absztrakt osztály egyik függvényét, az alapján hogy adott `Actor` gépi ellenfél e vagy rendes játékos, annak függvény implementációjában különbség lesz. Gépi ellenfél esetén azonnal megválaszoljuk a kérést, emberi ellenfélnél websocketen a megfelelő topik használatával jelezzük a kliens felé, hogy továbbítsa a kérdést a felhasználó felé. A kliens ekkor a játék felületén valamilyen módon jelzi a kérelmet és lehetőséget biztosít annak megválaszolására is, például egy felugró ablakkal amely mutatja a választható színeket mint gombok. Ha felhasználó választott, akkor a kliens a kéréssel azonos topikot használva válaszol a kérésre a szervernek melyet a `Player` osztály fogad, és válaszként továbbítja a `GameDaVinciService` felé ami ekkor értékeli a választ és a következő lépéssel folytatja a játék lebonyolítását..
 
 ### **3.2.5. Gépi ellenfél**
 
@@ -355,7 +356,9 @@ A gépi ellenfél tervezésekor a filozófia a következő volt:
    <figcaption align="center"><b>DaVinci::ComputerLogic osztály függvényei</b></figcaption>
 </p>
 
-A játék szempontjából három esetben van szükségünk a kiértékelő logikára:
+A Gépi ellenfél logikáját egy külön `DaVinci::ComputerLogic` osztályban valósítottuk meg. A `DaVinci::Computer` osztály minimális felelősséggel rendelkezik szemben a `DaVinci::Player` osztállyal, hiszen itt csupán egy szinkron időben futtatott fügvény hívással választ tudunk adni a kérésre míg `DaVinci::Player` osztályban a websocketen való kommunikáció miatt rengeteg extra munkánk volt. Például játék vége esetén egy játékostól elvárjuk, hogy erre reagáljon, de ilyen elvárásunk gépi ellenfelé természetesen nincsen.
+
+A játék szempontjából három esetben van szükségünk a `DaVinci::ComputerLogic` által megvalósított kiértékelő logikára:
 
 - Ha tippet kell tennie
 - Ha színt kell választania
@@ -432,14 +435,47 @@ A kapott értéket még minimálisan el toljuk annak függvényében, hogy jelen
 
 **E megodás hiányosságai:**
 
-- A gépi ellenfél túl konzervatív, nem elég merész.
+- A gépi ellenfél talán túl konzervatív, nem elég merész.
 - A gépi ellenfél csak becsüli azt, hogy veszíthet e a következő körben, ténylegesen nem "szimulálja le". Valószínűleg ezáltal pontosabb eredményt kaphatnánk pedig.
 
 ## 3.3. Megvalósítás
 
 eltérések a tervtől, hol kellett gányolni a tervhez képest
 
-### 3.3.1. Felhasznált technológiák
+### **3.3.1. Felhasznált technológiák**
+
+### **Backend:**
+
+A backend komponens megvalósításához `Express.js` keretrendszert használtunk, amely a REST szerver megvalósításában játszott nagy szerepet. A websocket szerver kezeléséhez `Socket.IO` szervert használtunk. Ezen kívül érdemes még megemlíteni az `RxJS` könyvtárat mely az adatok "push" alapú elven való folyását tette lehetővé.
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169912439-dff624ed-c7ea-4394-8f24-135817a53252.png />
+   <figcaption align="center"><b>Express.js könyvtár használatából egy részlet</b></figcaption>
+</p>
+
+**Push alapú adat mozgás:**
+
+Mind a frontend és a backend komponens is hasonló "push" alapú elvet alkalmaz adatok mozgatására. Ezt az általam nagyon kedvelt `RxJS` könyvtár használatával érjük el. Hogy szemléletes példát adjak, ezen könyvtár használatával olyan getter függvényeket deklarálhatunk, amelyek önmaguktól szólnak ha változott az értékük. Minden helyen ahol ezen getterek értékeit használjuk, ott továbbra is szemléletesen, függőségeket kell csak megadnunk, hogy mely getterek érték változásának esetében szeretnénk újboli kód futtatást elérni. Ezáltal ahol a getterek értékeik bizonyos események bekövetkeztekor frissülnek (például REST hívásban regisztrálunk egy új felhasználót), a belőlük származtatott minden adat is automatikusan frissül.
+
+**Aszinkron függvények előnyei:**
+
+A javascript által támogatott `Promise` generikus osztály segítségével könnyedén tudunk aszinkron függvényeket futtatni és az `await` kulcsszóval "callback" függvények regisztrálása nélkül tudjuk azokat helyben kezelni. Aszinkron függvények használata azzal az előnnyel jár, hogy nem kell tudnunk, hogy egy folyamat mennyi ideig tart, mi az eredménnyel ugyanúgy tudunk dolgozni mintha szinkron időben futnának a függvények, viszont amíg várunk a válaszra addig a javascript motor a háttérben tud foglalkozni más feladatokkal, nem blokkoljuk a fő szálat.
+
+ <p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/169913273-d4239291-445f-4bb9-8d4c-77afe808d6b9.png />
+   <figcaption align="center"><b>A Game::TableManagerService startTable függvényének megvalósítása</b></figcaption>
+</p>
+
+A fenti példán szépen látható a jól struktúrált aszinkron függvények használatából fakadó előny. A `start` függvény elkezdi a játékot futtatni. Ez egy aszinkron függvény mely akkor tér vissza, ha vége van a játéknak. Mi könnyedén tudunk a játék vége eseményre reagálni és szépen kitakarítani a memóriát a befejezett játék után. Az említett `await` kulcsszót a hibakezelés miatt nem használtuk.
+
+**Példa a játék lefolyására**
+
+<p align="center">
+   <img src=https://user-images.githubusercontent.com/36570468/168590342-eeb422de-a145-4210-bcc0-fe81a603c087.png />
+   <figcaption align="center"><b>A játék lefolyásának részleges folyamatábrája</b></figcaption>
+</p>
+
+### 3.3.2
 
 ### 3.3.2. Esetleges eltérések a tervtől
 
@@ -454,12 +490,10 @@ A gépi ellenfél véleményezése
 
 <p align="center">
    <img src=https://user-images.githubusercontent.com/36570468/169161813-2c887991-c7ed-4cad-a0e4-a2e51362f4c4.png />
-   <figcaption align="center"><b>A játék lefolyásának részleges folyamatábrája</b></figcaption>
+   <figcaption align="center"><b>Végfelhasználói tesztesetek</b></figcaption>
 </p>
 
-felhasználó eset táblázatból minden sor lesz egy teszt csoport
-
-user story táblázat alapján generált táblázat
+A kliens átfogó általános tesztelésére a fenti teszteseteket használtuk.
 
 ## 3.5 Lehetséges jővőbeni fejlesztések
 
@@ -475,6 +509,7 @@ user story táblázat alapján generált táblázat
 - Angular dokumentációja: https://angular.io/
 - Express.js dokumentációja: https://expressjs.com/
 - Socket.io dokumentációja: https://socket.io/
+- RxJS dokumentációja: https://reactivex.io/
 
 hivatalos linkje játéknak ()
 nem csak plágium problémákra

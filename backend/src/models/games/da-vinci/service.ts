@@ -14,8 +14,7 @@ export class GameDaVinci implements TableGame {
       2,
       5,
       true,
-      (players: Array<User>, computerOpponentsToAdd?: Number) =>
-        new GameDaVinci(players, computerOpponentsToAdd)
+      (players: Array<User>, computerOpponentsToAdd?: Number) => new GameDaVinci(players, computerOpponentsToAdd)
     );
   }
   // TODO: INFO FOR PLAYERS ABOUT GUESSSES
@@ -29,7 +28,7 @@ export class GameDaVinci implements TableGame {
   private infoEmitter = new Subject<string>();
 
   private get aliveActors(): Number {
-    return this.actors.filter(actor => actor.lifes > 0).length;
+    return this.actors.filter((actor) => actor.lifes > 0).length;
   }
 
   private get nextActor(): Actor {
@@ -48,14 +47,12 @@ export class GameDaVinci implements TableGame {
     return {
       colors: this.COLORS,
       piecePerColor: this.PIECE_PER_COLOR,
-      players: this.actors.map(actor => actor.name),
+      players: this.actors.map((actor) => actor.name),
     };
   }
 
   get publicHands$(): Observable<Array<Hand>> {
-    const observables = this.actors.map(actor =>
-      actor.publicHand$.pipe(map(hand => new Hand(actor.name, hand)))
-    );
+    const observables = this.actors.map((actor) => actor.publicHand$.pipe(map((hand) => new Hand(actor.name, hand))));
     return combineLatest(observables);
   }
 
@@ -69,7 +66,7 @@ export class GameDaVinci implements TableGame {
     this.COLORS = Number(2);
 
     this.initPieces();
-    this.actors = players.map(user => new Player(this, user));
+    this.actors = players.map((user) => new Player(this, user));
 
     if (GameDaVinci.INFO.aiSupported && !!computerOpponentsToAdd) {
       for (let i = 0; i < computerOpponentsToAdd; i++) {
@@ -87,7 +84,7 @@ export class GameDaVinci implements TableGame {
     }
     console.log(this);
     console.log('game started');
-    const actorsReady = this.actors.map(actor => actor.init());
+    const actorsReady = this.actors.map((actor) => actor.init());
     await Promise.all(actorsReady);
     console.log('waiting done');
     const startingHandSize: Number = this.actors.length < 4 ? 4 : 3;
@@ -106,32 +103,21 @@ export class GameDaVinci implements TableGame {
       let color: PieceColor;
 
       if (this.getAvailableColors().length > 1) {
-        const colorRequest = new ColorRequestEvent(
-          state,
-          this.getAvailableColors()
-        );
+        const colorRequest = new ColorRequestEvent(state, this.getAvailableColors());
         color = await giveTo.chooseAColorToTake(colorRequest);
-        this.infoEmitter.next(
-          `${giveTo.name} has picked a ${PieceColor[color]} piece.`
-        );
+        this.infoEmitter.next(`${giveTo.name} has picked a ${PieceColor[color]} piece.`);
       } else {
         color = this.getAvailableColors()[0];
-        this.infoEmitter.next(
-          `${giveTo.name} was given a ${
-            PieceColor[color]
-          } piece as there is no other color left.`
-        );
+        this.infoEmitter.next(`${giveTo.name} was given a ${PieceColor[color]} piece as there is no other color left.`);
       }
 
-      const pickedPiece = this.freePieces.find(piece => piece.color === color);
-      this.freePieces = this.freePieces.filter(piece => piece !== pickedPiece);
+      const pickedPiece = this.freePieces.find((piece) => piece.color === color);
+      this.freePieces = this.freePieces.filter((piece) => piece !== pickedPiece);
 
       pickedPiece.state = state;
       giveTo.takePiece(pickedPiece);
     } else {
-      this.infoEmitter.next(
-        `${giveTo.name} can't take a piece as there is none left.`
-      );
+      this.infoEmitter.next(`${giveTo.name} can't take a piece as there is none left.`);
     }
   }
 
@@ -144,10 +130,10 @@ export class GameDaVinci implements TableGame {
   }
 
   private async gameOver(): Promise<void> {
-    const winner = this.actors.filter(actor => actor.lifes > 0)[0];
+    const winner = this.actors.filter((actor) => actor.lifes > 0)[0];
     this.infoEmitter.next(`${winner.name} won the game! Congratulations.`);
 
-    const promises = this.actors.map(actor => actor.gameOver(winner.name));
+    const promises = this.actors.map((actor) => actor.gameOver(winner.name));
 
     await Promise.all(promises);
 
@@ -156,7 +142,7 @@ export class GameDaVinci implements TableGame {
 
   private getAvailableColors(): Array<PieceColor> {
     return this.freePieces
-      .map(piece => piece.color)
+      .map((piece) => piece.color)
       .sort()
       .filter((val, i, arr) => i === 0 || arr[i - 1] !== val);
   }
@@ -173,7 +159,7 @@ export class GameDaVinci implements TableGame {
   }
 
   private checkAndHandleGuess(guess: Guess): boolean {
-    const target = this.actors.find(actor => actor.name === guess.userName);
+    const target = this.actors.find((actor) => actor.name === guess.userName);
     const guessResult = target.checkGuess(guess);
     if (guessResult) {
       target.showPiece(guess.position);
@@ -205,26 +191,16 @@ export class GameDaVinci implements TableGame {
             if (this.aliveActors === 1) {
               return;
             }
-            this.infoEmitter.next(
-              `${currentActor.name} guessed correctly and gets an extra action.`
-            );
-            nextAction = await currentActor.chooseExtraAction(
-              this.getAvailableActions()
-            );
+            this.infoEmitter.next(`${currentActor.name} guessed correctly and gets an extra action.`);
+            nextAction = await currentActor.chooseExtraAction(this.getAvailableActions());
             this.relayChoice(nextAction, currentActor);
             break;
           }
         // falltrough
         case GameAction.PICK:
-          const state = lastGuessResultIsCorrect
-            ? PieceState.PRIVATE
-            : PieceState.PUBLIC;
+          const state = lastGuessResultIsCorrect ? PieceState.PRIVATE : PieceState.PUBLIC;
           if (!lastGuessResultIsCorrect) {
-            this.infoEmitter.next(
-              `${
-                currentActor.name
-              } guessed incorrectly and now is picking a color.`
-            );
+            this.infoEmitter.next(`${currentActor.name} guessed incorrectly and now is picking a color.`);
           }
           await this.givePiece(state, currentActor);
         // fallthrough
@@ -237,22 +213,14 @@ export class GameDaVinci implements TableGame {
   private relayChoice(extraAction: GameAction, currentActor: Actor) {
     switch (extraAction) {
       case GameAction.GUESS:
-        this.infoEmitter.next(
-          `${currentActor.name} choose to continue guessing.`
-        );
+        this.infoEmitter.next(`${currentActor.name} choose to continue guessing.`);
         break;
       case GameAction.PICK:
-        this.infoEmitter.next(
-          `${
-            currentActor.name
-          } choose to stop guessing and now is picking a color.`
-        );
+        this.infoEmitter.next(`${currentActor.name} choose to stop guessing and now is picking a color.`);
         break;
       case GameAction.STOP:
         this.infoEmitter.next(
-          `${
-            currentActor.name
-          } choose to stop guessing but won't get a piece as there is none left.`
+          `${currentActor.name} choose to stop guessing but won't get a piece as there is none left.`
         );
         break;
     }
