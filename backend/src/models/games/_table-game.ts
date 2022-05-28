@@ -5,7 +5,7 @@ export abstract class TableGame {
   static readonly INFO: TableGameInfo;
 
   abstract get gameInfo(): TableGameInfo;
-  abstract async startGame(): Promise<void>;
+  abstract startGame(): Promise<void>;
 }
 
 export class TableGameInfo {
@@ -23,13 +23,13 @@ export class TableGameInfo {
     gameTitle: string,
     minPlayer: number,
     maxPlayer: number,
-    aiSuppoerted: boolean,
+    aiSupported: boolean,
     ctor: ([...any]) => TableGame
   ) {
     this.gameTitle = gameTitle;
     this.minPlayer = minPlayer;
     this.maxPlayer = maxPlayer;
-    this.aiSupported = aiSuppoerted;
+    this.aiSupported = aiSupported;
     this.ctor = ctor;
   }
 

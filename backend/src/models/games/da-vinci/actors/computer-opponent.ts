@@ -149,7 +149,8 @@ export class ComputerOpponent implements Actor {
   }
 }
 
-class Logic {
+// exported only for testing purposes.
+export class Logic { 
   get bestGuess(): { guess: Guess; certanty: number } {
     const bestGuess = this.orderedGuesses[0];
     const userName = bestGuess.guess.userName;

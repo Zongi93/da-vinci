@@ -4,7 +4,8 @@
   "description": "Server to host Da-vinci (and later maybe other) board game servers",
   "main": "src/server.ts",
   "scripts": {
-    "serve": "ts-node-dev src/server.ts"
+    "serve": "ts-node-dev src/server.ts",
+    "test": "jest --verbose --silent"
   },
   "author": "Karoly Matyas, Gyarmati",
   "license": "ISC",
@@ -17,12 +18,15 @@
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "@types/jest": "^27.5.1",
     "@types/node": "^11.12.2",
     "@types/socket.io": "^2.1.2",
+    "jest": "^28.1.0",
     "prettier-tslint": "^0.4.2",
+    "ts-jest": "^28.0.3",
     "ts-node": "^8.0.3",
     "ts-node-dev": "^1.0.0-pre.32",
     "tslint": "^5.14.0",
-    "typescript": "^3.4.1"
+    "typescript": "^4.7.2"
   }
 }
