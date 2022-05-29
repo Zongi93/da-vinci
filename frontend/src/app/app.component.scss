@@ -44,13 +44,13 @@
   height: 12rem;
 
   & ~ * {
-    /deep/ router-outlet ~ * {
+    ::ng-deep router-outlet ~ * {
       padding-top: 12rem;
     }
   }
 }
 
-/deep/ router-outlet ~ * {
+::ng-deep router-outlet ~ * {
   padding-top: 3rem;
   position: absolute;
   height: 100%;
